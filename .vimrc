@@ -9,18 +9,25 @@ call vundle#rc()
 " Vundle Plugins
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Markdown'
-Plugin 'Markdown-syntax'
 Plugin 'Syntastic'
 Plugin 'Supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Yggdroot/indentLine'
+Plugin 'Markdown'
+Plugin 'Markdown-syntax'
+Plugin 'greyblake/vim-preview'
+
+
+Plugin 'sirver/UltiSnips'
+Plugin 'honza/vim-snippets'
+
 
 call vundle#end() 	        	" required
 filetype plugin indent on       " required
@@ -52,8 +59,20 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
         nnoremap <Leader>8 :8b<CR>
         nnoremap <Leader>9 :9b<CR>
         nnoremap <Leader>0 :10b<CR>
+    
+    " Disable arrow keys
+        nnoremap <Left> :echo "No left for you!"<CR>
+        nnoremap <Right> :echo "No right for you!"<CR>
+        nnoremap <Up> :echo "No up for you!"<CR>
+        nnoremap <Down> :echo "No down for you!"<CR>
 
-" Setting Tab Width
+    " Syntastic
+        nnoremap <Leader>sr :SyntasticReset<CR>
+        nnoremap <Leader>sc :SyntasticCheck<CR>
+
+
+    
+    " Setting Tab Width
     set expandtab
     set smarttab
     set tabstop=4       " The width of a TAB is set to 4.
@@ -74,10 +93,15 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
-    "let g:syntastic_check_on_w = 1
+    let g:syntastic_check_on_w = 0
     let g:syntastic_auto_jump = 1
 
 " Mouse behavior
     set mouse=a          " Lets me click around in VIM
+
+" UltiSnip Config
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
