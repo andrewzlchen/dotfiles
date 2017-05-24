@@ -22,6 +22,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
 Plugin 'Markdown'
 Plugin 'Markdown-syntax'
+Plugin 'mxw/vim-jsx'
 Plugin 'greyblake/vim-preview'
 
 
@@ -105,3 +106,4 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-b>"
     let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
