@@ -1,49 +1,10 @@
-/*
-
-This file belongs in ~/.kwm
-
-This is a sample config for Kwm
-
-The following statements can be used to set Kwms internal directory structure.
-
-    This is the root folder for Kwms files, the only thing this actually
-    specifies is the location of the 'init' script which Kwm runs upon startup.
-    Defaults to $HOME/.kwm
-
-        kwm_home /path/to/.kwm
-
-    This is the root folder in which all files included using 'include' must reside.
-    Defaults to $HOME/.kwm
-
-        kwm_include /path/to/.kwm/include
-
-    This is the folder in which all bsp-layouts managed by 'tree load' and 'tree save'
-    is loaded from / saved to. Defaults to $HOME/.kwm/layouts
-
-        kwm_layouts /path/to/.kwm/layouts
-
-Commands prefixed with 'kwmc' will call
-local functions corresponding to the
-kwmc syntax.
-
-To run an external program or command,
-use the prefix 'exec' followed by command.
-e.g 'exec mvim' would open macvim
-
-Read file and execute commands as
-if they were written inside kwmrc.
-
-include filename
-
-e.g: window-rules in a separate file called 'rules'
-    include rules
-*/
-
 # Set default values for screen padding
-kwmc config padding 40 20 20 20
+#kwmc config padding 40 20 20 20
+kwmc config padding 5 5 5 5 
 
 # Set default values for container gaps
-kwmc config gap 15 15
+#kwmc config gap 15 15
+kwmc config gap 5 5
 
 # Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling bsp
@@ -64,7 +25,7 @@ kwmc config focus-follows-mouse on
 kwmc config standby-on-float on
 
 # Center window when made floating
-kwmc config center-on-float on
+kwmc config center-on-float off
 
 /*
     The mouse will automatically move to the center
@@ -113,7 +74,8 @@ kwmc config spawn left
     This is because some applications do not have the
     AXWindowRole and AXStandardWindowSubRole
 */
-kwmc rule owner="iTerm2" properties={role="AXDialog"}
+#kwmc rule owner="iTerm2" properties={role="AXDialog"}
+kwmc rule owner="Evince" properties={role="AXDialog"}
 
 /*
 The following commands create rules that
@@ -122,6 +84,11 @@ blacklists an application from Kwms tiling
     kwmc rule owner="Steam" properties={float="true"}
     kwmc rule owner="word" properties={float="true"}
 */
+
+    kwmc rule owner="Eclipse" properties={float="true"}
+    kwmc rule owner="IntelliJ IDEA" properties={float="true"}
+    kwmc rule owner="Finder" properties={float="true"}
+    kwmc rule owner="FirefoxDeveloperEdition" properties={float="true"}
 
 /*
 The following command creates a rule that

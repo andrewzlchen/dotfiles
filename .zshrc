@@ -51,7 +51,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew git wd zsh-autosuggestions)
+plugins=(brew git wd catimg github jsontools lol)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +86,10 @@ source $ZSH/oh-my-zsh.sh
 
 alias p3="python3"
 alias v="/usr/local/Cellar/macvim/8.0-133/MacVim.app/Contents/MacOS/Vim"
+alias rkwm="brew services restart kwm"
+alias rkhd="brew services restart khd"
+alias vr="vim ~/.vimrc"
+alias e="evince"
 
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"

@@ -12,11 +12,17 @@ khd kwm on
  khd mode default  color 0x00000000
  khd mode switcher color 0xddbdd322
  khd mode swap     color 0xdd458588
+ khd mode launcher color 0x3ed45288
+ khd mode space    color 0xffffffff
 
 - 0x50             :   khd -e "mode activate switcher"
 switcher - 0x50    :   khd -e "mode activate default"
 swap     - 0x50    :   khd -e "mode activate default"
+launcher - 0x50    :   khd -e "mode activate default"
+space    - 0x50    :   khd -e "mode activate default"
 switcher - r       :   khd -e "mode activate swap"
+switcher - l       :   khd -e "mode activate launcher"
+switcher - s       :   khd -e "mode activate space"
 
 # Switch focus
   switcher - h             :   kwmc window -f west
@@ -43,6 +49,9 @@ switcher - r       :   khd -e "mode activate swap"
   switcher + shift - right :   kwmc window -m space right;\
                                kwmc space -fExperimental right
 
+# Reload Configs
+  switcher - e             :   kwmc config reload
+
 # Swap windows
   swap - h                :   kwmc window -s west
   swap - j                :   kwmc window -s south
@@ -52,4 +61,14 @@ switcher - r       :   khd -e "mode activate swap"
 # Rotate
   swap - r                :   kwmc tree rotate 90
 
+# Launch
+
+# Toggle float
+  space - t               :   kwmc window -t focused
+
+# Switch between tiling modes
+  space - a               :   kwmc config tiling bsp
+  space - s               :   kwmc config tiling monocle
+  space - d               :   kwmc config tiling float
+  space - q               :   kwmc query tiling mode
 # -------------------------------------------------------------
