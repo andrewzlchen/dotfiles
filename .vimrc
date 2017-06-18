@@ -13,6 +13,7 @@ Plugin 'Syntastic'
 Plugin 'Supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
+Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -20,24 +21,15 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
-Plugin 'Markdown'
-Plugin 'Markdown-syntax'
-Plugin 'mxw/vim-jsx'
-Plugin 'greyblake/vim-preview'
-
-
-Plugin 'sirver/UltiSnips'
-Plugin 'honza/vim-snippets'
-
 
 call vundle#end() 	        	" required
 filetype plugin indent on       " required
 
 " UI
-set number
+set relativenumber
 syntax enable
 set t_Co=256
-colorscheme gruvbox 
+colorscheme base16-materia
 hi Normal guibg=NONE ctermbg=NONE
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
