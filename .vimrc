@@ -8,15 +8,13 @@ call vundle#rc()
 
 " Vundle Plugins
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'                      
 Plugin 'Syntastic'
 Plugin 'Supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Raimondi/delimitMate'
@@ -29,9 +27,12 @@ filetype plugin indent on       " required
 set number
 syntax enable
 set t_Co=256
-colorscheme gruvbox
+colorscheme base16-google-dark 
 hi Normal guibg=NONE ctermbg=NONE
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+    " 80 character limit
+        match ErrorMsg '\%>80v.\+' 
 
 " Keybindings
     map <C-N> :NERDTreeToggle<CR>
