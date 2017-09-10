@@ -7,7 +7,7 @@
 # -------------------- kwm -------------------------------
 
 # Enable kwm compatibility mode
-khd kwm on
+ khd kwm on
 # Set mode colors
  khd mode default  color 0x00000000
  khd mode switcher color 0xddbdd322

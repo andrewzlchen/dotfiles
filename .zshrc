@@ -41,7 +41,7 @@ plugins=(git wd)
 source $ZSH/oh-my-zsh.sh
 
 alias p3="python3"
-alias v="/usr/local/Cellar/macvim/8.0-133/MacVim.app/Contents/MacOS/Vim"
+alias v="vim"
 alias rkwm="brew services restart kwm"
 alias rkhd="brew services restart khd"
 alias vr="vim ~/.vimrc"

@@ -26,10 +26,10 @@ call vundle#end() 	        	" required
 filetype plugin indent on       " required
 
 " UI
-set relativenumber
+set number
 syntax enable
 set t_Co=256
-colorscheme base16-materia
+colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
@@ -64,6 +64,8 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
         nnoremap <Leader>sc :SyntasticCheck<CR>
 
 
+    " Fix backspace issue
+    set backspace=2  "compatible with version 5.4 and earlier
     
     " Setting Tab Width
     set expandtab
