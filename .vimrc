@@ -31,9 +31,8 @@ colorscheme base16-google-dark
 hi Normal guibg=NONE ctermbg=NONE
 highlight LineNr ctermfg=grey ctermbg=black
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-    " 80 character limit
-        match ErrorMsg '\%>80v.\+' 
+highlight LineNr ctermfg=white ctermbg=240
+match ErrorMsg '\%>80v.\+' 
 
 " Keybindings
     map <C-N> :NERDTreeToggle<CR>
