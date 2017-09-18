@@ -3,22 +3,26 @@ set $mod Mod1
 font pango:monospace 10
 new_window 1pixel
 
-exec_always xmodmap ~/.speedmapper
+# startup programs
+#exec_always xmodmap ~/.speedmapper
+exec_always xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec_always wal ~/Pictures/wallpapers/stars2.jpg
+
+# Take a screenshot - Make sure that you have gnome-screenshot
+bindsym $mod+Shift+s exec gnome-screenshot -w
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# launch programs
 bindsym $mod+Return exec termite 
+bindsym $mod+i exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym Mod4+space exec rofi -show run 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
 
 # change focus
 bindsym $mod+j focus left
@@ -51,7 +55,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -98,6 +102,9 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Programs
+bindsym $mod+f exec firefox
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

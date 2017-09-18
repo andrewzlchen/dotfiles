@@ -19,6 +19,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
+Plugin 'miyakogi/livemark.vim'
 
 call vundle#end() 	        	" required
 filetype plugin indent on       " required
@@ -30,7 +31,7 @@ set t_Co=256
 colorscheme base16-google-dark 
 hi Normal guibg=NONE ctermbg=NONE
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-highlight LineNr ctermfg=white ctermbg=240
+highlight LineNr ctermfg=darkgrey ctermbg=black
 match ErrorMsg '\%>80v.\+' 
 
 " Keybindings
@@ -101,3 +102,5 @@ match ErrorMsg '\%>80v.\+'
     let g:UltiSnipsJumpForwardTrigger="<c-b>"
     let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+"Live Mark Config - Preview Markdown files
+    let g:livemark_browser = 'firefox'
