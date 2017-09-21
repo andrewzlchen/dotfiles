@@ -1,12 +1,12 @@
 set $mod Mod1
 
-font pango:monospace 10
+font pango: Input Mono 10
 new_window 1pixel
 
 # startup programs
 #exec_always xmodmap ~/.speedmapper
 exec_always xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exec_always wal ~/Pictures/wallpapers/stars2.jpg
+exec_always exec wal -i ~/Pictures/wallpapers/stars2.jpg
 
 # Take a screenshot - Make sure that you have gnome-screenshot
 bindsym $mod+Shift+s exec gnome-screenshot -w
@@ -102,9 +102,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
-
-# Programs
-bindsym $mod+f exec firefox
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

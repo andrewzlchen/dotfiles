@@ -8,18 +8,28 @@ call vundle#rc()
 
 " Vundle Plugins
 
-Plugin 'gmarik/Vundle.vim'                      
-Plugin 'Syntastic'
-Plugin 'Supertab'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Yggdroot/indentLine'
-Plugin 'miyakogi/livemark.vim'
+    " General Vim
+        Plugin 'gmarik/Vundle.vim'                      
+        "Plugin 'Syntastic'
+        Plugin 'Supertab'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'chriskempson/base16-vim'
+        Plugin 'ctrlpvim/ctrlp.vim'
+        Plugin 'scrooloose/nerdcommenter'
+        Plugin 'Raimondi/delimitMate'
+        Plugin 'Yggdroot/indentLine'
+        Plugin 'w0rp/ale'
+        Plugin 'SirVer/ultisnips'
+        Plugin 'honza/vim-snippets'
+    " Frontend Development
+        Plugin 'mxw/vim-jsx'
+        Plugin 'chrisbra/matchit'
+        Plugin 'mattn/emmet-vim'
+    " Backend Development
+    
+    " School/Notes
+        Plugin 'miyakogi/livemark.vim'
+        Plugin 'ying17zi/vim-live-latex-preview'
 
 call vundle#end() 	        	" required
 filetype plugin indent on       " required
@@ -30,10 +40,9 @@ syntax enable
 set t_Co=256
 colorscheme base16-google-dark 
 hi Normal guibg=NONE ctermbg=NONE
-highlight LineNr ctermfg=grey ctermbg=black
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 highlight LineNr ctermfg=darkgrey ctermbg=black
-match ErrorMsg '\%>80v.\+' 
+"match ErrorMsg '\%>80v.\+' 
 
 " Keybindings
     map <C-N> :NERDTreeToggle<CR>
@@ -84,24 +93,34 @@ match ErrorMsg '\%>80v.\+'
     set expandtab       " Expand TABs to spaces
 
 " Syntastic
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_check_on_w = 0
-    let g:syntastic_auto_jump = 1
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_check_on_open = 0
+    "let g:syntastic_check_on_wq = 0
+    "let g:syntastic_check_on_w = 0
+    "let g:syntastic_auto_jump = 1
 
 " Mouse behavior
     set mouse=a          " Lets me click around in VIM
 
 " UltiSnip Config
     let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsJumpForwardTrigger="z<Space>"
+    let g:UltiSnipsJumpBackwardTrigger="z<Enter>"
 
 "Live Mark Config - Preview Markdown files
     let g:livemark_browser = 'firefox'
+
+" Emmet
+    let g:user_emmet_leader_key='<Leader>'
+
+" LATEX
+ map z<Space> <Esc>/(<>)<Enter>df)i
+ nnoremap z<Space> <Esc>/(<>)<Enter>df)i
+ inoremap z<Space> <Esc>/(<>)<Enter>df)i
+
+
