@@ -21,6 +21,7 @@ call vundle#rc()
         Plugin 'w0rp/ale'
         Plugin 'SirVer/ultisnips'
         Plugin 'honza/vim-snippets'
+        Plugin 'thinca/vim-quickrun'
     " Frontend Development
         Plugin 'mxw/vim-jsx'
         Plugin 'chrisbra/matchit'

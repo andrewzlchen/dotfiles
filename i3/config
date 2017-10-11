@@ -4,9 +4,9 @@ font pango: Input Mono 10
 new_window 1pixel
 
 # startup programs
-#exec_always xmodmap ~/.speedmapper
 exec_always xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec_always exec wal -i ~/Pictures/wallpapers/stars2.jpg
+exec_always sudo mount -t vboxsf AntergosVM ~/shared/
 
 # Take a screenshot - Make sure that you have gnome-screenshot
 bindsym $mod+Shift+s exec gnome-screenshot -w
@@ -15,7 +15,7 @@ bindsym $mod+Shift+s exec gnome-screenshot -w
 floating_modifier $mod
 
 # launch programs
-bindsym $mod+Return exec termite 
+bindsym $mod+Return exec termite
 bindsym $mod+i exec firefox
 
 # kill focused window
@@ -99,9 +99,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Multimedia
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%- 
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
