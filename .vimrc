@@ -19,9 +19,9 @@ call vundle#rc()
         Plugin 'Raimondi/delimitMate'
         Plugin 'Yggdroot/indentLine'
         Plugin 'w0rp/ale'
-        Plugin 'SirVer/ultisnips'
-        Plugin 'honza/vim-snippets'
-        Plugin 'thinca/vim-quickrun'
+        "Plugin 'SirVer/ultisnips'
+        "Plugin 'honza/vim-snippets'
+        "Plugin 'thinca/vim-quickrun'
     " Frontend Development
         Plugin 'mxw/vim-jsx'
         Plugin 'chrisbra/matchit'
