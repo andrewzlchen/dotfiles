@@ -39,7 +39,7 @@ filetype plugin indent on       " required
 set number
 syntax enable
 set t_Co=256
-colorscheme base16-google-dark 
+colorscheme base16-google-dark
 hi Normal guibg=NONE ctermbg=NONE
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 highlight LineNr ctermfg=darkgrey ctermbg=black

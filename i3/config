@@ -5,8 +5,9 @@ new_window 1pixel
 
 # startup programs
 exec_always xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exec_always exec wal -i ~/Pictures/wallpapers/stars2.jpg
 exec_always sudo mount -t vboxsf AntergosVM ~/shared/
+exec_always compton
+exec_always python ~/.config/Scripts/wallpaper.py
 
 # Take a screenshot - Make sure that you have gnome-screenshot
 bindsym $mod+Shift+s exec gnome-screenshot -w
@@ -15,8 +16,8 @@ bindsym $mod+Shift+s exec gnome-screenshot -w
 floating_modifier $mod
 
 # launch programs
-bindsym $mod+Return exec termite
-bindsym $mod+i exec firefox
+bindsym $mod+Return exec urxvt
+bindsym $mod+i exec qutebrowser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -136,7 +137,7 @@ mode "resize" {
 
 smart_gaps on
 gaps inner 15
-gaps outer 15
+gaps outer 3
 
 bindsym $mod+r mode "resize"
 
@@ -164,20 +165,9 @@ set $base0F #3971ED
 
 # Basic bar configuration using the Base16 variables.
 bar {
-    status_command i3blocks
-
-    colors {
-        background $base00
-        separator  $base01
-        statusline $base04
-
-        # State             Border  BG      Text
-        focused_workspace   $base05 $base0D $base00
-        active_workspace    $base05 $base03 $base00
-        inactive_workspace  $base03 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base00 $base0A $base00
-    }
+    font Input Mono 10
+    position top
+    status_command ~/.config/bumblebee-status -m battery -t gruvbox
 }
 
 # Basic color configuration using the Base16 variables for windows and borders.
