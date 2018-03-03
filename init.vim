@@ -24,10 +24,17 @@ scriptencoding utf-8
 	call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
 	call dein#add('scrooloose/nerdcommenter')
 	call dein#add('Raimondi/delimitMate')
-	call dein#add('vim-scripts/Supertab')
+	"call dein#add('vim-scripts/Supertab')
 	call dein#add('w0rp/ale')
+	call dein#add('sirver/UltiSnips')
+	call dein#add('Shougo/deoplete.nvim')
     call dein#add('Yggdroot/indentLine')
-
+    call dein#add('honza/vim-snippets')
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
 	call dein#end()
 	if dein#check_install()
 	  call dein#install()
@@ -63,6 +70,9 @@ scriptencoding utf-8
     set fillchars=vert:\ ,stl:\ ,stlnc:\ 
     set laststatus=2
     set noshowmode
+
+    " Ultisnips
+    let g:UltiSnipsSnippetDirectories=["~/.config/Ultisnips"]
 
 	let g:vimfiler_ignore_pattern = ''
        " Mapping buffers
@@ -101,4 +111,16 @@ scriptencoding utf-8
 
 " Keybinds
 
+    " NerdTree
     map <C-N> :NERDTreeToggle<CR>
+    " Ultisnips
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+    " deoplete
+    "let g:deoplete#enable_at_startup = 1
+
+    " Personal keybindings
+    inoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
+	vnoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
+    map <Space><Tab> <Esc>/(<>)<Enter>v3ldi
