@@ -30,7 +30,6 @@ scriptencoding utf-8
 	call dein#add('Shougo/deoplete.nvim')
     call dein#add('Yggdroot/indentLine')
     call dein#add('honza/vim-snippets')
-    call dein#add('Shougo/deoplete.nvim')
     if !has('nvim')
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
