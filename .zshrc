@@ -1,27 +1,49 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/achen/.oh-my-zsh
+export ZSH=/Users/andrewchen/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
-plugins=(git wd sudo)
+DISABLE_AUTO_TITLE="true"
+
+plugins=(git wd sudo zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# Aliases
-alias v="vim"
-alias vr="vim ~/.vimrc"
-alias ir="vim ~/.config/i3/config"
-alias zr="vim ~/.zshrc"
-alias tr="vim ~/.config/termite/config"
-alias i3br="vim ~/.i3blocks.conf"
-alias docker-dev='docker run -p 443:7777 --name dev-nsm -e NETNSM_SERVER=157.191.32.98 -e NETNSM_PORT=3311 -e NETNSM_USR=ore-net-eng -e NETNSM_PWD=orenet2017 -e NETNSM_DB=net-nsm -it nsmgui:axios bash'
+# Vim Key bindings
+#bindkey -v
+#export KEYTIMEOUT=1
 
-PATH="/home/achen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/achen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/achen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/achen/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/achen/perl5"; export PERL_MM_OPT;
-source /usr/share/nvm/init-nvm.sh
+# Pure Color theme
+autoload -U promptinit; promptinit
+PURE_CMD_MAX_EXEC_TIME=10
+prompt pure
+
+alias p3="python3"
+alias v="nvim"
+alias rchunk="brew services restart chunkwm"
+alias rskhd="brew services restart skhd"
+alias vr="nvim ~/.config/nvim/init.vim"
+alias zr="nvim ~/.zshrc"
+alias cr="nvim ~/.chunkwmrc"
+alias skhr="nvim ~/.skhdrc"
+alias linuxlab="ssh achen8@rainman.srcit.stevens-tech.edu"
+alias sshll='ssh locallending@ww1.bensommer.net'
+alias sshhome='ssh andrew@chen-server.mynetgear.com'
+alias pip='pip3'
+alias b='brew'
+alias bc='brew cask'
+alias lc='colorls'
+alias ubuntu='docker start zealous_kirch && docker attach zealous_kirch'
+alias ltref='open ~/Documents/useful/latex-guide.pdf'
+alias ltcp="tmux -c 'latexmk -pdf -pvc -shell-escape main.tex'"
+alias tzip='tar -czvf'
+alias geth159='~/Desktop/go-ethereum-1.5.9/build/bin/geth'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### Added by the Bluemix CLI
+source /usr/local/Bluemix/bx/zsh_autocomplete
+
+source $(dirname $(gem which colorls))/tab_complete.sh
