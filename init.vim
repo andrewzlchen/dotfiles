@@ -75,7 +75,6 @@ call dein#begin(expand('~/.config/nvim/dein'))
 
 call dein#add('Shougo/dein.vim')
 call dein#add('chrisbra/matchit')
-call dein#add('chriskempson/base16-vim')
 call dein#add('morhetz/gruvbox')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
@@ -114,7 +113,11 @@ endif
 "set statusline=%=&P\ %f\ %m
 "set fillchars=vert:\ ,stl:\ ,stlnc:\ 
 "set laststatus=2
-set noshowmode
+"set noshowmode
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+let g:seiya_auto_enable=1
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermfg=NONE
 
 " Ultisnips
 let g:UltiSnipsSnippetDirectories=["~/.config/Ultisnips"]
@@ -130,25 +133,35 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_smart_case = 1
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+		function! s:check_back_space() abort "{{{
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~ '\s'
+            endfunction"}}}
 
-"let g:ale_completion_enabled = 1
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\}
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-let g:ale_fix_on_save = 1
+"let g:ale_fix_on_save = 1
 
 " Emmet
 let g:user_emmet_leader_key="<Leader>e"
 
 " ctrlp
+let g:ctrlp_root_markers=['.root']
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  'node_modules\|DS_Store\|git',
-  \ 'file': '\v\.(exe|so|dll|o|a)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+            \ 'dir':  'node_modules\|DS_Store\|git',
+            \ 'file': '\v\.(exe|so|dll|o|a)$',
+            \ 'link': 'some_bad_symbolic_links',
+            \ }
 
 " Personal keybindings
 inoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
