@@ -47,7 +47,7 @@ else
     let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-autocmd Filetype js setlocal tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " The fish shell is not very compatible to other shells and unexpectedly
 " breaks things that use 'shell'.
@@ -73,24 +73,37 @@ exec 'set runtimepath^='.g:dein_dir
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
-call dein#add('Shougo/dein.vim')
-call dein#add('chrisbra/matchit')
-call dein#add('morhetz/gruvbox')
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('Raimondi/delimitMate')
-call dein#add('w0rp/ale')
-call dein#add('sirver/UltiSnips')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('Yggdroot/indentLine')
-call dein#add('honza/vim-snippets')
-call dein#add('mhartington/oceanic-next')
-call dein#add('tpope/vim-fugitive')
-call dein#add('Chiel92/vim-autoformat')
-call dein#add('vim-airline/vim-airline')
-call dein#add('ryanoasis/vim-devicons')
-call dein#add('mattn/emmet-vim')
+    call dein#add('Shougo/dein.vim')
+
+    " Appearance
+    call dein#add('mhartington/oceanic-next')
+    call dein#add('ryanoasis/vim-devicons')
+    call dein#add('vim-airline/vim-airline')
+    " Fixes Annoying things
+    call dein#add('Raimondi/delimitMate')
+    call dein#add('chrisbra/matchit')
+    call dein#add('scrooloose/nerdcommenter')
+    call dein#add('Yggdroot/indentLine')
+    call dein#add('Chiel92/vim-autoformat')
+    call dein#add('godlygeek/tabular')
+
+    " Language/Framework Specific
+    call dein#add('plasticboy/vim-markdown')
+    call dein#add('mattn/emmet-vim')
+    call dein#add('tpope/vim-rails')
+
+    " Navigation
+    call dein#add('ctrlpvim/ctrlp.vim')
+    call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
+
+    " Linting/Completion
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('w0rp/ale')
+    call dein#add('honza/vim-snippets')
+
+    " Version Control
+    call dein#add('tpope/vim-fugitive')
+
 if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -110,50 +123,39 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-"set statusline=%=&P\ %f\ %m
-"set fillchars=vert:\ ,stl:\ ,stlnc:\ 
-"set laststatus=2
-"set noshowmode
 let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 let g:seiya_auto_enable=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
 
-" Ultisnips
-let g:UltiSnipsSnippetDirectories=["~/.config/Ultisnips"]
-
-let g:vimfiler_ignore_pattern = ''
+"let g:vimfiler_ignore_pattern = ''
 
 " NerdTree
 map <C-N> :NERDTreeToggle<CR>
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
 "let g:deoplete#enable_smart_case = 1
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
-		function! s:check_back_space() abort "{{{
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~ '\s'
-            endfunction"}}}
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+            \   'javascript': ['eslint'],
+            \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 "let g:ale_fix_on_save = 1
 
 " Emmet
-let g:user_emmet_leader_key="<Leader>e"
+let g:user_emmet_leader_key="vv"
 
 " ctrlp
 let g:ctrlp_root_markers=['.root']
@@ -167,9 +169,14 @@ let g:ctrlp_custom_ignore = {
 inoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
 vnoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
 map <Space><Tab> <Esc>/(<>)<Enter>v3ldi
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>:CtrlPClearCache<cr>
+
+inoremap xx <%=  %><Esc>2hi
+inoremap xc <%  %><Esc>2hi
 
 " Code formatter
 map <Leader>cf :Autoformat<Enter>
+let g:formatterpath = []
 
 " Fugitive
 map <Leader>gs :Gstatus<Enter>
@@ -202,4 +209,4 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
 " Folds
-map <Leader>zf :set foldmethod=indent
+map <Leader>zf :set foldmethod=indent<Enter>
