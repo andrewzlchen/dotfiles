@@ -1105,8 +1105,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "CONS:PAUSE",
-                    "label": "PAUSE"
+                    "key": "CONS:PAUSEPLAY",
+                    "label": "PL\/PS"
                 }
             }
         },
