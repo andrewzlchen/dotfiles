@@ -1105,8 +1105,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "CONS:PLAY",
-                    "label": "PLAY"
+                    "key": "CONS:PAUSE",
+                    "label": "PAUSE"
                 }
             }
         },
