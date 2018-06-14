@@ -1,4 +1,3 @@
-"
 " A (not so) minimal vimrc.
 "
 
@@ -73,36 +72,52 @@ exec 'set runtimepath^='.g:dein_dir
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
-    call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/dein.vim')
 
-    " Appearance
-    call dein#add('mhartington/oceanic-next')
-    call dein#add('ryanoasis/vim-devicons')
-    call dein#add('vim-airline/vim-airline')
-    " Fixes Annoying things
-    call dein#add('Raimondi/delimitMate')
-    call dein#add('chrisbra/matchit')
-    call dein#add('scrooloose/nerdcommenter')
-    call dein#add('Yggdroot/indentLine')
-    call dein#add('Chiel92/vim-autoformat')
-    call dein#add('godlygeek/tabular')
+" Appearance
+call dein#add('mhartington/oceanic-next')
+call dein#add('drewtempelmeyer/palenight.vim')
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('vim-airline/vim-airline')
+call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+call dein#add('majutsushi/tagbar')
 
-    " Language/Framework Specific
-    call dein#add('plasticboy/vim-markdown')
-    call dein#add('mattn/emmet-vim')
-    call dein#add('tpope/vim-rails')
+" Fixes Annoying things
+call dein#add('Raimondi/delimitMate')
+call dein#add('chrisbra/matchit')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('Yggdroot/indentLine')
+call dein#add('Chiel92/vim-autoformat')
+call dein#add('godlygeek/tabular')
+call dein#add('wellle/targets.vim')
+call dein#add('tacahiroy/ctrlp-funky')
 
-    " Navigation
-    call dein#add('ctrlpvim/ctrlp.vim')
-    call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
+" CTags
+call dein#add('craigemery/vim-autotag')
+call dein#add('szw/vim-tags')
 
-    " Linting/Completion
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('w0rp/ale')
-    call dein#add('honza/vim-snippets')
+" Language/Framework Specific
+call dein#add('plasticboy/vim-markdown')
+call dein#add('mattn/emmet-vim')
+call dein#add('tpope/vim-rails')
+call dein#add('tpope/vim-rvm')
+call dein#add('vim-scripts/vim-coffee-script')
+call dein#add('pangloss/vim-javascript')
+call dein#add('vim-ruby/vim-ruby')
 
-    " Version Control
-    call dein#add('tpope/vim-fugitive')
+" File Navigation
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('easymotion/vim-easymotion')
+call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
+call dein#add('duggiefresh/vim-easydir')
+
+" Linting/Completion
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('w0rp/ale')
+call dein#add('honza/vim-snippets')
+
+" Version Control
+call dein#add('tpope/vim-fugitive')
 
 if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -117,7 +132,7 @@ filetype plugin indent on
 
 " Colorscheme
 set background=dark
-colo OceanicNext
+colo palenight
 let g:airline_theme='oceanicnext'
 if(has("termguicolors"))
     set termguicolors
@@ -132,6 +147,7 @@ hi LineNr guibg=NONE ctermfg=NONE
 
 " NerdTree
 map <C-N> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeToggle %<CR>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -160,29 +176,43 @@ let g:user_emmet_leader_key="vv"
 " ctrlp
 let g:ctrlp_root_markers=['.root']
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  'node_modules\|DS_Store\|git',
+            \ 'dir':  'node_modules\|DS_Store\|git\|system',
             \ 'file': '\v\.(exe|so|dll|o|a)$',
             \ 'link': 'some_bad_symbolic_links',
             \ }
+let g:ctrlp_extensions = ['tag']
+nnoremap <leader>t :CtrlPTag<cr>
+
+" ctrlp funky
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <Leader>ff :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fF :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " Personal keybindings
 inoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
 vnoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
 map <Space><Tab> <Esc>/(<>)<Enter>v3ldi
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>:CtrlPClearCache<cr>
 
-inoremap xx <%=  %><Esc>2hi
-inoremap xc <%  %><Esc>2hi
+" Rails
+autocmd FileType eruby inoremap xx <%=  %><Esc>2hi
+autocmd FileType eruby inoremap xc <%  %><Esc>2hi
+
+map <Leader>em :Emodel<Space>
+map <Leader>ec :Econtroller<Space>
+map <Leader>ev :Eview<Space>
 
 " Code formatter
 map <Leader>cf :Autoformat<Enter>
 let g:formatterpath = []
 
 " Fugitive
-map <Leader>gs :Gstatus<Enter>
+map <Leader>gst :Gstatus<Enter>
+map <Leader>gcmsg :Gcommit<Enter>
 map <Leader>gp :Gpush<Enter>
 map <Leader>gb :Gblame<Enter>
 map <Leader>gl :Gpull<Enter>
+map <Leader>gg :Glog<Enter>
 
 
 " Disable arrow keys
