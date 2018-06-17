@@ -1,45 +1,49 @@
 " A (not so) minimal vimrc.
 "
-
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
 set nocompatible
 
-filetype plugin indent on  " Load plugins according to detected filetype.
-syntax on                  " Enable syntax highlighting.
+filetype plugin indent on         " Load plugins according to detected filetype.
+syntax on                         " Enable syntax highlighting.
 
-set autoindent             " Indent according to previous line.
-set expandtab              " Use spaces instead of tabs.
-set softtabstop =4         " Tab key indents by 4 spaces.
-set shiftwidth  =4         " >> indents by 4 spaces.
-set shiftround             " >> indents to next multiple of 'shiftwidth'.
+set autoindent                    " Indent according to previous line.
+set expandtab                     " Use spaces instead of tabs.
+set softtabstop =4                " Tab key indents by 4 spaces.
+set shiftwidth  =4                " >> indents by 4 spaces.
+set shiftround                    " >> indents to next multiple of 'shiftwidth'.
 
-set backspace   =indent,eol,start  " Make backspace work as you would expect.
-set hidden                 " Switch between buffers without having to save first.
-set laststatus  =2         " Always show statusline.
-set display     =lastline  " Show as much as possible of the last line.
+set backspace   =indent,eol,start " Make backspace work as you would expect.
+set hidden                        " Switch between buffers without having to save first.
+set laststatus  =2                " Always show statusline.
+set display     =lastline         " Show as much as possible of the last line.
 
-set showmode               " Show current mode in command-line.
-set showcmd                " Show already typed keys when more are expected.
+set showmode                      " Show current mode in command-line.
+set showcmd                       " Show already typed keys when more are expected.
 
-set incsearch              " Highlight while searching with / or ?.
-set hlsearch               " Keep matches highlighted.
+set incsearch                     " Highlight while searching with / or ?.
+set hlsearch                      " Keep matches highlighted.
 
-set ttyfast                " Faster redrawing.
-set lazyredraw             " Only redraw when necessary.
+set ttyfast                       " Faster redrawing.
+set lazyredraw                    " Only redraw when necessary.
 
-set splitbelow             " Open new windows below the current window.
-set splitright             " Open new windows right of the current window.
+set splitbelow                    " Open new windows below the current window.
+set splitright                    " Open new windows right of the current window.
 
-set cursorline             " Find the current line quickly.
-set wrapscan               " Searches wrap around end-of-file.
-set report      =0         " Always report changed lines.
-set synmaxcol   =200       " Only highlight the first 200 columns.
+set cursorline                    " Find the current line quickly.
+set wrapscan                      " Searches wrap around end-of-file.
+set report      =0                " Always report changed lines.
+set synmaxcol   =200              " Only highlight the first 200 columns.
 
 set mouse=a
-set number
+set relativenumber
 
-set list                   " Show non-printable characters.
+set list                          " Show non-printable characters.
+
+" Tab width 
+autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+
 if has('multi_byte') && &encoding ==# 'utf-8'
     let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
@@ -90,23 +94,30 @@ call dein#add('Yggdroot/indentLine')
 call dein#add('Chiel92/vim-autoformat')
 call dein#add('godlygeek/tabular')
 call dein#add('wellle/targets.vim')
-call dein#add('tacahiroy/ctrlp-funky')
 
-" CTags
+" Code Searching
+call dein#add('mileszs/ack.vim')
 call dein#add('craigemery/vim-autotag')
 call dein#add('szw/vim-tags')
 
 " Language/Framework Specific
-call dein#add('plasticboy/vim-markdown')
-call dein#add('mattn/emmet-vim')
-call dein#add('tpope/vim-rails')
-call dein#add('tpope/vim-rvm')
-call dein#add('vim-scripts/vim-coffee-script')
-call dein#add('pangloss/vim-javascript')
-call dein#add('vim-ruby/vim-ruby')
+    " Markdown
+    call dein#add('plasticboy/vim-markdown')
+    " HTML
+    call dein#add('mattn/emmet-vim')
+    " Ruby / Rails
+    call dein#add('tpope/vim-rails')
+    call dein#add('tpope/vim-rvm')
+    call dein#add('vim-ruby/vim-ruby')
+    " Javascript
+    call dein#add('vim-scripts/vim-coffee-script')
+    call dein#add('pangloss/vim-javascript')
+    " CSS
+    call dein#add('cakebaker/scss-syntax.vim')
 
 " File Navigation
 call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('tacahiroy/ctrlp-funky')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
 call dein#add('duggiefresh/vim-easydir')
@@ -114,6 +125,7 @@ call dein#add('duggiefresh/vim-easydir')
 " Linting/Completion
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('w0rp/ale')
+call dein#add('SirVer/ultisnips')
 call dein#add('honza/vim-snippets')
 
 " Version Control
@@ -143,11 +155,9 @@ let g:seiya_auto_enable=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
 
-"let g:vimfiler_ignore_pattern = ''
-
 " NerdTree
 map <C-N> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeToggle %<CR>
+map <leader>r :NERDTreeFind<cr>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -165,10 +175,6 @@ endfunction"}}}
 let g:ale_fixers = {
             \   'javascript': ['eslint'],
             \}
-
-" Set this setting in vimrc if you want to fix files automatically on save.
-" This is off by default.
-"let g:ale_fix_on_save = 1
 
 " Emmet
 let g:user_emmet_leader_key="vv"
@@ -240,3 +246,13 @@ nnoremap <Leader>0 :10b<CR>
 
 " Folds
 map <Leader>zf :set foldmethod=indent<Enter>
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Ack
+" use silver searcher instead of ack
+let g:ackprg = 'ag --vimgrep'
+map <Leader>f :Ack<Space>
