@@ -37,6 +37,7 @@ set synmaxcol   =200              " Only highlight the first 200 columns.
 
 set mouse=a
 set relativenumber
+set number
 
 set list                          " Show non-printable characters.
 
@@ -99,6 +100,7 @@ call dein#add('wellle/targets.vim')
 call dein#add('mileszs/ack.vim')
 call dein#add('craigemery/vim-autotag')
 call dein#add('szw/vim-tags')
+call dein#add('majutsushi/tagbar')
 
 " Language/Framework Specific
     " Markdown
@@ -124,7 +126,8 @@ call dein#add('duggiefresh/vim-easydir')
 
 " Linting/Completion
 call dein#add('Shougo/deoplete.nvim')
-call dein#add('w0rp/ale')
+call dein#add('scrooloose/syntastic')
+"call dein#add('w0rp/ale')
 call dein#add('SirVer/ultisnips')
 call dein#add('honza/vim-snippets')
 
@@ -154,6 +157,7 @@ let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 let g:seiya_auto_enable=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 " NerdTree
 map <C-N> :NERDTreeToggle<CR>
@@ -230,8 +234,8 @@ nnoremap <Down> :echo "No down for you!"<CR>
 " Mapping buffers
 nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
@@ -256,3 +260,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " use silver searcher instead of ack
 let g:ackprg = 'ag --vimgrep'
 map <Leader>f :Ack<Space>
+
+let g:airline#extensions#tabline#enabled = 1
+
+" Run Python on current file
+nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
