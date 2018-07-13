@@ -37,7 +37,6 @@ set synmaxcol   =200              " Only highlight the first 200 columns.
 
 set mouse=a
 set relativenumber
-set number
 
 set list                          " Show non-printable characters.
 
@@ -94,17 +93,15 @@ call dein#add('scrooloose/nerdcommenter')
 call dein#add('Yggdroot/indentLine')
 call dein#add('Chiel92/vim-autoformat')
 call dein#add('godlygeek/tabular')
-call dein#add('wellle/targets.vim')
 
 " Code Searching
 call dein#add('mileszs/ack.vim')
 call dein#add('craigemery/vim-autotag')
-call dein#add('szw/vim-tags')
-call dein#add('majutsushi/tagbar')
 
 " Language/Framework Specific
     " Markdown
     call dein#add('plasticboy/vim-markdown')
+    call dein#add('dkarter/bullets.vim')
     " HTML
     call dein#add('mattn/emmet-vim')
     " Ruby / Rails
@@ -114,25 +111,24 @@ call dein#add('majutsushi/tagbar')
     " Javascript
     call dein#add('vim-scripts/vim-coffee-script')
     call dein#add('pangloss/vim-javascript')
+    " JSON
+    call dein#add('elzr/vim-json')
     " CSS
-    call dein#add('cakebaker/scss-syntax.vim')
+    "call dein#add('cakebaker/scss-syntax.vim')
 
 " File Navigation
 call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('tacahiroy/ctrlp-funky')
-call dein#add('easymotion/vim-easymotion')
 call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
-call dein#add('duggiefresh/vim-easydir')
 
 " Linting/Completion
 call dein#add('Shougo/deoplete.nvim')
-call dein#add('scrooloose/syntastic')
-"call dein#add('w0rp/ale')
+call dein#add('w0rp/ale')
 call dein#add('SirVer/ultisnips')
 call dein#add('honza/vim-snippets')
 
 " Version Control
 call dein#add('tpope/vim-fugitive')
+call dein#add('airblade/vim-gitgutter')
 
 if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -157,7 +153,6 @@ let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 let g:seiya_auto_enable=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 " NerdTree
 map <C-N> :NERDTreeToggle<CR>
@@ -260,6 +255,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " use silver searcher instead of ack
 let g:ackprg = 'ag --vimgrep'
 map <Leader>f :Ack<Space>
+
+" JSON highlighter
+" Not conceal double quotes in json
+let g:vim_json_syntax_conceal = 0
+
+" Tagbar: See the structure of the current file via tags
+map <leader>t :TagbarToggle<CR>
+
 
 let g:airline#extensions#tabline#enabled = 1
 
