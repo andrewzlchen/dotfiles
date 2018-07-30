@@ -43,6 +43,7 @@ set list                          " Show non-printable characters.
 
 " Tab width 
 autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+autocmd FileType eruby :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -265,3 +266,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Run Python on current file
 nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
+
+" Mass rename things in vim
+" execute in shell with ':w !sh'
+nnoremap <Leader>rn :%s/.*/\="mv -i ".submatch(0)." ".substitute(submatch(0), "before", "after", "g")/g
