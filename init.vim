@@ -37,12 +37,12 @@ set synmaxcol   =200              " Only highlight the first 200 columns.
 
 set mouse=a
 set relativenumber
+set number
 
 set list                          " Show non-printable characters.
 
 " Tab width 
 autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-autocmd FileType eruby :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -92,7 +92,7 @@ call dein#add('Raimondi/delimitMate')
 call dein#add('chrisbra/matchit')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('Yggdroot/indentLine')
-call dein#add('Chiel92/vim-autoformat')
+call dein#add('sbdchd/neoformat')
 call dein#add('godlygeek/tabular')
 
 " Code Searching
@@ -173,7 +173,8 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 let g:ale_fixers = {
-            \   'javascript': ['eslint'],
+            \   'javascript': ['prettier'],
+            \   'css': ['prettier'],
             \}
 
 " Emmet
@@ -187,7 +188,7 @@ let g:ctrlp_custom_ignore = {
             \ 'link': 'some_bad_symbolic_links',
             \ }
 let g:ctrlp_extensions = ['tag']
-nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <leader>. :CtrlPTag<cr>
 
 " ctrlp funky
 let g:ctrlp_funky_syntax_highlight = 1
@@ -209,7 +210,7 @@ map <Leader>ec :Econtroller<Space>
 map <Leader>ev :Eview<Space>
 
 " Code formatter
-map <Leader>cf :Autoformat<Enter>
+map <Leader>cf :Neoformat<Enter>
 let g:formatterpath = []
 
 " Fugitive
@@ -269,7 +270,3 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Run Python on current file
 nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
-
-" Mass rename things in vim
-" execute in shell with ':w !sh'
-nnoremap <Leader>rn :%s/.*/\="mv -i ".submatch(0)." ".substitute(submatch(0), "before", "after", "g")/g
