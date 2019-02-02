@@ -86,6 +86,8 @@ call dein#add('ryanoasis/vim-devicons')
 call dein#add('vim-airline/vim-airline')
 call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 call dein#add('majutsushi/tagbar')
+call dein#add('mhinz/vim-signify')
+call dein#add('mhinz/vim-startify')
 
 " Fixes Annoying things
 call dein#add('Raimondi/delimitMate')
@@ -94,6 +96,7 @@ call dein#add('scrooloose/nerdcommenter')
 call dein#add('Yggdroot/indentLine')
 call dein#add('sbdchd/neoformat')
 call dein#add('godlygeek/tabular')
+call dein#add('terryma/vim-expand-region')
 
 " Code Searching
 call dein#add('mileszs/ack.vim')
@@ -270,3 +273,5 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Run Python on current file
 nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
+
+
