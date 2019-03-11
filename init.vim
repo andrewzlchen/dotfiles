@@ -41,9 +41,23 @@ set number
 
 set list                          " Show non-printable characters.
 
+au BufNewFile,BufRead *.py        " defaults for Python Editing 
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css       " Defaults for web dev
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 " Tab width 
-autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+"autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
+"autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
 
 if has('multi_byte') && &encoding ==# 'utf-8'
     let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
@@ -80,14 +94,15 @@ call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim')
 
 " Appearance
-call dein#add('mhartington/oceanic-next')
-call dein#add('drewtempelmeyer/palenight.vim')
 call dein#add('ryanoasis/vim-devicons')
-call dein#add('vim-airline/vim-airline')
+call dein#add('itchyny/lightline.vim')
 call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 call dein#add('majutsushi/tagbar')
-call dein#add('mhinz/vim-signify')
-call dein#add('mhinz/vim-startify')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('morhetz/gruvbox')
+
+" Behavior
+call dein#add('skywind3000/asyncrun.vim')
 
 " Fixes Annoying things
 call dein#add('Raimondi/delimitMate')
@@ -95,6 +110,7 @@ call dein#add('chrisbra/matchit')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('Yggdroot/indentLine')
 call dein#add('sbdchd/neoformat')
+call dein#add('terryma/vim-multiple-cursors')
 call dein#add('godlygeek/tabular')
 call dein#add('terryma/vim-expand-region')
 
@@ -103,25 +119,33 @@ call dein#add('mileszs/ack.vim')
 call dein#add('craigemery/vim-autotag')
 
 " Language/Framework Specific
+
     " Markdown
     call dein#add('plasticboy/vim-markdown')
     call dein#add('dkarter/bullets.vim')
+
     " HTML
     call dein#add('mattn/emmet-vim')
+
     " Ruby / Rails
-    call dein#add('tpope/vim-rails')
-    call dein#add('tpope/vim-rvm')
-    call dein#add('vim-ruby/vim-ruby')
+    "call dein#add('tpope/vim-rails')
+    "call dein#add('tpope/vim-rvm')
+    "call dein#add('vim-ruby/vim-ruby')
+    "
     " Javascript
-    call dein#add('vim-scripts/vim-coffee-script')
     call dein#add('pangloss/vim-javascript')
+    call dein#add('mxw/vim-jsx')
+
     " JSON
     call dein#add('elzr/vim-json')
+
     " CSS
     "call dein#add('cakebaker/scss-syntax.vim')
 
 " File Navigation
-call dein#add('ctrlpvim/ctrlp.vim')
+set rtp+=/usr/local/opt/fzf
+"call dein#add('/usr/local/opt/fzf')
+call dein#add('junegunn/fzf.vim')
 call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
 
 " Linting/Completion
@@ -147,8 +171,7 @@ filetype plugin indent on
 
 " Colorscheme
 set background=dark
-colo palenight
-let g:airline_theme='oceanicnext'
+colo gruvbox
 if(has("termguicolors"))
     set termguicolors
 endif
@@ -164,7 +187,6 @@ map <leader>r :NERDTreeFind<cr>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_smart_case = 1
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
@@ -175,42 +197,41 @@ function! s:check_back_space() abort "{{{
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
+" ALE
 let g:ale_fixers = {
             \   'javascript': ['prettier'],
             \   'css': ['prettier'],
             \}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 
 " Emmet
 let g:user_emmet_leader_key="vv"
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" fzf
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+map <leader>s :ProjectFiles<cr>
+
+" Javascript settings
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix % " run formatter asynchronously
 
 " ctrlp
-let g:ctrlp_root_markers=['.root']
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  'node_modules\|DS_Store\|git\|system',
-            \ 'file': '\v\.(exe|so|dll|o|a)$',
-            \ 'link': 'some_bad_symbolic_links',
-            \ }
-let g:ctrlp_extensions = ['tag']
-nnoremap <leader>. :CtrlPTag<cr>
-
-" ctrlp funky
-let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <Leader>ff :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fF :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-" Personal keybindings
-inoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
-vnoremap <Space><Tab> <Esc>/(<>)<Enter>v3ldi
-map <Space><Tab> <Esc>/(<>)<Enter>v3ldi
-
-" Rails
-autocmd FileType eruby inoremap xx <%=  %><Esc>2hi
-autocmd FileType eruby inoremap xc <%  %><Esc>2hi
-
-map <Leader>em :Emodel<Space>
-map <Leader>ec :Econtroller<Space>
-map <Leader>ev :Eview<Space>
+"let g:ctrlp_root_markers=['.root']
+"let g:ctrlp_custom_ignore = {
+            "\ 'dir':  'node_modules\|DS_Store\|git\|system',
+            "\ 'file': '\v\.(exe|so|dll|o|a)$',
+            "\ 'link': 'some_bad_symbolic_links',
+            "\ }
+"let g:ctrlp_extensions = ['tag']
+"nnoremap <leader>. :CtrlPTag<cr>
 
 " Code formatter
 map <Leader>cf :Neoformat<Enter>
@@ -219,6 +240,8 @@ let g:formatterpath = []
 " Fugitive
 map <Leader>gst :Gstatus<Enter>
 map <Leader>gcmsg :Gcommit<Enter>
+map <Leader>gaa :Gwrite<Enter>
+map <Leader>ga :Gwrite<Space>
 map <Leader>gp :Gpush<Enter>
 map <Leader>gb :Gblame<Enter>
 map <Leader>gl :Gpull<Enter>
@@ -267,9 +290,6 @@ let g:vim_json_syntax_conceal = 0
 
 " Tagbar: See the structure of the current file via tags
 map <leader>t :TagbarToggle<CR>
-
-
-let g:airline#extensions#tabline#enabled = 1
 
 " Run Python on current file
 nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
