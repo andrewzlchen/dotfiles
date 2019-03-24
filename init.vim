@@ -50,22 +50,11 @@ au BufNewFile,BufRead *.py        " defaults for Python Editing
     \ set autoindent
     \ set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css       " Defaults for web dev
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
-" Tab width 
-"autocmd FileType html :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-"autocmd FileType javascript :setlocal sw=2 ts=2 sts=2 " Two spaces for HTML files "
-
 if has('multi_byte') && &encoding ==# 'utf-8'
     let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
     let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
-
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " The fish shell is not very compatible to other shells and unexpectedly
 " breaks things that use 'shell'.
@@ -113,6 +102,7 @@ call dein#add('sbdchd/neoformat')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('godlygeek/tabular')
 call dein#add('terryma/vim-expand-region')
+call dein#add('tpope/vim-surround')
 
 " Code Searching
 call dein#add('mileszs/ack.vim')
@@ -130,29 +120,29 @@ call dein#add('craigemery/vim-autotag')
     " Ruby / Rails
     "call dein#add('tpope/vim-rails')
     "call dein#add('tpope/vim-rvm')
-    "call dein#add('vim-ruby/vim-ruby')
-    "
+    call dein#add('vim-ruby/vim-ruby')
+    
     " Javascript
     call dein#add('pangloss/vim-javascript')
     call dein#add('mxw/vim-jsx')
 
-    " JSON
-    call dein#add('elzr/vim-json')
+    " Elixir
+    call dein#add('elixir-editors/vim-elixir')
 
     " CSS
     "call dein#add('cakebaker/scss-syntax.vim')
 
 " File Navigation
 set rtp+=/usr/local/opt/fzf
-"call dein#add('/usr/local/opt/fzf')
 call dein#add('junegunn/fzf.vim')
 call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
 
 " Linting/Completion
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('w0rp/ale')
-call dein#add('SirVer/ultisnips')
-call dein#add('honza/vim-snippets')
+call dein#add('neoclide/coc.nvim', { "build": "call coc#util#install()"})
+call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': 'bash install.sh',
+    \ })
 
 " Version Control
 call dein#add('tpope/vim-fugitive')
@@ -167,131 +157,107 @@ if dein#check_install()
     call dein#install()
 endif
 
-filetype plugin indent on
+" SETTINGS
 
-" Colorscheme
-set background=dark
-colo gruvbox
-if(has("termguicolors"))
-    set termguicolors
-endif
+    filetype plugin indent on
 
-let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-let g:seiya_auto_enable=1
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermfg=NONE
+    " Colorscheme
+    set background=dark
+    colo gruvbox
+    if(has("termguicolors"))
+        set termguicolors
+    endif
 
-" NerdTree
-map <C-N> :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<cr>
+    let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+    let g:seiya_auto_enable=1
+    hi Normal guibg=NONE ctermbg=NONE
+    hi LineNr guibg=NONE ctermfg=NONE
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+    " Emmet
+    let g:user_emmet_leader_key="vv"
+    let g:user_emmet_settings = {
+    \  'javascript.jsx' : {
+        \      'extends' : 'jsx',
+        \  },
+    \}
 
-" ALE
-let g:ale_fixers = {
-            \   'javascript': ['prettier'],
-            \   'css': ['prettier'],
-            \}
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
+    " Disable arrow keys
+    nnoremap <Left> :echo "No left for you!"<CR>
+    nnoremap <Right> :echo "No right for you!"<CR>
+    nnoremap <Up> :echo "No up for you!"<CR>
+    nnoremap <Down> :echo "No down for you!"<CR>
 
-" Emmet
-let g:user_emmet_leader_key="vv"
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+    " Folds
+    "map <Leader>zf :set foldmethod=indent<Enter>
 
-" fzf
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-map <leader>s :ProjectFiles<cr>
+    " Ack
+    " use silver searcher instead of ack
+    let g:ackprg = 'ag --vimgrep'
 
-" Javascript settings
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix % " run formatter asynchronously
+    " JSON highlighter
+    " Not conceal double quotes in json
+    let g:vim_json_syntax_conceal = 0
 
-" ctrlp
-"let g:ctrlp_root_markers=['.root']
-"let g:ctrlp_custom_ignore = {
-            "\ 'dir':  'node_modules\|DS_Store\|git\|system',
-            "\ 'file': '\v\.(exe|so|dll|o|a)$',
-            "\ 'link': 'some_bad_symbolic_links',
-            "\ }
-"let g:ctrlp_extensions = ['tag']
-"nnoremap <leader>. :CtrlPTag<cr>
+    "" LSP
+    set hidden
 
-" Code formatter
-map <Leader>cf :Neoformat<Enter>
-let g:formatterpath = []
+    let g:LanguageClient_serverCommands = {
+        \ 'javascript': ['javascript-typescript-langserver'],
+        \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+        \ 'typescript': ['javascript-typescript-langserver'],
+        \ 'python': ['/Users/andrewchen/.pyenv/shims/pyls'],
+        \ }
 
-" Fugitive
-map <Leader>gst :Gstatus<Enter>
-map <Leader>gcmsg :Gcommit<Enter>
-map <Leader>gaa :Gwrite<Enter>
-map <Leader>ga :Gwrite<Space>
-map <Leader>gp :Gpush<Enter>
-map <Leader>gb :Gblame<Enter>
-map <Leader>gl :Gpull<Enter>
-map <Leader>gg :Glog<Enter>
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
-" Disable arrow keys
-nnoremap <Left> :echo "No left for you!"<CR>
-nnoremap <Right> :echo "No right for you!"<CR>
-nnoremap <Up> :echo "No up for you!"<CR>
-nnoremap <Down> :echo "No down for you!"<CR>
+" MAPS
 
-" Mapping buffers
-nnoremap <Leader>d :bd<CR>
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>g :e#<CR>
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
-nnoremap <Leader>6 :6b<CR>
-nnoremap <Leader>7 :7b<CR>
-nnoremap <Leader>8 :8b<CR>
-nnoremap <Leader>9 :9b<CR>
-nnoremap <Leader>0 :10b<CR>
+    " NerdTree
+    map <leader>tf :NERDTreeToggle<CR>
+    map <leader>r :NERDTreeFind<cr>
 
-" Folds
-map <Leader>zf :set foldmethod=indent<Enter>
+    " fzf
+    map <leader>f :Files<cr>
+    map <leader>bl :Buffers<cr>
+    map <leader>al :Lines<cr>
+    map <leader>cl :BLines<cr>
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    " Neoformat
+    map <Leader>cf :Neoformat<Enter>
 
-" Ack
-" use silver searcher instead of ack
-let g:ackprg = 'ag --vimgrep'
-map <Leader>f :Ack<Space>
+    " Fugitive
+    map <Leader>gst :Gstatus<Enter>
+    map <Leader>gcmsg :Gcommit<Enter>
+    map <Leader>gaa :Gwrite<Enter>
+    map <Leader>ga :Gwrite<Space>
+    map <Leader>gp :Gpush<Enter>
+    map <Leader>gb :Gblame<Enter>
+    map <Leader>gl :Gpull<Enter>
+    map <Leader>gg :Glog<Enter>
 
-" JSON highlighter
-" Not conceal double quotes in json
-let g:vim_json_syntax_conceal = 0
+    " Mapping buffers
+    nnoremap <Leader>bd :bd<CR>
+    nnoremap <Leader>bp :bp<CR>
+    nnoremap <Leader>bn :bn<CR>
 
-" Tagbar: See the structure of the current file via tags
-map <leader>t :TagbarToggle<CR>
+    " Split navigations
+    nnoremap <leader>j <C-W><C-J>
+    nnoremap <leader>k <C-W><C-K>
+    nnoremap <leader>l <C-W><C-L>
+    nnoremap <leader>h <C-W><C-H>
 
-" Run Python on current file
-nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
+    " Search code
+    map <Leader>s :Ack<Space>
 
+    " Tagbar: See the structure of the current file via tags
+    map <leader>tt :TagbarToggle<CR>
+
+    " Run Python on current file
+    nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
+
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
