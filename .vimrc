@@ -1,127 +1,128 @@
-" This file belongs in root folder
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""    BASIC CONFIG     """"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-"" let Vundle manage Vundle
+   " General Vim
+       Plugin 'gmarik/Vundle.vim'           " vim plugin manager
+       Plugin 'tpope/vim-fugitive'          " git wrapper
+    " Completion
+       Plugin 'w0rp/ale'                    " asynchronous completion engine
+       Plugin 'Supertab'                    " tab completion
+       Plugin 'Raimondi/delimitMate'        " completes quotes, parens, etc.
+       Plugin 'scrooloose/nerdcommenter'    " automatically comments
+    " File Searching
+       Plugin 'scrooloose/nerdtree'         " file tree viewer
+       Plugin 'wincent/command-t'           " looks for tags
+       Plugin 'ctrlpvim/ctrlp.vim'          " fuzzy file searcher
+       Plugin 'majutsushi/tagbar'           " displays a tags window of the current file
+    " Appearance
+       Plugin 'morhetz/gruvbox'             " gruvbox color theme
+       Plugin 'chriskempson/base16-vim'     " base16 color themes
+       Plugin 'Yggdroot/indentLine'         " displays thin vertical lines at each indentation level 
+       Plugin 'vim-airline/vim-airline'     " bottom status bar
+       Plugin 'vim-airline/vim-airline-themes'
+call vundle#end()
 
-" Vundle Plugins
-
-    " General Vim
-        Plugin 'gmarik/Vundle.vim'                      
-        "Plugin 'Syntastic'
-        Plugin 'Supertab'
-        Plugin 'scrooloose/nerdtree'
-        Plugin 'chriskempson/base16-vim'
-        Plugin 'ctrlpvim/ctrlp.vim'
-        Plugin 'scrooloose/nerdcommenter'
-        Plugin 'Raimondi/delimitMate'
-        Plugin 'Yggdroot/indentLine'
-        Plugin 'w0rp/ale'
-        "Plugin 'SirVer/ultisnips'
-        "Plugin 'honza/vim-snippets'
-        "Plugin 'thinca/vim-quickrun'
-    " Frontend Development
-        Plugin 'mxw/vim-jsx'
-        Plugin 'chrisbra/matchit'
-        Plugin 'mattn/emmet-vim'
-    " Backend Development
-    
-    " School/Notes
-        Plugin 'miyakogi/livemark.vim'
-        Plugin 'ying17zi/vim-live-latex-preview'
-
-call vundle#end() 	        	" required
-filetype plugin indent on       " required
-
-" UI
-set number
+" Basic Config
+let g:mapleader = ' '
+let g:maplocalleader = '\'
 syntax enable
+set nocompatible
+filetype plugin on
+filetype plugin indent on
+set mouse=a
+
+" Fix backspace issue
+set backspace=2  "compatible with version 5.4 and earlier
+
+" Appearances
+set number
+set relativenumber
 set t_Co=256
 colorscheme base16-google-dark
-hi Normal guibg=NONE ctermbg=NONE
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-highlight LineNr ctermfg=darkgrey ctermbg=black
-"match ErrorMsg '\%>80v.\+' 
+hi LineNr ctermfg=darkgrey ctermbg=black
 
-" Keybindings
-    map <C-N> :NERDTreeToggle<CR>
-
-    " Mapping buffers
-        nnoremap <Leader>d :bd<CR>
-        nnoremap <Leader>l :ls<CR>
-        nnoremap <Leader>b :bp<CR>
-        nnoremap <Leader>f :bn<CR>
-        nnoremap <Leader>g :e#<CR>
-        nnoremap <Leader>1 :1b<CR>
-        nnoremap <Leader>2 :2b<CR>
-        nnoremap <Leader>3 :3b<CR>
-        nnoremap <Leader>4 :4b<CR>
-        nnoremap <Leader>5 :5b<CR>
-        nnoremap <Leader>6 :6b<CR>
-        nnoremap <Leader>7 :7b<CR>
-        nnoremap <Leader>8 :8b<CR>
-        nnoremap <Leader>9 :9b<CR>
-        nnoremap <Leader>0 :10b<CR>
-    
-    " Disable arrow keys
-        nnoremap <Left> :echo "No left for you!"<CR>
-        nnoremap <Right> :echo "No right for you!"<CR>
-        nnoremap <Up> :echo "No up for you!"<CR>
-        nnoremap <Down> :echo "No down for you!"<CR>
-
-    " Syntastic
-        nnoremap <Leader>sr :SyntasticReset<CR>
-        nnoremap <Leader>sc :SyntasticCheck<CR>
+" Tab Behavior
+set expandtab
+set smarttab
+set tabstop=4       
+set shiftwidth=4 
+set softtabstop=4
+set expandtab
 
 
-    " Fix backspace issue
-    set backspace=2  "compatible with version 5.4 and earlier
-    
-    " Setting Tab Width
-    set expandtab
-    set smarttab
-    set tabstop=4       " The width of a TAB is set to 4.
-                        " Still it is a \t. It is just that
-                        " Vim will interpret it to be having
-                        " a width of 4.
 
-    set shiftwidth=4    " Indents will have a width of 4 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""     KEYBINDINGS     """"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set softtabstop=4   " Sets the number of columns for a TAB
+" File searching
+    " open NERDTree
+    nmap <Leader>ft :NERDTreeToggle<CR>
+    nmap <Leader>fr :NERDTreeFind<CR>
 
-    set expandtab       " Expand TABs to spaces
+    " ctrlp
+    nmap <Leader>ff :CtrlP<CR>
 
-" Syntastic
-    "set statusline+=%#warningmsg#
-    "set statusline+=%{SyntasticStatuslineFlag()}
-    "set statusline+=%*
+    " toggle tagbar
+    nmap <Leader>tb :TagbarToggle<CR>
 
-    "let g:syntastic_always_populate_loc_list = 1
-    "let g:syntastic_auto_loc_list = 1
-    "let g:syntastic_check_on_open = 0
-    "let g:syntastic_check_on_wq = 0
-    "let g:syntastic_check_on_w = 0
-    "let g:syntastic_auto_jump = 1
+" Mapping buffers
+nmap <Leader>d :bd<CR>
+nmap <Leader>l :ls<CR>
+nmap <Leader>p :bp<CR>
+nmap <Leader>n :bn<CR>
 
-" Mouse behavior
-    set mouse=a          " Lets me click around in VIM
+" Disable arrow keys
+nmap <Left> :echo "No left for you!"<CR>
+nmap <Right> :echo "No right for you!"<CR>
+nmap <Up> :echo "No up for you!"<CR>
+nmap <Down> :echo "No down for you!"<CR>
 
-" UltiSnip Config
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="z<Space>"
-    let g:UltiSnipsJumpBackwardTrigger="z<Enter>"
+" Spacemacs-like commands
+nmap <Leader>x :x<CR>
+nmap <Leader>w :w<CR>
 
-"Live Mark Config - Preview Markdown files
-    let g:livemark_browser = 'firefox'
-
-" Emmet
-    let g:user_emmet_leader_key='<Leader>'
-
-" LATEX
- map z<Space> <Esc>/(<>)<Enter>df)i
- nnoremap z<Space> <Esc>/(<>)<Enter>df)i
- inoremap z<Space> <Esc>/(<>)<Enter>df)i
+" Remap commonly mistyped commands
+command -complete=file -bang -nargs=? W :w<bang> <args>
+command -complete=file -bang -nargs=? Wq :wq<bang> <args>
+command -complete=file -bang -nargs=? WQ :wq<bang> <args>
+command -complete=file -bang -nargs=? Q :q<bang> <args>
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""  PLUGIN-SPECIFIC CONFIG  """"""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1        " enable buffer line
+let g:airline_theme='bubblegum'
+
+" Ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip                " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe             " Windows
+set wildignore+=*/node_modules/*,*\\node_modules\\*     " Node.js/Javascript
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|o)$',
+  \ }
+
+let g:ctrlp_user_command = 'git ls-files %s'       " MacOSX/Linux
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""  HELP DOCUMENTATION """"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
