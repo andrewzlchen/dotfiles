@@ -1,5 +1,0 @@
-{
-    "coc.preferences.formatOnSaveFiletypes": ["javascript"],
-    "pyls.plugins.yapf.enabled": true,
-    "tsserver.formatOnType": true
-}
