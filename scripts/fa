@@ -1,4 +1,6 @@
 #!/bin/sh
 
+# opens a file within a directory with nvim
+
 cd $1
 fzf | xargs nvim
