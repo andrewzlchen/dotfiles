@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-docker start zealous_kirch
-docker attach zealous_kirch --detach-keys="ctrl-d"
-
