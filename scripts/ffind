@@ -1,0 +1,5 @@
+#!/bin/sh
+# This script greps for file names in specified directories and opens the 
+# selected file into an editor
+
+rg --files $1 | fzf | xargs $EDITOR

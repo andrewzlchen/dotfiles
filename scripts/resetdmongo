@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cd /tmp/data-test-26000 
+
+if [ $(ls -la | wc -l) -gt 3 ] 
+then 
+    rm -rf * && echo "Removed all contents of debug dbpath!"
+fi
+
+mongod --replSet localTest --port 26000 --dbpath /tmp/data-test-26000 --logpath /tmp/data-test-26000/mongod.log --fork
+
