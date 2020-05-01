@@ -1,7 +1,4 @@
 " SETTINGS
-colo gruvbox
-let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-let g:seiya_auto_enable=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
 
@@ -87,7 +84,6 @@ command -complete=file -bang -nargs=? Wq :wq<bang> <args>
 command -complete=file -bang -nargs=? WQ :wq<bang> <args>
 command -complete=file -bang -nargs=? Q :q<bang> <args>
 
-map gf :e <cfile><CR>
-
 " File extension
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
+colo forest-night
