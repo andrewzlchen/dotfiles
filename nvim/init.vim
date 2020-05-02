@@ -35,7 +35,7 @@ call dein#add('terryma/vim-multiple-cursors')                        " sublime t
 call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
 call dein#add('jiangmiao/auto-pairs')                                " insert or deletion of pairs of quotes, brackets, etc.
-call dein#add('sjl/gundo.vim')                                       " visual undo tree
+call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
 
 " Discoverability
 set rtp+=/usr/local/opt/fzf
@@ -47,7 +47,7 @@ call dein#add('liuchengxu/vim-which-key')                            " shows wha
 " Linting/Completion
 call dein#add('Shougo/deoplete.nvim')                                " Completion engine
 call dein#add('Shougo/neosnippet.vim')                               " Snippet engine
-call dein#add('Shougo/neosnippet-snippets')                          " Snippet engine snippets
+call dein#add('honza/vim-snippets')                                  " Snippet engine snippets
 
 " Language/Framework Specific
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})    " LSP Integration
@@ -72,6 +72,7 @@ endif
 " Overarching configs
 source $HOME/.config/nvim/nvim_config/general.vimrc
 source $HOME/.config/nvim/nvim_config/keys.vimrc
+source $HOME/.config/nvim/nvim_config/commands.vimrc
 
 " Category plugin configs
 source $HOME/.config/nvim/nvim_config/prog.vimrc

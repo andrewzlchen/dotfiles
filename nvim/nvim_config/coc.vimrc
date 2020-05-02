@@ -117,6 +117,8 @@ nnoremap <silent> <localleader>c  :<C-u>CocList commands<cr>
 nnoremap <silent> <localleader>o  :<C-u>CocList outline<cr>
 " Search worklocalleader symbols
 nnoremap <silent> <localleader>s  :<C-u>CocList -I symbols<cr>
+" Open CocList
+nnoremap <silent> <localleader>l  :<C-u>CocList<cr>
 " Do default action for next item.
 nnoremap <silent> <localleader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.

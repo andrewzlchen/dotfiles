@@ -4,48 +4,14 @@ nnoremap <Right> :echo "No right for you!"<CR>
 nnoremap <Up> :echo "No up for you!"<CR>
 nnoremap <Down> :echo "No down for you!"<CR>
 
-" NerdTree
-map <leader>tf :NERDTreeToggle<CR>
-map <leader>tr :NERDTreeFind<cr>
-
 " Neoformat
 map <Leader>cf :Neoformat<Enter>
 
-" Gundo
-nnoremap U :GundoToggle<CR>
+" Mundo undo tree
+map U :MundoToggle<CR>
 
-
-" Fugitive
-"map <Leader>gst :Gstatus<Enter>
-map <Leader>gcmsg :Gcommit<Enter>
-map <Leader>gaa :Gwrite<Enter>
-map <Leader>ga :Gwrite<Space>
-map <Leader>gp :Gpush<Enter>
-map <Leader>gb :Gblame<Enter>
-map <Leader>gl :Gpull<Enter>
-map <Leader>gg :Glog<Enter>
-
-" Mapping buffers
-nnoremap <Leader>bd :bd<CR>
-nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bl :Buffers<CR>
-nnoremap <Leader>bn :bn<CR>
-
-" Mapping windows
-nnoremap <leader>j <C-W><C-J>
-nnoremap <leader>k <C-W><C-K>
-nnoremap <leader>l <C-W><C-L>
-nnoremap <leader>h <C-W><C-H>
-nnoremap <leader>ws <C-W><C-S>
-nnoremap <leader>wv <C-W><C-V>
-nnoremap <leader>wq <C-W><C-Q>
-
-" Run Python on current file
-nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
-
-" Help
-map <Leader>hm :Maps<CR>
-map <Leader>hc :Commands<CR>
+" Fzf Rg
+map <Leader>* :Rg<Space>
 
 " Emmet
 let g:user_emmet_leader_key="vv"
