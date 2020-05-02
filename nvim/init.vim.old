@@ -1,7 +1,0 @@
-source $HOME/.config/nvim/nvim_config/init.vimrc
-source $HOME/.config/nvim/nvim_config/general.vimrc
-source $HOME/.config/nvim/nvim_config/plugins.vimrc
-source $HOME/.config/nvim/nvim_config/keys.vimrc
-source $HOME/.config/nvim/nvim_config/commands.vimrc
-
-source $HOME/.config/nvim/nvim_config/language_settings.vimrc

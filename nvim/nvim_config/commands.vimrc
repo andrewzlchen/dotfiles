@@ -1,10 +1,10 @@
-fun! SetupCommandAlias(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfun
+" Fewer typos
+command -complete=file -bang -nargs=? W  :w<bang> <args>
+command -complete=file -bang -nargs=? Wq :wq<bang> <args>
+command -complete=file -bang -nargs=? WQ :wq<bang> <args>
+command -complete=file -bang -nargs=? Q :q<bang> <args>
 
-call SetupCommandAlias("W","w")
-call SetupCommandAlias("Q","q")
-call SetupCommandAlias("Wq","wq")
-call SetupCommandAlias("WQ","wq")
+
+" For testing in baas
+command -complete=file -bang -nargs=? BaasTest :!go test -exec "baas_env" <bang> <args>
+

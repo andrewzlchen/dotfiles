@@ -78,12 +78,4 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-" Commands
-command -complete=file -bang -nargs=? W  :w<bang> <args>
-command -complete=file -bang -nargs=? Wq :wq<bang> <args>
-command -complete=file -bang -nargs=? WQ :wq<bang> <args>
-command -complete=file -bang -nargs=? Q :q<bang> <args>
-
-" File extension
-autocmd BufNewFile,BufRead *.ts set syntax=javascript
-colo forest-night
+colo onedark

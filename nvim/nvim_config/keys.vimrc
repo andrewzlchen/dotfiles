@@ -8,19 +8,15 @@ nnoremap <Down> :echo "No down for you!"<CR>
 map <leader>tf :NERDTreeToggle<CR>
 map <leader>tr :NERDTreeFind<cr>
 
-" fzf
-map <leader>ff :Files<cr>
-map <leader><leader> :GFiles<cr>
-map <leader>fg :GFiles<cr>
-map <leader>ft :Tags<cr>
-map <leader>bl :Buffers<cr>
-map <leader>al :Lines<cr>
-
 " Neoformat
 map <Leader>cf :Neoformat<Enter>
 
+" Gundo
+nnoremap U :GundoToggle<CR>
+
+
 " Fugitive
-map <Leader>gst :Gstatus<Enter>
+"map <Leader>gst :Gstatus<Enter>
 map <Leader>gcmsg :Gcommit<Enter>
 map <Leader>gaa :Gwrite<Enter>
 map <Leader>ga :Gwrite<Space>
@@ -44,13 +40,6 @@ nnoremap <leader>ws <C-W><C-S>
 nnoremap <leader>wv <C-W><C-V>
 nnoremap <leader>wq <C-W><C-Q>
 
-" Search code
-"map <Leader>s :Ack<Space>
-"map <Leader>s :FlyGrep<CR>
-
-" Tagbar: See the structure of the current file via tags
-"map <leader>tt :TagbarToggle<CR>
-
 " Run Python on current file
 nnoremap <buffer> <Leader>a :exec '!python3' shellescape(@%, 1)<cr>
 
@@ -65,12 +54,3 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  },
 \}
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
