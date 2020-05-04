@@ -55,10 +55,14 @@ call dein#add('fatih/vim-go')                                        " Great Go 
 call dein#add('luofei614/vim-golang')                                " Golang syntax
 call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
+call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
+call dein#add('vim-scripts/a.vim')                                   " Go to alternate files
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
 call dein#add('airblade/vim-gitgutter')                              " Shows git changes on side bar
+call dein#add('tommcdo/vim-fugitive-blame-ext')                      " shows commit in blame window
+call dein#add('rhysd/conflict-marker.vim')                           " hop between git conflicts with [x and ]x
 
 if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -73,6 +77,7 @@ endif
 source $HOME/.config/nvim/nvim_config/general.vimrc
 source $HOME/.config/nvim/nvim_config/keys.vimrc
 source $HOME/.config/nvim/nvim_config/commands.vimrc
+source $HOME/.config/nvim/nvim_config/behaviors.vimrc
 
 " Category plugin configs
 source $HOME/.config/nvim/nvim_config/prog.vimrc
