@@ -84,4 +84,5 @@ endif
 
 colo gruvbox
 
-nmap / :Lines<cr>
+nmap / :BLines<cr>
+nmap ? :Lines<cr>
