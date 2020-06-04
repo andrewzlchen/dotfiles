@@ -3,24 +3,36 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true,
+        "analyses": {
+          "composite": false
+        }
+      }
     },
     "cquery": {
       "command": "cquery",
       "args": ["--log-file=/tmp/cq.log"],
       "filetypes": ["c", "cpp"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/", ".hg/"],
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
       "initializationOptions": {
         "cacheDirectory": "/tmp/cquery"
       }
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
-      "typescript",
-      "javascript",
-      "json",
-      "typescriptreact",
-      "javascriptreact",
-      "graphql"
-  ],
+    "typescript",
+    "javascript",
+    "json",
+    "typescriptreact",
+    "javascriptreact",
+    "graphql",
+    "go"
+  ]
 }

@@ -47,6 +47,10 @@ set list                          " Show non-printable characters.
 
 set autochdir                     " Set current working directory to current file
 
+:set ignorecase                   " Set case insensitvity when searching
+:set smartcase                    " Use case insensitve when search is all lower case, case sensitive when it contains capital
+
+
 au BufNewFile,BufRead *.py        " defaults for Python Editing 
     \ set tabstop=4
     \ set softtabstop=4
@@ -78,4 +82,6 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-colo onedark
+colo gruvbox
+
+nmap / :Lines<cr>

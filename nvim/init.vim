@@ -36,6 +36,7 @@ call dein#add('godlygeek/tabular')                                   " tabular f
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
 call dein#add('jiangmiao/auto-pairs')                                " insert or deletion of pairs of quotes, brackets, etc.
 call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
+call dein#add('airblade/vim-rooter')                                 " set cwd to project root
 
 " Discoverability
 set rtp+=/usr/local/opt/fzf
@@ -56,7 +57,7 @@ call dein#add('luofei614/vim-golang')                                " Golang sy
 call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
 call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
-call dein#add('vim-scripts/a.vim')                                   " Go to alternate files
+"call dein#add('vim-scripts/a.vim')                                   " Go to alternate files
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
