@@ -5,13 +5,13 @@ nnoremap <Up> :echo "No up for you!"<CR>
 nnoremap <Down> :echo "No down for you!"<CR>
 
 " Neoformat
-map <Leader>cf :Neoformat<Enter>
+nmap <Leader>cf :Neoformat<Enter>
 
 " Mundo undo tree
-map U :MundoToggle<CR>
+nmap U :MundoToggle<CR>
 
 " Fzf Rg
-map <Leader>* :Rg<Space>
+nmap <Leader>* :Rg<Space>
 
 " Emmet
 let g:user_emmet_leader_key="vv"

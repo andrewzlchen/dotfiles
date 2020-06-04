@@ -6,7 +6,8 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:which_key_map = {
             \ 'x' : ['x'      , 'save and quit'] ,
             \ ' ' : ['GFiles' , 'git files']     ,
-            \ 's' : ['Lines'  , 'search lines']  ,
+            \ 's' : ['BLines'  , 'search lines in buffer']  ,
+            \ 'S' : ['Lines'  , 'search lines in project']  ,
             \ }
 
 let g:which_key_map.b = {
