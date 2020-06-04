@@ -5,10 +5,7 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"],
       "initializationOptions": {
-        "usePlaceholders": true,
-        "analyses": {
-          "composite": false
-        }
+        "usePlaceholders": true
       }
     },
     "cquery": {
