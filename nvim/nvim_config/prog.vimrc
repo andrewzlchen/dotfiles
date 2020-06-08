@@ -6,18 +6,8 @@ let g:go_auto_type_info = 1     " automatically show call signature when hoverin
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_rename_command = 'gopls'
-" highlights
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-" highlights all things with same id
-"let g:go_auto_sameids = 1
-"g:go_gopls_analyses.composites = v:true
+let g:go_highlight_fields = 1
 
 autocmd FileType go nmap <localleader>grfs :GoReferrers<CR>
 autocmd FileType go nmap <localleader>gts :GoAddTags<CR>

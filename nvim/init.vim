@@ -46,9 +46,10 @@ call dein#add('wsdjeg/FlyGrep.vim')                                  " Search fo
 call dein#add('liuchengxu/vim-which-key')                            " shows what commands are bound to which key
 
 " Linting/Completion
-call dein#add('Shougo/deoplete.nvim')                                " Completion engine
-call dein#add('Shougo/neosnippet.vim')                               " Snippet engine
-call dein#add('honza/vim-snippets')                                  " Snippet engine snippets
+"call dein#add('Shougo/deoplete.nvim')                                " Completion engine
+call dein#add('ncm2/ncm2')                                            " Completion engine
+call dein#add('Shougo/neosnippet.vim')                                " Snippet engine
+call dein#add('honza/vim-snippets')                                   " Snippet engine snippets
 
 " Language/Framework Specific
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})    " LSP Integration
