@@ -58,7 +58,7 @@ call dein#add('luofei614/vim-golang')                                " Golang sy
 call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
 call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
-"call dein#add('vim-scripts/a.vim')                                   " Go to alternate files
+call dein#add('timonv/vim-cargo')                                    " Cargo bindings
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
@@ -91,3 +91,4 @@ source $HOME/.config/nvim/nvim_config/coc.vimrc
 
 " Specific language configs
 source $HOME/.config/nvim/nvim_config/javascript.vimrc
+source $HOME/.config/nvim/nvim_config/rust.vimrc
