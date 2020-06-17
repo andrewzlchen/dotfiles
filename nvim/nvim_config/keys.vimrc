@@ -11,7 +11,7 @@ nmap <Leader>cf :Neoformat<Enter>
 nmap U :MundoToggle<CR>
 
 " Fzf Rg
-nmap <Leader>* :Rg<Space>
+nmap <Leader>* :Rg<CR>
 
 " Emmet
 let g:user_emmet_leader_key="vv"
@@ -20,3 +20,7 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  },
 \}
+
+nmap <Leader>j :GitGutterNextHunk<cr>
+nmap <Leader>k :GitGutterPrevHunk<cr>
+nmap <Leader>u :GitGutterUndoHunk<cr>

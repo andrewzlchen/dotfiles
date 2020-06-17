@@ -17,13 +17,12 @@ call dein#add('Shougo/dein.vim')
 " Appearance
 call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
-call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')             " Better display in NERDTree
-call dein#add('Xuyuanp/nerdtree-git-plugin')                         " Better display in NERDTree
 call dein#add('morhetz/gruvbox')                                     " Gruvbox Color theme
 call dein#add('sainnhe/vim-color-forest-night')                      " Forest-night color theme
 call dein#add('kien/rainbow_parentheses.vim')                        " Rainbow parentheses
 call dein#add('joshdick/onedark.vim')                                " One-Dark theme
 call dein#add('sheerun/vim-polyglot')                                " Syntax highlighting for various languages
+call dein#add('mhinz/vim-startify')                                  " Start screen
 
 " Quality of Life Improvements
 call dein#add('Raimondi/delimitMate')                                " Automatic closing of any opening and closing markup/quote/bracket
@@ -41,9 +40,8 @@ call dein#add('airblade/vim-rooter')                                 " set cwd t
 " Discoverability
 set rtp+=/usr/local/opt/fzf
 call dein#add('junegunn/fzf.vim')                                    " Uses the fzf utility to fuzzy search
-call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' }) " File tree navigator
-call dein#add('wsdjeg/FlyGrep.vim')                                  " Search for symbols using a fuzzy finder
 call dein#add('liuchengxu/vim-which-key')                            " shows what commands are bound to which key
+call dein#add('tpope/vim-projectionist')                             " Sets up associations/behaviors between files
 
 " Linting/Completion
 "call dein#add('Shougo/deoplete.nvim')                                " Completion engine
@@ -88,6 +86,7 @@ source $HOME/.config/nvim/nvim_config/appearance.vimrc
 " Specific plugin configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
+source $HOME/.config/nvim/nvim_config/startify.vimrc
 
 " Specific language configs
 source $HOME/.config/nvim/nvim_config/javascript.vimrc

@@ -12,6 +12,7 @@ let g:go_highlight_fields = 1
 autocmd FileType go nmap <localleader>grfs :GoReferrers<CR>
 autocmd FileType go nmap <localleader>gts :GoAddTags<CR>
 autocmd FileType go nmap <localleader>ga :GoAlternate<CR>
+autocmd FileType go nmap <localleader>gi :GoImport 
 
 au FileType go nmap <F2> :GoRename<cr>
 au FileType go nmap <F9> :GoCoverageToggle -short<cr>
