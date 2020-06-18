@@ -2,10 +2,6 @@
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
 
-" A (not so) minimal vimrc.
-"
-" You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
-" We set it explicitely to make our position clear!
 set nocompatible
 
 filetype plugin indent on         " Load plugins according to detected filetype.
@@ -74,15 +70,3 @@ endif
 
 scriptencoding utf-8
 
-" Colorscheme
-set background=dark
-set colorcolumn=81
-
-if(has("termguicolors"))
-    set termguicolors
-endif
-
-colo gruvbox
-
-"nmap / :BLines<cr>
-"nmap ? :Lines<cr>

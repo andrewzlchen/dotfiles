@@ -1,6 +1,3 @@
-:nmap <space>e :CocCommand explorer<CR>
-
-
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif

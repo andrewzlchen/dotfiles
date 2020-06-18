@@ -32,5 +32,14 @@
     "graphql",
     "go",
     "rust"
-  ]
+  ],
+
+  // explorer
+  "explorer.width": 40,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
 }

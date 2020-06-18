@@ -15,6 +15,7 @@ endfunction
 let g:startify_bookmarks = [ 
             \ { 'c': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
+            \ { 'a': '~/.aliases' },
             \ ]
 
 let g:startify_lists = [

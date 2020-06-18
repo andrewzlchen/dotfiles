@@ -4,10 +4,10 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 let g:which_key_map = {
-            \ 'x' : ['x'      , 'save and quit'] ,
-            \ ' ' : ['GFiles' , 'git files']     ,
-            \ 's' : ['BLines'  , 'search lines in buffer']  ,
-            \ 'S' : ['Lines'  , 'search lines in project']  ,
+            \ 'x' : ['x'        , 'save and quit']           ,
+            \ ' ' : ['GFiles'   , 'git files']               ,
+            \ 's' : ['BLines'   , 'search lines in buffer']  ,
+            \ 'S' : ['Lines'    , 'search lines in project'] ,
             \ }
 
 let g:which_key_map.b = {
@@ -16,6 +16,7 @@ let g:which_key_map.b = {
             \ 'l' : ['Buffers'   , 'fzf-buffer']      ,
             \ 'n' : ['bnext'     , 'next-buffer']     ,
             \ 'p' : ['bprevious' , 'previous-buffer'] ,
+            \ 'h' : ['Startify' , 'home']             ,
             \ }
 
 let g:which_key_map.c = {
@@ -33,16 +34,16 @@ let g:which_key_map.f = {
             \ }
 
 let g:which_key_map.g = {
-            \ 'name' : '+git'            ,
-            \ 's'    : ['Gstatus'        , 'git status']        ,
+            \ 'name' : '+git'                            ,
+            \ 's'    : ['Gstatus'                        , 'git status']        ,
             \ 'l'    : {
-            \    'g' : ['Glog'           , 'git log']           ,
-            \    'l' : ['Gpull'          , 'git checkout']      ,
-            \    'r' : ['Gpull --rebase' , 'git pull --rebase'] ,
-            \ }                          ,
-            \ 'p'    : ['Gpush'          , 'git push']          ,
-            \ 'b'    : ['Gblame'         , 'git blame']         ,
-            \ 'd'    : ['Gvdiffsplit'    , 'git blame']
+            \    'g' : ['Glog'                           , 'git log']           ,
+            \    'l' : ['Gpull'                          , 'git checkout']      ,
+            \    'r' : ['Gpull upstream master --rebase' , 'git pull --rebase'] ,
+            \ }                                          ,
+            \ 'p'    : ['Gpush'                          , 'git push']          ,
+            \ 'b'    : ['Gblame'                         , 'git blame']         ,
+            \ 'd'    : ['Gvdiffsplit'                    , 'git blame']
             \ }
 
 let g:which_key_map.h = {
@@ -51,23 +52,14 @@ let g:which_key_map.h = {
             \ 'c'    : ['Commands' , 'fzf-commands'] ,
             \ }
 
-let g:which_key_map.l = {
-            \ 'name' : '+language' ,
-            \ 'g'    : {
-            \     'name' : '+golang',
-            \     'tf'   : ['GoTestFunc -exec="env LD_LIBRARY_PATH=$LD_LIBRARY_PATH" -v -tags debug', "GoTestFunc"],
-            \  },
-            \ }
-
 let g:which_key_map.p = {
             \ 'name' : '+project' ,
-            \ 'p'    : ['CocList project'   , 'open projects'],
+            \ 'p'    : [':CocList project'   , 'open projects'],
             \ }
 
 let g:which_key_map.t = {
             \ 'name' : '+toggles' ,
-            \ 't'    : ['NERDTreeToggle'   , 'toggle NERDTree'],
-            \ 'f'    : ['NERDTreeFind'   , 'find current file in NERDTree'],
+            \ 't'    : [':CocCommand explorer'   , 'toggle file tree'],
             \ }
 
 let g:which_key_map.w = {

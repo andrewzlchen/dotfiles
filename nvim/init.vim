@@ -17,7 +17,7 @@ call dein#add('Shougo/dein.vim')
 " Appearance
 call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
-call dein#add('morhetz/gruvbox')                                     " Gruvbox Color theme
+call dein#add('rafi/awesome-vim-colorschemes')                       " Color themes
 call dein#add('sainnhe/vim-color-forest-night')                      " Forest-night color theme
 call dein#add('kien/rainbow_parentheses.vim')                        " Rainbow parentheses
 call dein#add('joshdick/onedark.vim')                                " One-Dark theme
@@ -75,13 +75,13 @@ endif
 
 " Overarching configs
 source $HOME/.config/nvim/nvim_config/general.vimrc
+source $HOME/.config/nvim/nvim_config/appearance.vimrc
+source $HOME/.config/nvim/nvim_config/behaviors.vimrc
 source $HOME/.config/nvim/nvim_config/keys.vimrc
 source $HOME/.config/nvim/nvim_config/commands.vimrc
-source $HOME/.config/nvim/nvim_config/behaviors.vimrc
 
 " Category plugin configs
 source $HOME/.config/nvim/nvim_config/prog.vimrc
-source $HOME/.config/nvim/nvim_config/appearance.vimrc
 
 " Specific plugin configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
@@ -91,3 +91,4 @@ source $HOME/.config/nvim/nvim_config/startify.vimrc
 " Specific language configs
 source $HOME/.config/nvim/nvim_config/javascript.vimrc
 source $HOME/.config/nvim/nvim_config/rust.vimrc
+source $HOME/.config/nvim/nvim_config/golang.vimrc
