@@ -84,3 +84,4 @@ source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/startify.vimrc
 source $HOME/.config/nvim/nvim_config/projectionist.vimrc
+source $HOME/.config/nvim/nvim_config/vimtest.vimrc
