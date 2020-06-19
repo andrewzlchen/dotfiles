@@ -4,12 +4,15 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 let g:which_key_map = {
-            \ 'x' : ['x'        , 'save and quit']           ,
-            \ ' ' : ['GFiles'   , 'git files']               ,
-            \ 's' : ['BLines'   , 'search lines in buffer']  ,
-            \ 'S' : ['Lines'    , 'search lines in project'] ,
-            \ ';' : ['Commands' , 'commands']                ,
-            \ 'z' : ['Goyo'     , 'zen']                     ,
+            \ ' ' : ['GFiles'   , 'git files']                    ,
+            \ ';' : ['Commands' , 'commands']                     ,
+            \ '*' : ['Rg'       , 'search for symbol in project'] ,
+            \ 'n' : ['tabnext'  , 'next tab']                     ,
+            \ 'p' : ['tabprev'  , 'prev tab']                     ,
+            \ 's' : ['BLines'   , 'search lines in buffer']       ,
+            \ 'S' : ['Lines'    , 'search lines in project']      ,
+            \ 'x' : ['tabclose' , 'close tab']                    ,
+            \ 'z' : ['Goyo'     , 'zen']                          ,
             \ }
 
 let g:which_key_map.b = {
@@ -103,11 +106,6 @@ let g:which_key_map.l = {
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
-
-let g:which_key_map.p = {
-            \ 'name' : '+project' ,
-            \ 'p'    : [':CocList project'   , 'open projects'],
-            \ }
 
 let g:which_key_map.t = {
             \ 'name' : '+toggles' ,

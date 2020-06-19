@@ -8,16 +8,3 @@ augroup vimrc
                 \ endif
 augroup END
 
-let g:projectionist_heuristics = {
-            \ "*": {
-            \     "*.go": {
-            \       "alternate": "{basename}_test.go",
-            \       "type": "source",
-            \     },
-            \     "*_test.go": {
-            \       "alternate": "{basename}.go",
-            \       "type": "test",
-            \     }
-            \   }
-            \ }
-

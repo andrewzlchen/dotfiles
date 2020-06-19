@@ -26,7 +26,6 @@ call dein#add('junegunn/goyo.vim')                                   " Zen mode
 " Quality of Life Improvements
 call dein#add('scrooloose/nerdcommenter')                            " Comments
 call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
-call dein#add('sbdchd/neoformat')                                    " Automatic formatting
 call dein#add('terryma/vim-multiple-cursors')                        " sublime text-like multi cursors
 call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
@@ -51,8 +50,11 @@ call dein#add('sheerun/vim-polyglot')                                " Syntax fo
 call dein#add('fatih/vim-go')                                        " Great Go plugin
 "call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
-call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
 call dein#add('timonv/vim-cargo')                                    " Cargo bindings
+
+" Programming
+call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
+call dein#add('vim-test/vim-test')                                   " Test framework plugin
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
@@ -81,3 +83,4 @@ source $HOME/.config/nvim/nvim_config/prog.vimrc " Programming Configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/startify.vimrc
+source $HOME/.config/nvim/nvim_config/projectionist.vimrc
