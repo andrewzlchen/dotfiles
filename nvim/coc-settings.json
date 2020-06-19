@@ -19,6 +19,13 @@
     "go",
     "rust"
   ],
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
 
   // explorer
   "explorer.width": 40,

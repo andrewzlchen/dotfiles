@@ -2,11 +2,11 @@
 let g:projectionist_heuristics = {
             \ "*": {
             \     "*.go": {
-            \       "alternate": "{basename}_test.go",
+            \       "alternate": "{dirname}/{basename}_test.go",
             \       "type": "source",
             \     },
             \     "*_test.go": {
-            \       "alternate": "{basename}.go",
+            \       "alternate": "{dirname}/{basename}.go",
             \       "type": "test",
             \     },
             \
