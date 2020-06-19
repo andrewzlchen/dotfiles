@@ -7,10 +7,10 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-"let ayucolor="mirage"   " for dark version of theme
-"colo ayu
+let ayucolor="mirage"   " for dark version of theme
+colo ayu
 
-colorscheme deep-space
+"colorscheme deep-space
 " }}
 
 " lightline.nvim {{

@@ -20,7 +20,3 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  },
 \}
-
-nmap <Leader>j :GitGutterNextHunk<cr>
-nmap <Leader>k :GitGutterPrevHunk<cr>
-nmap <Leader>u :GitGutterUndoHunk<cr>

@@ -12,11 +12,12 @@ let g:which_key_map = {
 
 let g:which_key_map.b = {
             \ 'name' : '+buffer' ,
+            \ 'a' : ['A'         , 'alternate file']  ,
             \ 'd' : ['bd'        , 'delete-buffer']   ,
             \ 'l' : ['Buffers'   , 'fzf-buffer']      ,
             \ 'n' : ['bnext'     , 'next-buffer']     ,
             \ 'p' : ['bprevious' , 'previous-buffer'] ,
-            \ 'h' : ['Startify' , 'home']             ,
+            \ 'h' : ['Startify'  , 'home']            ,
             \ }
 
 let g:which_key_map.c = {
@@ -27,10 +28,16 @@ let g:which_key_map.c = {
 
 let g:which_key_map.f = { 
             \ 'name' : '+file',
-            \ 's': ['w'      , 'save-file']     ,
-            \ 'f': ['Files'  , 'fzf-files']     ,
-            \ 'g': ['GFiles' , 'fzf-git-files'] ,
-            \ 't': ['Tags'   , 'fzf-tags']      ,
+            \ 's'    : ['w'      , 'save-file']             ,
+            \ 'f'    : ['Files'  , 'fzf-files']             ,
+            \ 'g'    : ['GFiles' , 'fzf-git-files']         ,
+            \ 't'    : ['Tags'   , 'fzf-tags']              ,
+            \ 'a'    : {
+            \    'b' : ['A'      , 'git log']               ,
+            \    't' : ['AT'     , 'git checkout']          ,
+            \    's' : ['AS'     , 'alternate file split']  ,
+            \    'v' : ['AV'     , 'alternate file vsplit'] ,
+            \ }                  ,
             \ }
 
 let g:which_key_map.g = {
@@ -43,7 +50,10 @@ let g:which_key_map.g = {
             \ }                                          ,
             \ 'p'    : ['Gpush'                          , 'git push']          ,
             \ 'b'    : ['Gblame'                         , 'git blame']         ,
-            \ 'd'    : ['Gvdiffsplit'                    , 'git blame']
+            \ 'd'    : ['Gvdiffsplit'                    , 'git vdiffsplit']    ,
+            \ 'j'    : ['GitGutterNextHunk'              , 'git next hunk']     ,
+            \ 'k'    : ['GitGutterPrevHunk'              , 'git prev hunk']     ,
+            \ 'u'    : ['GitGutterUndoHunk'              , 'git undo hunk']     ,
             \ }
 
 let g:which_key_map.h = {
@@ -59,7 +69,7 @@ let g:which_key_map.p = {
 
 let g:which_key_map.t = {
             \ 'name' : '+toggles' ,
-            \ 't'    : [':CocCommand explorer'   , 'toggle file tree'],
+            \ 'f'    : [':CocCommand explorer'   , 'toggle file tree'],
             \ }
 
 let g:which_key_map.w = {

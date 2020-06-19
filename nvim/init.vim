@@ -19,21 +19,16 @@ call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
 call dein#add('rafi/awesome-vim-colorschemes')                       " Color themes
 call dein#add('sainnhe/vim-color-forest-night')                      " Forest-night color theme
-call dein#add('kien/rainbow_parentheses.vim')                        " Rainbow parentheses
-call dein#add('joshdick/onedark.vim')                                " One-Dark theme
-call dein#add('sheerun/vim-polyglot')                                " Syntax highlighting for various languages
+call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
 call dein#add('mhinz/vim-startify')                                  " Start screen
 
 " Quality of Life Improvements
-call dein#add('Raimondi/delimitMate')                                " Automatic closing of any opening and closing markup/quote/bracket
-call dein#add('chrisbra/matchit')                                    " Matching with '%'
 call dein#add('scrooloose/nerdcommenter')                            " Comments
 call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
 call dein#add('sbdchd/neoformat')                                    " Automatic formatting
 call dein#add('terryma/vim-multiple-cursors')                        " sublime text-like multi cursors
 call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
-call dein#add('jiangmiao/auto-pairs')                                " insert or deletion of pairs of quotes, brackets, etc.
 call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
 call dein#add('airblade/vim-rooter')                                 " set cwd to project root
 
@@ -51,9 +46,9 @@ call dein#add('honza/vim-snippets')                                   " Snippet 
 
 " Language/Framework Specific
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})    " LSP Integration
+call dein#add('sheerun/vim-polyglot')                                " Syntax for various languages
 call dein#add('fatih/vim-go')                                        " Great Go plugin
-call dein#add('luofei614/vim-golang')                                " Golang syntax
-call dein#add('tpope/vim-rails')                                     " Rails Plugin
+"call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
 call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
 call dein#add('timonv/vim-cargo')                                    " Cargo bindings
@@ -75,20 +70,13 @@ endif
 
 " Overarching configs
 source $HOME/.config/nvim/nvim_config/general.vimrc
-source $HOME/.config/nvim/nvim_config/appearance.vimrc
-source $HOME/.config/nvim/nvim_config/behaviors.vimrc
-source $HOME/.config/nvim/nvim_config/keys.vimrc
-source $HOME/.config/nvim/nvim_config/commands.vimrc
-
-" Category plugin configs
-source $HOME/.config/nvim/nvim_config/prog.vimrc
+source $HOME/.config/nvim/nvim_config/appearance.vimrc ""
+source $HOME/.config/nvim/nvim_config/behaviors.vimrc " General vim behavior
+source $HOME/.config/nvim/nvim_config/keys.vimrc " Keybindings not in whichkey
+source $HOME/.config/nvim/nvim_config/commands.vimrc " Creating commands
+source $HOME/.config/nvim/nvim_config/prog.vimrc " Programming Configs
 
 " Specific plugin configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/startify.vimrc
-
-" Specific language configs
-source $HOME/.config/nvim/nvim_config/javascript.vimrc
-source $HOME/.config/nvim/nvim_config/rust.vimrc
-source $HOME/.config/nvim/nvim_config/golang.vimrc
