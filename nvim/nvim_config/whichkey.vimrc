@@ -66,11 +66,6 @@ let g:which_key_map.h = {
             \ 'c'    : ['Commands' , 'fzf-commands'] ,
             \ }
 
-let g:which_key_map.i = {
-            \ 'name' : '+insert' ,
-            \ 's'    : [':CocList snippets'         , 'snippets']              ,
-            \ }
-
 let g:which_key_map.l = {
       \ 'name' : '+lsp' ,
       \ '.' : [':CocConfig'                          , 'config'],
