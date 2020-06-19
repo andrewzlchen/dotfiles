@@ -31,3 +31,8 @@ function! FilenameForLightline()
     return expand('%')
 endfunction
 " }}
+
+
+" rainbow parentheses {{
+let g:rainbow_active = 1
+" }}

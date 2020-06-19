@@ -8,6 +8,8 @@ let g:which_key_map = {
             \ ' ' : ['GFiles'   , 'git files']               ,
             \ 's' : ['BLines'   , 'search lines in buffer']  ,
             \ 'S' : ['Lines'    , 'search lines in project'] ,
+            \ ';' : ['Commands' , 'commands']                ,
+            \ 'z' : ['Goyo'     , 'zen']                     ,
             \ }
 
 let g:which_key_map.b = {
@@ -27,14 +29,14 @@ let g:which_key_map.c = {
             \ }
 
 let g:which_key_map.f = { 
-            \ 'name' : '+file',
+            \ 'name' : '+file'   ,
             \ 's'    : ['w'      , 'save-file']             ,
             \ 'f'    : ['Files'  , 'fzf-files']             ,
             \ 'g'    : ['GFiles' , 'fzf-git-files']         ,
             \ 't'    : ['Tags'   , 'fzf-tags']              ,
             \ 'a'    : {
-            \    'b' : ['A'      , 'git log']               ,
-            \    't' : ['AT'     , 'git checkout']          ,
+            \    'b' : ['A'      , 'alternate file buffer'] ,
+            \    't' : ['AT'     , 'alternate file tab']    ,
             \    's' : ['AS'     , 'alternate file split']  ,
             \    'v' : ['AV'     , 'alternate file vsplit'] ,
             \ }                  ,
@@ -42,17 +44,19 @@ let g:which_key_map.f = {
 
 let g:which_key_map.g = {
             \ 'name' : '+git'                            ,
-            \ 's'    : ['Gstatus'                        , 'git status']        ,
+            \ 'b'    : ['Gblame'                         , 'git blame']         ,
+            \ 'd'    : ['Gvdiffsplit'                    , 'git vdiffsplit']    ,
+            \ 'g'    : [':GFiles'              , 'git files']     ,
             \ 'l'    : {
             \    'g' : ['Glog'                           , 'git log']           ,
             \    'l' : ['Gpull'                          , 'git checkout']      ,
             \    'r' : ['Gpull upstream master --rebase' , 'git pull --rebase'] ,
             \ }                                          ,
-            \ 'p'    : ['Gpush'                          , 'git push']          ,
-            \ 'b'    : ['Gblame'                         , 'git blame']         ,
-            \ 'd'    : ['Gvdiffsplit'                    , 'git vdiffsplit']    ,
             \ 'j'    : ['GitGutterNextHunk'              , 'git next hunk']     ,
             \ 'k'    : ['GitGutterPrevHunk'              , 'git prev hunk']     ,
+            \ 'm'    : [':GFiles?'                       , 'modified git files'],
+            \ 'p'    : ['Gpush'                          , 'git push']          ,
+            \ 's'    : ['Gstatus'                        , 'git status']        ,
             \ 'u'    : ['GitGutterUndoHunk'              , 'git undo hunk']     ,
             \ }
 
@@ -62,6 +66,49 @@ let g:which_key_map.h = {
             \ 'c'    : ['Commands' , 'fzf-commands'] ,
             \ }
 
+let g:which_key_map.i = {
+            \ 'name' : '+insert' ,
+            \ 's'    : [':CocList snippets'         , 'snippets']              ,
+            \ }
+
+let g:which_key_map.l = {
+      \ 'name' : '+lsp' ,
+      \ '.' : [':CocConfig'                          , 'config'],
+      \ ';' : ['<Plug>(coc-refactor)'                , 'refactor'],
+      \ 'a' : ['<Plug>(coc-codeaction)'              , 'line action'],
+      \ 'A' : ['<Plug>(coc-codeaction-selected)'     , 'selected action'],
+      \ 'b' : [':CocNext'                            , 'next action'],
+      \ 'B' : [':CocPrev'                            , 'prev action'],
+      \ 'c' : [':CocList commands'                   , 'commands'],
+      \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
+      \ 'D' : ['<Plug>(coc-declaration)'             , 'declaration'],
+      \ 'e' : [':CocList extensions'                 , 'extensions'],
+      \ 'f' : ['<Plug>(coc-format-selected)'         , 'format selected'],
+      \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
+      \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
+      \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
+      \ 'I' : [':CocList diagnostics'                , 'diagnostics'],
+      \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
+      \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
+      \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
+      \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
+      \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
+      \ 'O' : [':CocList outline'                    , 'outline'],
+      \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
+      \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
+      \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
+      \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
+      \ 'R' : ['<Plug>(coc-references)'              , 'references'],
+      \ 's' : [':CocList -I symbols'                 , 'references'],
+      \ 'S' : [':CocList snippets'                   , 'snippets'],
+      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
+      \ 'u' : [':CocListResume'                      , 'resume list'],
+      \ 'U' : [':CocUpdate'                          , 'update CoC'],
+      \ 'v' : [':Vista!!'                            , 'tag viewer'],
+      \ 'z' : [':CocDisable'                         , 'disable CoC'],
+      \ 'Z' : [':CocEnable'                          , 'enable CoC'],
+      \ }
+
 let g:which_key_map.p = {
             \ 'name' : '+project' ,
             \ 'p'    : [':CocList project'   , 'open projects'],
@@ -69,7 +116,10 @@ let g:which_key_map.p = {
 
 let g:which_key_map.t = {
             \ 'name' : '+toggles' ,
-            \ 'f'    : [':CocCommand explorer'   , 'toggle file tree'],
+            \ 'f'    : [':CocCommand explorer'   , 'file tree']           ,
+            \ 'p'    : [':RainbowToggle'         , 'rainbow parentheses'] ,
+            \ 'r'    : [':set norelativenumber!' , 'relativenumber']      ,
+            \ 'n'    : [':set nonumber!'         , 'number']              ,
             \ }
 
 let g:which_key_map.w = {

@@ -21,6 +21,7 @@ call dein#add('rafi/awesome-vim-colorschemes')                       " Color the
 call dein#add('sainnhe/vim-color-forest-night')                      " Forest-night color theme
 call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
 call dein#add('mhinz/vim-startify')                                  " Start screen
+call dein#add('junegunn/goyo.vim')                                   " Zen mode
 
 " Quality of Life Improvements
 call dein#add('scrooloose/nerdcommenter')                            " Comments
