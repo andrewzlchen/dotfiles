@@ -1,0 +1,37 @@
+#!/bin/bash
+
+################################################################################
+#                                     proj                                     #
+#  proj is a script that allows you to set up git projects within your command #                                   
+#  prompt. This script takes inspiration from VSCode's Project Manager plugin  #
+#  Currently, it assumes that vim/nvim is the set $EDITOR of and the fzf       #
+#  plugin is installed.                                                        #
+################################################################################
+
+# Set this var to configure what file to store your projects in
+PROJECTS_FILE=$HOME/.projects
+
+
+if [[ $1 = "add" ]]; then
+    # add project to projects file
+    CWD = $(pwd)
+    # EXISTS will be 0 if it's in the file, 1 if not
+    EXISTS = $(grep -q $CWD $PROJECTS_FILE && echo $?)
+
+    [ $EXISTS = 1 ] && echo "Project already registered!" && exit 0
+
+    echo $CWD >> $PROJECTS_FILE
+elif [[ $1 = "ls" ]]; then
+    # list all registered projects
+    echo "Your currently defined projects:"
+    cat $PROJECTS_FILE
+else
+    # edit projects
+    PROJ=$(cat $PROJECTS_FILE | fzf)
+    if [[ ! -z $PROJ && -d $PROJ ]]; then
+        cd $PROJ 
+        $EDITOR "+Files"
+    fi
+fi
+
+
