@@ -18,18 +18,17 @@ call dein#add('Shougo/dein.vim')
 call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
 call dein#add('rafi/awesome-vim-colorschemes')                       " Color themes
-call dein#add('sainnhe/vim-color-forest-night')                      " Forest-night color theme
 call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
 call dein#add('mhinz/vim-startify')                                  " Start screen
 call dein#add('junegunn/goyo.vim')                                   " Zen mode
+call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
 
 " Quality of Life Improvements
-call dein#add('scrooloose/nerdcommenter')                            " Comments
-call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
+call dein#add('tpope/vim-commentary')                                " Comments
 call dein#add('terryma/vim-multiple-cursors')                        " sublime text-like multi cursors
+call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
 call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
-call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
 call dein#add('airblade/vim-rooter')                                 " set cwd to project root
 
 " Discoverability
@@ -58,6 +57,7 @@ call dein#add('vim-test/vim-test')                                   " Test fram
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
+call dein#add('tpope/vim-rhubarb')                                   " Open Github for open files in vim
 call dein#add('airblade/vim-gitgutter')                              " Shows git changes on side bar
 call dein#add('tommcdo/vim-fugitive-blame-ext')                      " shows commit in blame window
 call dein#add('rhysd/conflict-marker.vim')                           " hop between git conflicts with [x and ]x
