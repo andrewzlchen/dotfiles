@@ -1,11 +1,10 @@
-"Variables
-let g:mapleader = ' '
-let g:maplocalleader = ','
+
+
 
 let g:dein_repo = 'https://github.com/Shougo/dein.vim.git'
 let g:dein_dir = '~/.config/nvim/dein/repos/github.com/Shougo/dein.vim'
 
-" Plugin Manager
+" Plugins!
 if empty(glob(g:dein_dir))
     exec 'silent !mkdir -p '.g:dein_dir
     exec '!git clone '.g:dein_repo.' '.g:dein_dir
@@ -22,6 +21,7 @@ call dein#add('luochen1990/rainbow')                                 " Rainbow p
 call dein#add('mhinz/vim-startify')                                  " Start screen
 call dein#add('junegunn/goyo.vim')                                   " Zen mode
 call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
+call dein#add('gko/vim-coloresque')                                  " Colors in Vim #f00 #0f0 #00f
 
 " Quality of Life Improvements
 call dein#add('tpope/vim-commentary')                                " Comments
@@ -72,14 +72,14 @@ if dein#check_install()
 endif
 
 " Overarching configs
-source $HOME/.config/nvim/nvim_config/general.vimrc
-source $HOME/.config/nvim/nvim_config/appearance.vimrc ""
-source $HOME/.config/nvim/nvim_config/behaviors.vimrc " General vim behavior
-source $HOME/.config/nvim/nvim_config/keys.vimrc " Keybindings not in whichkey
-source $HOME/.config/nvim/nvim_config/commands.vimrc " Creating commands
-source $HOME/.config/nvim/nvim_config/prog.vimrc " Programming Configs
+source $HOME/.config/nvim/nvim_config/general.vimrc    " General settings
+source $HOME/.config/nvim/nvim_config/appearance.vimrc " Appearances settings
+source $HOME/.config/nvim/nvim_config/behaviors.vimrc  " General vim behavior
+source $HOME/.config/nvim/nvim_config/keys.vimrc       " Keybindings not in whichkey
+source $HOME/.config/nvim/nvim_config/commands.vimrc   " Creating commands
+source $HOME/.config/nvim/nvim_config/prog.vimrc       " Programming Configs
 
-" Specific plugin configs
+" Plugin-specific configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/startify.vimrc

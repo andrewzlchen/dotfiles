@@ -11,19 +11,30 @@
 # Set this var to configure what file to store your projects in
 PROJECTS_FILE=$HOME/.projects
 
+# Given a single argument, delete the lines from the projects file that match 
+# the input exactly
+delete_line_strict() {
+    ESCAPED=$(echo $1 | sed -e 's/[\/&]/\\&/g')
+    CMD_STR="/^$ESCAPED$/d"
+    sed -i '' $CMD_STR $PROJECTS_FILE
+}
 
+# main {{
 if [[ $1 = "add" ]]; then
     # add project to projects file
-    CWD = $(pwd)
-    # EXISTS will be 0 if it's in the file, 1 if not
-    EXISTS = $(grep -q $CWD $PROJECTS_FILE && echo $?)
+    CWD=$(pwd)
 
-    [ $EXISTS = 1 ] && echo "Project already registered!" && exit 0
-
+    delete_line_strict $CWD
     echo $CWD >> $PROJECTS_FILE
+elif [[ $1 = "rm" ]]; then
+    # Remove current dir from projects file
+    CWD=$(pwd)
+
+    delete_line_strict $CWD
 elif [[ $1 = "ls" ]]; then
     # list all registered projects
     echo "Your currently defined projects:"
+    echo
     cat $PROJECTS_FILE
 else
     # edit projects
@@ -33,5 +44,4 @@ else
         $EDITOR "+Files"
     fi
 fi
-
-
+# }}

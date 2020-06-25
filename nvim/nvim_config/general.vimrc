@@ -1,3 +1,7 @@
+" Setting leader keys
+let g:mapleader = ' '
+let g:maplocalleader = ','
+
 " SETTINGS
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermfg=NONE
