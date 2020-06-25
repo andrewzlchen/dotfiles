@@ -1,45 +1,40 @@
-# Aliases
+# programs
+alias v="$EDITOR"
 
 # config files
-alias vr="nvim ~/.config/nvim/init.vim"
-alias zr="nvim ~/.zshrc"
-alias ar="nvim ~/.aliases"
-alias hr="nvim ~/.hyper.js"
-alias cr="nvim ~/.chunkwmrc"
-alias skhr="nvim ~/.skhdrc"
+alias ar="v ~/.aliases"
+alias vr="v ~/.config/nvim/init.vim"
+alias vdr="ffind ~/.config/nvim"
+alias vri="v ~/.config/nvim/init.vim"
+alias zr="v ~/.zshrc"
+alias sr="ffind ~/.config/scripts"
+alias tr="v ~/.tmux.conf"
 
-# launch programs
-alias p="python"
-alias pe="pipenv"
-alias v="nvim"
-alias pip='pip3'
-alias b='brew'
-alias bc='brew cask'
-alias lc='colorls'
-
-# brew services
-alias rchunk="brew services restart chunkwm"
-alias rskhd="brew services restart skhd"
+# source zsh config
+alias sz="source ~/.zshrc && echo 'Refreshed Zsh'"
+alias sv="source ~/venv/default/bin/activate && echo 'Refreshed venv'"
 
 # ssh
-alias linuxlab="ssh achen8@rainman.srcit.stevens-tech.edu"
-alias sshll='ssh locallending@ww1.bensommer.net'
-alias sshhome='ssh andrew@chen-server.mynetgear.com'
+alias sl="ssh -Y achen@10.1.2.12"
 
-# latex
-alias ltcp="tmux -c 'latexmk -pdf -pvc -shell-escape main.tex'"
-alias ltref='open ~/Documents/useful/latex-guide.pdf'
-alias cpnotes="pandoc -s -V geometry:margin=1in -o notes.pdf notes.md"
+# Cloud Dev workflow
+alias ng="ngrok http -subdomain=mongodb-cloud-andrew-chen 8080"
+alias serve="cd ~/mms/server && ant mms.server.local -Dskip.assets=true"
+alias dserve="cd ~/mms/server && ant mms.server.local -Djvm.debug.port=5005 -Djvm.debug=y -Dskip.assets=true -Djvm.debug.suspend=n"
+alias daemon="cd ~/mms/server && ant daemon.local"
+alias client="cd ~/mms/client && npm start"
+alias bazel="/mms/bazelisk"
 
-# zips
-alias tzip='tar -czvf'
+# node
+alias ni="npm install"
+alias nri="npm run init"
+alias nr="npm run"
 
-# open files
-alias or="open ~/Job-Hunting/resume/resume_cv.pdf"
-
-# go
-alias GOPATH=$HOME/go
-alias GOPATH="~/go"
-
-# kubectl
-alias k="kubectl"
+# baas
+alias baas_db="mongod --replSet local --fork --logappend --logpath ~/db/logsmongod.log --dbpath ~/db/data/"
+alias baas="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" ./cmd/server/main.go --configFile ./etc/configs/local_config.json"
+alias baascloud="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" ./cmd/server/main.go --configFile ./etc/configs/local_cloud_dev_config.json"
+alias baasmms="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" ./cmd/server/main.go --configFile ./etc/configs/local_mms_config.json"
+alias baas_test="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" ./cmd/server/main.go --configFile ./etc/configs/test_config.json"
+alias got="go test -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" -v -tags debug"
+alias baas_lint='go run github.com/golangci/golangci-lint/cmd/golangci-lint run ./...'

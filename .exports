@@ -1,0 +1,24 @@
+export EDITOR="nvim"
+# Add my custom scripts to PATH
+export PATH="${PATH}:/Users/andrew.chen/.config/scripts"
+
+# Ant config for mms
+export ANT_HOME="/usr/local/apache-ant-1.10.7"
+export ANT_OPTS="-Xms64m -Xmx1500m"
+export PATH="${PATH}:${ANT_HOME}/bin"
+export PATH="${PATH}:/Users/andrew.chen/Code/tools/mongomirror-osx-x86_64-0.9.1/bin"
+source /Users/andrew.chen/.config/server-workflow-tool/profile
+[ -s "/Users/andrew.chen/.jabba/jabba.sh" ] && source "/Users/andrew.chen/.jabba/jabba.sh"
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
+export KEYTIMEOUT=1
+
+# baas
+export BAAS_PATH="/Users/andrew.chen/Code/mongodb/baas"
+export BAAS_UI_PATH="/Users/andrew.chen/Code/mongodb/baas/static/app"
+export LD_LIBRARY_PATH="/Users/andrew.chen/Code/mongodb/baas/etc/dylib/lib"
+export PATH=$PATH:/Users/andrew.chen/Code/mongodb/baas/bin
+
+# tmux oh-my-zsh plugin
+export ZSH_TMUX_ITERM2=true
