@@ -7,8 +7,8 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-let ayucolor="mirage"   " for dark version of theme
-colo ayu
+" let ayucolor="dark"   " for dark version of theme
+colo gruvbox
 
 "colorscheme deep-space
 " }}

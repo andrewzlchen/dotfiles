@@ -1,60 +1,43 @@
 {
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": [
-                "go.mod",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "filetypes": [
-                "go"
-            ],
-            "initializationOptions": {
-                "usePlaceholders": true
-            }
-        },
-        "bash": {
-            "command": "bash-language-server",
-            "args": [
-                "start"
-            ],
-            "filetypes": [
-                "sh"
-            ],
-            "ignoredRootPaths": [
-                "~"
-            ]
-        }
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     },
-    "coc.preferences.formatOnSaveFiletypes": [
-        "typescript",
-        "javascript",
-        "json",
-        "typescriptreact",
-        "javascriptreact",
-        "graphql",
-        "go",
-        "rust"
-    ],
-    "eslint.autoFixOnSave": true,
-    "eslint.filetypes": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    // explorer
-    "explorer.width": 40,
-    "explorer.icon.enableNerdfont": true,
-    "explorer.previewAction.onHover": false,
-    "explorer.keyMappings": {
-        "<cr>": [
-            "expandable?",
-            "expand",
-            "open"
-        ],
-        "v": "open:vsplit"
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
     }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "javascript",
+    "json",
+    "typescriptreact",
+    "javascriptreact",
+    "graphql",
+    "go",
+    "rust"
+  ],
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  // explorer
+  "explorer.width": 40,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
 }

@@ -29,6 +29,7 @@ alias bazel="/mms/bazelisk"
 alias ni="npm install"
 alias nri="npm run init"
 alias nr="npm run"
+alias yup="yarn upgrade --latest"
 
 # baas
 alias baas_db="mongod --replSet local --fork --logappend --logpath ~/db/logsmongod.log --dbpath ~/db/data/"
@@ -38,3 +39,4 @@ alias baasmms="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_P
 alias baas_test="cd $BAAS_PATH && go run -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" ./cmd/server/main.go --configFile ./etc/configs/test_config.json"
 alias got="go test -exec=\"env LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" -v -tags debug"
 alias baas_lint='go run github.com/golangci/golangci-lint/cmd/golangci-lint run ./...'
+alias test_db='mongod --replSet localTest --port 26000 --dbpath /tmp/data-test-26000 --logpath /tmp/data-test-26000/mongod.log --fork'

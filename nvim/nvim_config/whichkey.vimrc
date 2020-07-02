@@ -38,6 +38,7 @@ let g:which_key_map.f = {
             \ 'g'    : ['GFiles' , 'fzf-git-files']         ,
             \ 't'    : ['Tags'   , 'fzf-tags']              ,
             \ 'a'    : {
+            \    'name': '+alternates',
             \    'b' : ['A'      , 'alternate file buffer'] ,
             \    't' : ['AT'     , 'alternate file tab']    ,
             \    's' : ['AS'     , 'alternate file split']  ,
@@ -108,11 +109,17 @@ let g:which_key_map.l = {
       \ }
 
 let g:which_key_map.t = {
-            \ 'name' : '+toggles' ,
+            \ 'name' : '+toggles/tabs'           ,
             \ 'f'    : [':CocCommand explorer'   , 'file tree']           ,
             \ 'p'    : [':RainbowToggle'         , 'rainbow parentheses'] ,
             \ 'r'    : [':set norelativenumber!' , 'relativenumber']      ,
             \ 'n'    : [':set nonumber!'         , 'number']              ,
+            \ 't'    : {
+            \    'name': '+tabs'                 ,
+            \    'j'   : ['tabprevious'          , 'previous tab']        ,
+            \    'k'   : ['tabnext'              , 'next tab']            ,
+            \    'n'   : ['tabnew'               , 'create tab']          ,
+            \ }                                  ,
             \ }
 
 let g:which_key_map.w = {

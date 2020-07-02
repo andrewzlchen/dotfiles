@@ -30,12 +30,14 @@ call dein#add('simnalamburt/vim-mundo')                              " visual un
 call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
 call dein#add('airblade/vim-rooter')                                 " set cwd to project root
+call dein#add('justinmk/vim-sneak')                                  " fast motion
 
 " Discoverability
 set rtp+=/usr/local/opt/fzf
 call dein#add('junegunn/fzf.vim')                                    " Uses the fzf utility to fuzzy search
 call dein#add('liuchengxu/vim-which-key')                            " shows what commands are bound to which key
 call dein#add('tpope/vim-projectionist')                             " Sets up associations/behaviors between files
+call dein#add('majutsushi/tagbar')                                   " File function outliner
 
 " Linting/Completion
 "call dein#add('Shougo/deoplete.nvim')                                " Completion engine
@@ -85,3 +87,4 @@ source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/startify.vimrc
 source $HOME/.config/nvim/nvim_config/projectionist.vimrc
 source $HOME/.config/nvim/nvim_config/vimtest.vimrc
+source $HOME/.config/nvim/nvim_config/sneak.vimrc

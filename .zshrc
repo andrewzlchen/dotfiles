@@ -17,7 +17,7 @@ fi
 
 ZSH_THEME="af-magic"
 
-plugins=(git wd sudo yarn tmux)
+plugins=(git wd sudo yarn)
 
 source $ZSH/oh-my-zsh.sh
 set -o vi
@@ -28,7 +28,6 @@ compinit
 # fzf
 source /usr/local/opt/fzf/shell/key-bindings.zsh
 source /usr/local/opt/fzf/shell/completion.zsh
-
 
 source ~/.exports
 source ~/.aliases
