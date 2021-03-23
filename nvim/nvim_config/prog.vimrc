@@ -1,7 +1,3 @@
-" JSON highlighter {{
-let g:vim_json_syntax_conceal = 0
-" }}
-
 " neosnippets {{
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)

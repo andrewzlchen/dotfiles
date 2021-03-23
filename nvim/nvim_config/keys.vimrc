@@ -4,9 +4,6 @@ nnoremap <Right> :echo "No right for you!"<CR>
 nnoremap <Up> :echo "No up for you!"<CR>
 nnoremap <Down> :echo "No down for you!"<CR>
 
-" Mundo undo tree
-nmap U :MundoToggle<CR>
-
 " Emmet
 let g:user_emmet_leader_key=","
 let g:user_emmet_settings = {

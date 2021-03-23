@@ -1,4 +1,3 @@
-" Colorscheme {{
 set termguicolors     " enable true colors support
 set background=dark
 set colorcolumn=81
@@ -9,9 +8,6 @@ endif
 
 " let ayucolor="dark"   " for dark version of theme
 colo gruvbox
-
-"colorscheme deep-space
-" }}
 
 " lightline.nvim {{
 let g:lightline = {

@@ -1,6 +1,3 @@
-
-
-
 let g:dein_repo = 'https://github.com/Shougo/dein.vim.git'
 let g:dein_dir = '~/.config/nvim/dein/repos/github.com/Shougo/dein.vim'
 
@@ -18,7 +15,6 @@ call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
 call dein#add('rafi/awesome-vim-colorschemes')                       " Color themes
 call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
-call dein#add('mhinz/vim-startify')                                  " Start screen
 call dein#add('junegunn/goyo.vim')                                   " Zen mode
 call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
 call dein#add('gko/vim-coloresque')                                  " Colors in Vim #f00 #0f0 #00f
@@ -26,8 +22,6 @@ call dein#add('gko/vim-coloresque')                                  " Colors in
 " Quality of Life Improvements
 call dein#add('tpope/vim-commentary')                                " Comments
 call dein#add('terryma/vim-multiple-cursors')                        " sublime text-like multi cursors
-call dein#add('simnalamburt/vim-mundo')                              " visual undo tree
-call dein#add('godlygeek/tabular')                                   " tabular formatting
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
 call dein#add('airblade/vim-rooter')                                 " set cwd to project root
 call dein#add('justinmk/vim-sneak')                                  " fast motion
@@ -40,7 +34,6 @@ call dein#add('tpope/vim-projectionist')                             " Sets up a
 call dein#add('majutsushi/tagbar')                                   " File function outliner
 
 " Linting/Completion
-"call dein#add('Shougo/deoplete.nvim')                                " Completion engine
 call dein#add('ncm2/ncm2')                                            " Completion engine
 call dein#add('Shougo/neosnippet.vim')                                " Snippet engine
 call dein#add('honza/vim-snippets')                                   " Snippet engine snippets
@@ -49,7 +42,6 @@ call dein#add('honza/vim-snippets')                                   " Snippet 
 call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})    " LSP Integration
 call dein#add('sheerun/vim-polyglot')                                " Syntax for various languages
 call dein#add('fatih/vim-go')                                        " Great Go plugin
-"call dein#add('tpope/vim-rails')                                     " Rails Plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
 call dein#add('timonv/vim-cargo')                                    " Cargo bindings
 
@@ -84,7 +76,6 @@ source $HOME/.config/nvim/nvim_config/prog.vimrc       " Programming Configs
 " Plugin-specific configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/coc.vimrc
-source $HOME/.config/nvim/nvim_config/startify.vimrc
 source $HOME/.config/nvim/nvim_config/projectionist.vimrc
 source $HOME/.config/nvim/nvim_config/vimtest.vimrc
 source $HOME/.config/nvim/nvim_config/sneak.vimrc
