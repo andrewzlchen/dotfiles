@@ -3,12 +3,6 @@ call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader><Space> :lua require("telescope_config").project_files()<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 let g:which_key_map = {
             \ 'n' : ['tabnext'  , 'next tab']                     ,
             \ 'p' : ['tabprev'  , 'prev tab']                     ,

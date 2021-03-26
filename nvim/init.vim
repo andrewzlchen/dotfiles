@@ -36,9 +36,6 @@ call dein#add('liuchengxu/vim-which-key')                            " shows wha
 call dein#add('tpope/vim-projectionist')                             " Sets up associations/behaviors between files
 call dein#add('majutsushi/tagbar')                                   " File function outliner
 
-call dein#add('rbgrouleff/bclose.vim')                               " Dependency for ranger
-call dein#add('francoiscabrol/ranger.vim')                           " File tree explorer
-
 " Linting/Completion
 call dein#add('ncm2/ncm2')                                            " Completion engine
 call dein#add('Shougo/neosnippet.vim')                                " Snippet engine
@@ -84,4 +81,5 @@ source $HOME/.config/nvim/nvim_config/vimtest.vimrc
 
 
 luafile $HOME/.config/nvim/lua/telescope_config.lua
-lua require('lsp')
+luafile $HOME/.config/nvim/lua/lsp/init.lua
+
