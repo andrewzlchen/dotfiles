@@ -10,15 +10,3 @@ nmap <localleader>grfs :GoReferrers<CR>
 nmap <localleader>gts :GoAddTags<CR>
 nmap <localleader>ga :GoAlternate<CR>
 nmap <localleader>gi :GoImport 
-
-nmap <F2> :GoRename<cr>
-nmap <F9> :GoCoverageToggle -short<cr>
-nmap <F10> :GoTest -short<cr>
-nmap <localleader>gdb :GoDebugBreakpoint<CR>
-nmap <localleader>gds :GoDebugStart<CR>
-nmap <localleader>gdc :GoDebugContinue<CR>
-nmap <localleader>gdn :GoDebugNext<CR>
-nmap <localleader>gdt :GoDebugStep<CR>
-nmap <localleader>gdo :GoDebugStepOut<CR>
-nmap <localleader>gdx :GoDebugStop<CR>
-

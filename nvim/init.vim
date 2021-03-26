@@ -17,7 +17,9 @@ call dein#add('rafi/awesome-vim-colorschemes')                       " Color the
 call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
 call dein#add('junegunn/goyo.vim')                                   " Zen mode
 call dein#add('Yggdroot/indentLine')                                 " Lines for showing tabs
+call dein#add('szw/vim-maximizer')                                   " toggle maximizing buffers
 call dein#add('gko/vim-coloresque')                                  " Colors in Vim #f00 #0f0 #00f
+call dein#add('tpope/vim-unimpaired')                                " pair keymaps
 
 " Quality of Life Improvements
 call dein#add('tpope/vim-commentary')                                " Comments
@@ -27,27 +29,28 @@ call dein#add('airblade/vim-rooter')                                 " set cwd t
 call dein#add('justinmk/vim-sneak')                                  " fast motion
 
 " Discoverability
-set rtp+=/usr/local/opt/fzf
-call dein#add('junegunn/fzf.vim')                                    " Uses the fzf utility to fuzzy search
+call dein#add('nvim-lua/popup.nvim')                                 " dependency for telescope
+call dein#add('nvim-lua/plenary.nvim')                               " dependency for telescope
+call dein#add('nvim-telescope/telescope.nvim')                       " extensible fuzzy finder
 call dein#add('liuchengxu/vim-which-key')                            " shows what commands are bound to which key
 call dein#add('tpope/vim-projectionist')                             " Sets up associations/behaviors between files
 call dein#add('majutsushi/tagbar')                                   " File function outliner
+
+call dein#add('rbgrouleff/bclose.vim')                               " Dependency for ranger
+call dein#add('francoiscabrol/ranger.vim')                           " File tree explorer
 
 " Linting/Completion
 call dein#add('ncm2/ncm2')                                            " Completion engine
 call dein#add('Shougo/neosnippet.vim')                                " Snippet engine
 call dein#add('honza/vim-snippets')                                   " Snippet engine snippets
 
-" Language/Framework Specific
-call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})    " LSP Integration
-call dein#add('sheerun/vim-polyglot')                                " Syntax for various languages
-call dein#add('fatih/vim-go')                                        " Great Go plugin
-call dein#add('mattn/emmet-vim')                                     " emmet integration
-call dein#add('timonv/vim-cargo')                                    " Cargo bindings
-
 " Programming
 call dein#add('Shougo/echodoc.vim')                                  " Show signature at bottom of window
+call dein#add('neovim/nvim-lspconfig')                               " Builtin LSP Config
+call dein#add('nvim-lua/completion-nvim')                            " Completions for builtin lsp
 call dein#add('vim-test/vim-test')                                   " Test framework plugin
+call dein#add('mattn/emmet-vim')                                     " emmet integration
+call dein#add('fatih/vim-go')                                        " golang
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
@@ -75,7 +78,9 @@ source $HOME/.config/nvim/nvim_config/prog.vimrc       " Programming Configs
 
 " Plugin-specific configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
-source $HOME/.config/nvim/nvim_config/coc.vimrc
 source $HOME/.config/nvim/nvim_config/projectionist.vimrc
 source $HOME/.config/nvim/nvim_config/vimtest.vimrc
-source $HOME/.config/nvim/nvim_config/sneak.vimrc
+
+
+luafile $HOME/.config/nvim/lua/telescope_config.lua
+lua require('lsp')

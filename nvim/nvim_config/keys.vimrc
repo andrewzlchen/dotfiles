@@ -1,9 +1,3 @@
-" Disable arrow keys
-nnoremap <Left> :echo "No left for you!"<CR>
-nnoremap <Right> :echo "No right for you!"<CR>
-nnoremap <Up> :echo "No up for you!"<CR>
-nnoremap <Down> :echo "No down for you!"<CR>
-
 " Emmet
 let g:user_emmet_leader_key=","
 let g:user_emmet_settings = {
@@ -11,3 +5,11 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  },
 \}
+
+" Maximizing buffers
+nn <leader>+ :MaximizerToggle<CR>
+
+" quickfix list navigation
+let g:BASH_Ctrl_j = 'off'
+nnoremap <silent><c-k> :cnext<CR>
+nnoremap <silent><c-j> :cprevious<CR>

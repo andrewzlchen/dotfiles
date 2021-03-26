@@ -3,15 +3,16 @@ call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader><Space> :lua require("telescope_config").project_files()<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 let g:which_key_map = {
-            \ ' ' : ['GFiles'   , 'git files']                    ,
-            \ ';' : ['Commands' , 'commands']                     ,
-            \ '*' : ['Rg'       , 'search for symbol in project'] ,
             \ 'n' : ['tabnext'  , 'next tab']                     ,
             \ 'p' : ['tabprev'  , 'prev tab']                     ,
-            \ 's' : ['BLines'   , 'search lines in buffer']       ,
-            \ 'S' : ['Lines'    , 'search lines in project']      ,
-            \ 'x' : ['tabclose' , 'close tab']                    ,
+            \ 'x' : ['x' , 'exit vim']                    ,
             \ 'z' : ['Goyo'     , 'zen']                          ,
             \ }
 
@@ -34,8 +35,6 @@ let g:which_key_map.c = {
 let g:which_key_map.f = { 
             \ 'name' : '+file'   ,
             \ 's'    : ['w'      , 'save-file']             ,
-            \ 'f'    : ['Files'  , 'fzf-files']             ,
-            \ 'g'    : ['GFiles' , 'fzf-git-files']         ,
             \ 't'    : ['Tags'   , 'fzf-tags']              ,
             \ 'a'    : {
             \    'name': '+alternates',
