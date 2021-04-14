@@ -51,6 +51,7 @@ call dein#add('nvim-lua/completion-nvim')                            " Completio
 call dein#add('vim-test/vim-test')                                   " Test framework plugin
 call dein#add('mattn/emmet-vim')                                     " emmet integration
 call dein#add('fatih/vim-go')                                        " golang
+call dein#add('Olical/conjure')                                      " lisp-like langs
 
 " Version Control
 call dein#add('tpope/vim-fugitive')                                  " Vim git client
