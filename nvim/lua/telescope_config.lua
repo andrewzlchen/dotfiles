@@ -1,3 +1,10 @@
+-- keymaps
+
+local keymap_opts = { noremap=true, silent=true }
+local map = vim.api.nvim_set_keymap
+map('n', '<leader>fq', '<cmd>lua require("telescope.actions").open_qflist()<cr>', keymap_opts)
+
+
 -- allow esc in insert mode to quit telescope
 local actions = require('telescope.actions')
 require('telescope').setup{
