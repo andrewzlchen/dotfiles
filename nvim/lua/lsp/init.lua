@@ -36,11 +36,10 @@ require('lsp/lua-ls')
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "gopls", "tsserver" }
+local servers = { "gopls", "tsserver", "clojure_lsp" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-
 
 local map = vim.api.nvim_set_keymap
 -- Find files using Telescope command-line sugar.
@@ -53,5 +52,3 @@ map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").file_browser()<cr>
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', keymap_opts)
 map('n', '<leader>caw', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', keymap_opts)
 map('n', '<leader>cad', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', keymap_opts)
-
-
