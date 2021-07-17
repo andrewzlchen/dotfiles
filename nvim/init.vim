@@ -10,8 +10,11 @@ exec 'set runtimepath^='.g:dein_dir
 call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim')
 
+" Dependencies
+call dein#add('tpope/vim-dispatch')
+
 " Appearance
-call dein#add('ryanoasis/vim-devicons')                              " Dev Icons
+call dein#add('kyazdani42/nvim-web-devicons')                        " Dev Icons
 call dein#add('itchyny/lightline.vim')                               " Bottom status bar
 call dein#add('rafi/awesome-vim-colorschemes')                       " Color themes
 call dein#add('luochen1990/rainbow')                                 " Rainbow parentheses
@@ -26,7 +29,8 @@ call dein#add('tpope/vim-commentary')                                " Comments
 call dein#add('terryma/vim-multiple-cursors')                        " sublime text-like multi cursors
 call dein#add('tpope/vim-surround')                                  " quick edits of surrounding quotes/markup/brackets
 call dein#add('airblade/vim-rooter')                                 " set cwd to project root
-call dein#add('justinmk/vim-sneak')                                  " fast motion
+" call dein#add('guns/vim-sexp')                                       " adds text motions for working with lisps
+" call dein#add('tpope/vim-sexp-mappings-for-regular-people')          " better mappings for vim-sexp
 
 " Discoverability
 call dein#add('nvim-lua/popup.nvim')                                 " dependency for telescope
@@ -35,6 +39,7 @@ call dein#add('nvim-telescope/telescope.nvim')                       " extensibl
 call dein#add('liuchengxu/vim-which-key')                            " shows what commands are bound to which key
 call dein#add('tpope/vim-projectionist')                             " Sets up associations/behaviors between files
 call dein#add('majutsushi/tagbar')                                   " File function outliner
+call dein#add('kyazdani42/nvim-tree.lua')                            " File tree explorer
 
 " Linting/Completion
 call dein#add('ncm2/ncm2')                                            " Completion engine
@@ -66,9 +71,10 @@ if dein#check_install()
     call dein#install()
 endif
 
+lua require 'init'
+
 " Overarching configs
 source $HOME/.config/nvim/nvim_config/general.vimrc    " General settings
-source $HOME/.config/nvim/nvim_config/appearance.vimrc " Appearances settings
 source $HOME/.config/nvim/nvim_config/behaviors.vimrc  " General vim behavior
 source $HOME/.config/nvim/nvim_config/keys.vimrc       " Keybindings not in whichkey
 source $HOME/.config/nvim/nvim_config/commands.vimrc   " Creating commands
@@ -78,8 +84,12 @@ source $HOME/.config/nvim/nvim_config/prog.vimrc       " Programming Configs
 source $HOME/.config/nvim/nvim_config/whichkey.vimrc
 source $HOME/.config/nvim/nvim_config/projectionist.vimrc
 source $HOME/.config/nvim/nvim_config/vimtest.vimrc
+source $HOME/.config/nvim/nvim_config/nvim_tree.vimrc
 
 
-luafile $HOME/.config/nvim/lua/telescope_config.lua
-luafile $HOME/.config/nvim/lua/lsp/init.lua
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.json lua vim.lsp.buf.formatting_sync(nil, 1000)
 
