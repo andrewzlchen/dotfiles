@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-require('lsp/lua-ls')
+require('plugins/lsp/lua-ls')
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches

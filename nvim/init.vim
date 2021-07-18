@@ -72,24 +72,3 @@ if dein#check_install()
 endif
 
 lua require 'init'
-
-" Overarching configs
-source $HOME/.config/nvim/nvim_config/general.vimrc    " General settings
-source $HOME/.config/nvim/nvim_config/behaviors.vimrc  " General vim behavior
-source $HOME/.config/nvim/nvim_config/keys.vimrc       " Keybindings not in whichkey
-source $HOME/.config/nvim/nvim_config/commands.vimrc   " Creating commands
-source $HOME/.config/nvim/nvim_config/prog.vimrc       " Programming Configs
-
-" Plugin-specific configs
-source $HOME/.config/nvim/nvim_config/whichkey.vimrc
-source $HOME/.config/nvim/nvim_config/projectionist.vimrc
-source $HOME/.config/nvim/nvim_config/vimtest.vimrc
-source $HOME/.config/nvim/nvim_config/nvim_tree.vimrc
-
-
-autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.json lua vim.lsp.buf.formatting_sync(nil, 1000)
-
