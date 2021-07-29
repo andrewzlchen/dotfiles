@@ -1,10 +1,22 @@
 local options = vim.o
 local global_vars = vim.g
 local window = vim.wo
+local buffer = vim.bo
+
+vim.cmd [[ colo gruvbox ]]
 
 function set_options()
     local opts = {
+	-- defaults
+	hidden = true,
+	encoding = 'utf-8',
+	pumheight = 10,
+	ruler = true,
+
+	-- appearance
         termguicolors = true,
+
+	-- completion
         completeopt = "menuone,noinsert,noselect",
     }
 
@@ -13,19 +25,33 @@ end
 
 function set_window_options()
     local opts = {
+	-- defaults
         number = true,
         relativenumber = true,
     }
 
     for k, v in pairs(opts) do
         window[k] = v
-        -- options[k] = v
+        options[k] = v
+    end
+end
+
+function set_buffer_options()
+    local opts = {
+	-- defaults
+	fileencoding = 'utf-8',
+    }
+
+    for k, v in pairs(opts) do
+        buffer[k] = v
+        options[k] = v
     end
 end
 
 function set_global_vars()
     local vars = {
-        completion_enable_auto_popup = 0,
+	completion_enable_snippet = "Neosnippet",
+        completion_enable_auto_popup = 1,
         completion_matching_strategy_list = {"exact", "substring", "fuzzy"},
         lightline = {
             colorscheme = "gruvbox",
@@ -47,38 +73,16 @@ function set_global_vars()
         BASH_Ctrl_j = 'off',
     }
     for k, v in pairs(vars) do global_vars[k] = v end
-
 end
-
-vim.cmd([[
-    colo gruvbox
-    function! FilenameForLightline()
-        return expand('%')
-    endfunction
-
-    autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePre *.json lua vim.lsp.buf.formatting_sync(nil, 1000)
-
-    command -complete=file -bang -nargs=? W  :w<bang> <args>
-    command -complete=file -bang -nargs=? Wq :wq<bang> <args>
-    command -complete=file -bang -nargs=? WQ :wq<bang> <args>
-    command -complete=file -bang -nargs=? Q :q<bang> <args>
-
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    augroup vimrc
-        autocmd BufReadPost *
-                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                    \   exe "normal g`\"" |
-                    \ endif
-    augroup END
-]])
 
 set_options()
 set_window_options()
 set_global_vars()
+
+--- helper funcs
+vim.cmd([[
+    function! FilenameForLightline()
+        return expand('%')
+    endfunction
+]])
+

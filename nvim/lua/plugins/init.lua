@@ -11,69 +11,65 @@ end
 execute 'packadd packer.nvim'
 
 function declare_deps()
-	return require('packer').startup(
-		function(use)
-			-- Packer can manage itself
-			use 'wbthomason/packer.nvim'
+    return require('packer').startup(function(use)
+        -- Packer can manage itself
+        use 'wbthomason/packer.nvim'
 
-			use 'tpope/vim-dispatch'
+        use 'tpope/vim-dispatch'
 
-			--- Appearance
-			use 'kyazdani42/nvim-web-devicons'                      --- Dev Icons
-			use 'itchyny/lightline.vim'                             --- Bottom status bar
-			use 'rafi/awesome-vim-colorschemes'                     --- Color themes
-			use 'luochen1990/rainbow'                               --- Rainbow parentheses
-			use 'junegunn/goyo.vim'                                 --- Zen mode
-			use 'Yggdroot/indentLine'                               --- Lines for showing tabs
-			use 'szw/vim-maximizer'                                 --- toggle maximizing buffers
-			use 'gko/vim-coloresque'                                --- Colors in Vim #f00 #0f0 #00f
-			use 'tpope/vim-unimpaired'                              --- pair keymaps
+        --- Appearance
+        use 'kyazdani42/nvim-web-devicons'                      --- Dev Icons
+        use 'itchyny/lightline.vim'                             --- Bottom status bar
+        use 'rafi/awesome-vim-colorschemes'                     --- Color themes
+        use 'luochen1990/rainbow'                               --- Rainbow parentheses
+        use 'junegunn/goyo.vim'                                 --- Zen mode
+        use 'Yggdroot/indentLine'                               --- Lines for showing tabs
+        use 'szw/vim-maximizer'                                 --- toggle maximizing buffers
+        use 'gko/vim-coloresque'                                --- Colors in Vim #f00 #0f0 #00f
+        use 'tpope/vim-unimpaired'                              --- pair keymaps
 
-			--- Quality of Life Improvements
-			use 'tpope/vim-commentary'                              --- Comments
-			use 'terryma/vim-multiple-cursors'                      --- sublime text-like multi cursors
-			use 'tpope/vim-surround'                                --- quick edits of surrounding quotes/markup/brackets
-			use 'airblade/vim-rooter'                               --- set cwd to project root
-			--- call dein#add('guns/vim-sexp')                                       " adds text motions for working with lisps
-			--- call dein#add('tpope/vim-sexp-mappings-for-regular-people')          " better mappings for vim-sexp
+        --- Quality of Life Improvements
+        use 'tpope/vim-commentary'                              --- Comments
+        use 'terryma/vim-multiple-cursors'                      --- sublime text-like multi cursors
+        use 'tpope/vim-surround'                                --- quick edits of surrounding quotes/markup/brackets
+        use 'airblade/vim-rooter'                               --- set cwd to project root
+        -- use 'guns/vim-sexp'                                     --- adds text motions for working with lisps
+        -- use 'tpope/vim-sexp-mappings-for-regular-people'        --- better mappings for vim-sexp
 
-			--- Discoverability
-			use 'nvim-lua/popup.nvim'                               --- dependency for telescope
-			use 'nvim-lua/plenary.nvim'                             --- dependency for telescope
-			use 'nvim-telescope/telescope.nvim'                     --- extensible fuzzy finder
-			use 'liuchengxu/vim-which-key'                          --- shows what commands are bound to which key
-			use 'tpope/vim-projectionist'                           --- Sets up associations/behaviors between files
-			use 'majutsushi/tagbar'                                 --- File function outliner
-			use 'kyazdani42/nvim-tree.lua'                          --- File tree explorer
+        --- Discoverability
+        use 'nvim-lua/popup.nvim'                               --- dependency for telescope
+        use 'nvim-lua/plenary.nvim'                             --- dependency for telescope
+        use 'nvim-telescope/telescope.nvim'                     --- extensible fuzzy finder
+        use 'tpope/vim-projectionist'                           --- Sets up associations/behaviors between files
+        use 'majutsushi/tagbar'                                 --- File function outliner
+        use 'kyazdani42/nvim-tree.lua'                          --- File tree explorer
 
-			--- Linting/Completion
-			use 'ncm2/ncm2'                                         --- Completion engine
-			use 'Shougo/neosnippet.vim'                             --- Snippet engine
-			use 'honza/vim-snippets'                                --- Snippet engine snippets
+        --- Linting/Completion
+        use 'ncm2/ncm2'                                         --- Completion engine
+        use 'SirVer/ultisnips'                             --- Snippet engine
+        use 'honza/vim-snippets'                    --- Snippets
 
-			--- Programming
-			use 'Shougo/echodoc.vim'                                --- Show signature at bottom of window
-			use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
-			use 'nvim-lua/completion-nvim'                          --- Completions for builtin lsp
-			use 'vim-test/vim-test'                                 --- Test framework plugin
-			use 'mattn/emmet-vim'                                   --- emmet integration
-			use 'fatih/vim-go'                                      --- golang
-			use 'Olical/conjure'                                    --- lisp-like langs
+        --- Programming
+        use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
+        use 'hrsh7th/nvim-compe'                                --- completion
+        use 'vim-test/vim-test'                                 --- Test framework plugin
+        use 'mattn/emmet-vim'                                   --- emmet integration
+        -- use 'fatih/vim-go'                                      --- golang
+        use 'Olical/conjure'                                    --- lisp-like langs
 
-			--- Version Control
-			use 'tpope/vim-fugitive'                                --- Vim git client
-			use 'tpope/vim-rhubarb'                                 --- Open Github for open files in vim
-			use 'airblade/vim-gitgutter'                            --- Shows git changes on side bar
-			use 'tommcdo/vim-fugitive-blame-ext'                    --- shows commit in blame window
-			use 'rhysd/conflict-marker.vim'                         --- hop between git conflicts with [x and ]x
-		end
-	)
+        --- Version Control
+        use 'tpope/vim-fugitive'                                --- Vim git client
+        use 'tpope/vim-rhubarb'                                 --- Open Github for open files in vim
+        use 'airblade/vim-gitgutter'                            --- Shows git changes on side bar
+        use 'tommcdo/vim-fugitive-blame-ext'                    --- shows commit in blame window
+        use 'rhysd/conflict-marker.vim'                         --- hop between git conflicts with [x and ]x
+    end)
 end
 
 declare_deps()
 require('plugins.lsp.init')
 require('plugins.vimtest')
-require('plugins.telescope_config')
+require('plugins.telescope')
 
 --- new packages after this file is written to
---- vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+-- vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
