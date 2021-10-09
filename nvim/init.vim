@@ -1,8 +1,6 @@
 let mapleader = " "
 let maplocalleader = ","
 
-lua require 'init'
-
 command -complete=file -bang -nargs=? W  :w<bang> <args>
 command -complete=file -bang -nargs=? Wq :wq<bang> <args>
 command -complete=file -bang -nargs=? WQ :wq<bang> <args>
@@ -57,3 +55,4 @@ if &shell =~# 'fish$'
     set shell=/bin/bash
 endif
 
+lua require 'init'
