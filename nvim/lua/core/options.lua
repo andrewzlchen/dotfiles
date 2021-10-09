@@ -12,6 +12,8 @@ function set_options()
 	encoding = 'utf-8',
 	pumheight = 10,
 	ruler = true,
+  ignorecase = true,
+  smartcase = true,
 
 	-- appearance
         termguicolors = true,
@@ -50,7 +52,6 @@ end
 
 function set_global_vars()
     local vars = {
-	completion_enable_snippet = "Neosnippet",
         completion_enable_auto_popup = 1,
         completion_matching_strategy_list = {"exact", "substring", "fuzzy"},
         lightline = {

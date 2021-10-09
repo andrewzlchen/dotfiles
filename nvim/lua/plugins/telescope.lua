@@ -7,13 +7,12 @@ map('n', '<leader><Space>', '<cmd>lua require("plugins.telescope").project_files
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', keymap_opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', keymap_opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', keymap_opts)
-map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").file_browser()<cr>', keymap_opts)
+map('n', '<leader>fp', '<cmd>lua require"telescope".extensions.project.project{}<CR>', keymap_opts)
+
 
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', keymap_opts)
 map('n', '<leader>caw', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', keymap_opts)
 map('n', '<leader>cad', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', keymap_opts)
-
-
 
 
 -- allow esc in insert mode to quit telescope
