@@ -32,11 +32,6 @@ cmp.setup({
   },
 })
 
--- local keymap_opts = { noremap=true, silent=true }
--- local map = vim.api.nvim_set_keymap
--- map('i', '<Tab>', '<cmd>v:lua.tab_complete()<CR>', keymap_opts)
--- map('i', '<S-Tab>', '<cmd>v:lua.s_tab_complete()<CR>', keymap_opts)
-
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -58,7 +53,7 @@ _G.tab_complete = function()
   elseif check_back_space() then
     return t "<Tab>"
   else
-    return require'cmp'.mapping()
+    return ""
   end
 end
 _G.s_tab_complete = function()
