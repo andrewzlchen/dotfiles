@@ -14,9 +14,6 @@ alias tr="v ~/.tmux.conf"
 alias sz="source ~/.zshrc && echo 'Refreshed Zsh'"
 alias sv="source ~/venv/default/bin/activate && echo 'Refreshed venv'"
 
-# ssh
-alias sl="ssh -Y achen@10.1.2.12"
-
 # Cloud Dev workflow
 alias ng="ngrok http -subdomain=mongodb-cloud-andrew-chen 8080"
 alias serve="cd ~/mms/server && ant mms.server.local -Dskip.assets=true"
