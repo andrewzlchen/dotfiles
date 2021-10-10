@@ -57,6 +57,9 @@ function declare_deps()
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate'
         }
+        use {
+          "ray-x/lsp_signature.nvim",
+        }
 
         -- use 'fatih/vim-go'                                      --- golang
         -- use 'Olical/conjure'                                    --- lisp-like langs

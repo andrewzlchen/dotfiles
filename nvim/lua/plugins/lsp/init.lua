@@ -4,7 +4,10 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    local function global_set_option(...) vim.api.nvim_set_option(...) end
+    -- local function global_set_option(...) vim.api.nvim_set_option(...) end
+
+    -- set up floating window lsp signatures
+    require "lsp_signature".on_attach()
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -39,7 +42,7 @@ require('plugins/lsp/lua-ls')
 -- and map buffer local keybindings when the language server attaches
 local servers = { "gopls", "tsserver", "clojure_lsp" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { 
+  nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
@@ -48,7 +51,7 @@ end
 
 -- Tree sitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {"go", "javascript", "typescript"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
