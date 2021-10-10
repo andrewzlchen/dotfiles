@@ -45,6 +45,12 @@ map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', keymap_opts)
 --- Testing
 map('n', '<localleader>tf', '<cmd>TestFile<CR>', keymap_opts)
 map('n', '<localleader>tl', '<cmd>TestLast<CR>', keymap_opts)
-map('n', '<localleader>ctn', '<cmd>TestNearest<CR>', keymap_opts)
+map('n', '<localleader>tn', '<cmd>TestNearest<CR>', keymap_opts)
+map('n', '<localleader>td', '<cmd>lua require("dap-go").debug_test()<CR>', keymap_opts)
 
-
+-- Debugging
+map('n', '<localleader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>', keymap_opts)
+map('n', '<localleader>dc', '<cmd>lua require"dap".continue()<CR>', keymap_opts)
+map('n', '<localleader>dn', '<cmd>lua require"dap".step_over()<CR>', keymap_opts)
+map('n', '<localleader>di', '<cmd>lua require"dap".step_into()<CR>', keymap_opts)
+map('n', '<localleader>do', '<cmd>lua require"dap".repl.open()<CR>', keymap_opts)

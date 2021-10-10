@@ -48,7 +48,6 @@ function declare_deps()
         }
         use 'simrat39/symbols-outline.nvim'                     --- Methods outline
 
-
         --- Programming
         use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
         use 'vim-test/vim-test'                                 --- Test framework plugin
@@ -60,8 +59,8 @@ function declare_deps()
         use {
           "ray-x/lsp_signature.nvim",
         }
-
-        -- use 'fatih/vim-go'                                      --- golang
+        use 'mfussenegger/nvim-dap'                              --- attachable debugging in nvim!
+        use 'leoluz/nvim-dap-go'                                 --- dap golang features
         -- use 'Olical/conjure'                                    --- lisp-like langs
 
         use 'hrsh7th/cmp-nvim-lsp'                              --- completion
@@ -84,11 +83,12 @@ end
 
 declare_deps()
 require('plugins.lsp.init')
-require('plugins.lsp.cmp')
+require('plugins.cmp')
 require('plugins.vimtest')
 require('plugins.telescope')
 
 require'telescope'.load_extension('project')
+require('dap-go').setup();
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
