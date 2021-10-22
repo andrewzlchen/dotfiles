@@ -11,8 +11,10 @@ map('n', '<leader>fp', '<cmd>lua require"telescope".extensions.project.project{}
 
 
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', keymap_opts)
-map('n', '<leader>caw', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', keymap_opts)
-map('n', '<leader>cad', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', keymap_opts)
+map('n', '<leader>lwd', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', keymap_opts)
+map('n', '<leader>lwde', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics({severity = ":error:"})<cr>', keymap_opts)
+map('n', '<leader>ldd', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', keymap_opts)
+map('n', '<leader>la', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', keymap_opts)
 
 
 -- allow esc in insert mode to quit telescope
