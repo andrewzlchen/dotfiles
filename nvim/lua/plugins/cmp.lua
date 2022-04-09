@@ -18,15 +18,35 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = {
+    { name = 'vsnip', keyword_length = 2 },
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length = 5 },
+  },
+  formatting = {
+    format = require'lspkind'.cmp_format({
+      with_text = true,
+      maxwidth = 50,
+      menu = {
+        buffer = '[buf]',
+        nvim_lsp = '[LSP]',
+        nvim_lua= '[nvim]',
+        path = '[path]',
+        vsnip = '[snip]',
+      }
+    })
   },
   preselect = cmp.PreselectMode.None,
   completion = {
     keyword_length = 3,
   },
+  experimental = {
+    ghost_text = true
+  },
 })
+
+
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

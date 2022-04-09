@@ -2,7 +2,7 @@ local map = vim.api.nvim_set_keymap
 
 local keymap_opts = { noremap=true, silent=true }
 
--- use alt+hjkl to resize buffer
+-- use ctl+hjkl to resize buffer
 map('n', '<C-h>', '<C-w><', keymap_opts)
 map('n', '<C-j>', '<cmd>resize +2<CR>', keymap_opts)
 map('n', '<C-k>', '<cmd>resize -2<CR>', keymap_opts)
@@ -21,7 +21,6 @@ map('n', '<leader>t-', '<cmd>tabclose<CR>', keymap_opts)
 map('n', '<leader>t+', '<cmd>tabnew<CR>', keymap_opts)
 
 -- Windows
-map('n', '<leader>wd', '<cmd>wd<CR>', keymap_opts)
 map('n', '<leader>wh', '<C-w>h', keymap_opts)
 map('n', '<leader>wj', '<C-w>j', keymap_opts)
 map('n', '<leader>wk', '<C-w>k', keymap_opts)
@@ -44,20 +43,4 @@ map('n', '<leader>grsh', '<cmd>G reset --soft HEAD~<CR>', keymap_opts)
 map('n', '<leader>gj', '<cmd>GitGutterNextHunk<CR>', keymap_opts)
 map('n', '<leader>gk', '<cmd>GitGutterPrevHunk<CR>', keymap_opts)
 map('n', '<leader>gp', '<cmd>GitGutterPreviewHunk<CR>', keymap_opts)
-
--- Diff
-map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', keymap_opts)
-
--- Programming
---- Testing
-map('n', '<localleader>tf', '<cmd>TestFile<CR>', keymap_opts)
-map('n', '<localleader>tl', '<cmd>TestLast<CR>', keymap_opts)
-map('n', '<localleader>tn', '<cmd>TestNearest<CR>', keymap_opts)
-map('n', '<localleader>td', '<cmd>lua require("dap-go").debug_test()<CR>', keymap_opts)
-
--- Debugging
-map('n', '<localleader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>', keymap_opts)
-map('n', '<localleader>dc', '<cmd>lua require"dap".continue()<CR>', keymap_opts)
-map('n', '<localleader>dn', '<cmd>lua require"dap".step_over()<CR>', keymap_opts)
-map('n', '<localleader>di', '<cmd>lua require"dap".step_into()<CR>', keymap_opts)
-map('n', '<localleader>do', '<cmd>lua require"dap".repl.open()<CR>', keymap_opts)
+map('n', '<leader>guh', '<cmd>GitGutterUndoHunk<CR>', keymap_opts)

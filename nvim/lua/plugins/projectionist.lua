@@ -1,31 +1,17 @@
 vim.o.projectionist_heuristics = {
     ['*'] = {
-        ["*.go"] = {alternate = "{dirname}/{basename}_test.go", type = "source"},
-        ["*_test.go"] = {alternate = "{dirname}/{basename}.go", type = "test"},
-
-        ["*.js"] = {
-            alternate = {
-                "{dirname}/__tests__/{basename}.js",
-                "{dirname}/__tests__/{basename}.jsx", "{basename}.test.js",
-                "{basename}.test.jsx"
-            },
-            type = "source"
+        ["*.go"] = {
+          alternate = {
+            "{dirname}/{basename}_test.go",
+            "{dirname}/{basename}_ext_test.go",
+          },
+         type = "source",
         },
-        ["**/__tests__/*.js"] = {
-            alternate = {"{dirname}/{basename}.js", "{dirname}/{basename}.jsx"},
-            type = "test"
-        },
-        ["**/__tests__/*.jsx"] = {
-            alternate = {"{dirname}/{basename}.jsx", "{dirname}/{basename}.js"},
-            type = "test"
-        },
-        ["*.test.js"] = {
-            alternate = {"{dirname}/{basename}.js", "{dirname}/{basename}.jsx"},
-            type = "test"
-        },
-        ["*.test.jsx"] = {
-            alternate = {"{dirname}/{basename}.jsx", "{dirname}/{basename}.js"},
-            type = "test"
+        ["*_test.go"] = {
+          alternate = {
+            "{dirname}/{basename}.go",
+          },
+          type = "test",
         },
 
         ["*.ts"] = {
@@ -36,29 +22,27 @@ vim.o.projectionist_heuristics = {
             },
             type = "source"
         },
+        ["*.test.ts"] = {
+            alternate = {
+              "{dirname}/{basename}.ts",
+              "{dirname}/{basename}.tsx",
+            },
+            type = "test"
+        },
         ["*.tsx"] = {
             alternate = {
-                "{basename}.test.tsx", "{basename}.test.ts",
-                "{dirname}/__tests__/{basename}.tsx",
-                "{dirname}/__tests__/{basename}.ts"
+                "{basename}.test.tsx",
+                "{basename}.test.ts",
             },
-            type = "source"
-        },
-        ["*.test.ts"] = {
-            alternate = {"{dirname}/{basename}.ts", "{dirname}/{basename}.tsx"},
-            type = "test"
+            type = "component"
         },
         ["*.test.tsx"] = {
-            alternate = {"{dirname}/{basename}.tsx", "{dirname}/{basename}.ts"},
-            type = "test"
+            alternate = {
+              "{}.tsx",
+              "{}.less",
+            },
+            type = "test",
+          }
         },
-        ["**/__tests__/*.ts"] = {
-            alternate = {"{dirname}/{basename}.ts", "{dirname}/{basename}.tsx"},
-            type = "test"
-        },
-        ["**/__tests__/*.tsx"] = {
-            alternate = {"{dirname}/{basename}.tsx", "{dirname}/{basename}.ts"},
-            type = "test"
-        }
     }
 }

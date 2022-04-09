@@ -11,7 +11,8 @@ end
 execute 'packadd packer.nvim'
 
 function declare_deps()
-    return require('packer').startup(function(use)
+    return require('packer').startup(
+      function(use)
         -- Packer can manage itself
         use 'wbthomason/packer.nvim'
 
@@ -21,15 +22,12 @@ function declare_deps()
         use 'kyazdani42/nvim-web-devicons'                      --- Dev Icons
         use 'itchyny/lightline.vim'                             --- Bottom status bar
         use 'rafi/awesome-vim-colorschemes'                     --- Color themes
-        use 'luochen1990/rainbow'                               --- Rainbow parentheses
         use 'Yggdroot/indentLine'                               --- Lines for showing tabs
         use 'gko/vim-coloresque'                                --- Colors in Vim #f00 #0f0 #00f
         use 'tpope/vim-unimpaired'                              --- pair keymaps
-        use 'sindrets/diffview.nvim'
 
         --- Quality of Life Improvements
         use 'tpope/vim-commentary'                              --- Comments
-        use 'terryma/vim-multiple-cursors'                      --- sublime text-like multi cursors
         use 'airblade/vim-rooter'                               --- set cwd to project root
 
         --- Discoverability
@@ -38,7 +36,6 @@ function declare_deps()
         use 'nvim-telescope/telescope.nvim'                     --- extensible fuzzy finder
         use 'nvim-telescope/telescope-project.nvim'             --- projects
         use 'tpope/vim-projectionist'                           --- Sets up associations/behaviors between files
-        use 'majutsushi/tagbar'                                 --- File function outliner
         use {
             'kyazdani42/nvim-tree.lua',                         --- File tree explorer
             requires = 'kyazdani42/nvim-web-devicons',
@@ -51,21 +48,28 @@ function declare_deps()
         --- Programming
         use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
         use 'vim-test/vim-test'                                 --- Test framework plugin
-        use 'mattn/emmet-vim'                                   --- emmet integration
+        use 'mfussenegger/nvim-dap'                             --- Debugging
+        use { 
+          "rcarriga/nvim-dap-ui",
+          requires = {"mfussenegger/nvim-dap"},
+        }
+        use 'leoluz/nvim-dap-go'                                 --- dap golang features
+        use 'theHamsta/nvim-dap-virtual-text'
+
         use {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate'
         }
-        use {
-          "ray-x/lsp_signature.nvim",
-        }
-        use 'mfussenegger/nvim-dap'                              --- attachable debugging in nvim!
-        use 'leoluz/nvim-dap-go'                                 --- dap golang features
-        -- use 'Olical/conjure'                                    --- lisp-like langs
+        use "ray-x/lsp_signature.nvim"
+        use 'mattn/emmet-vim'                                   --- emmet integration
+        --- use 'Olical/conjure'                                    --- lisp-like langs
+        use 'onsails/lspkind-nvim'                              --- pretty completion window
 
-        use 'hrsh7th/cmp-nvim-lsp'                              --- completion
-        use 'hrsh7th/cmp-buffer'                                --- completion
         use 'hrsh7th/nvim-cmp'                                  --- completion
+        use 'hrsh7th/cmp-buffer'                                --- completion
+        use 'hrsh7th/cmp-path'                                  --- completion
+        use 'hrsh7th/cmp-nvim-lua'                              --- completion
+        use 'hrsh7th/cmp-nvim-lsp'                              --- completion
         use 'hrsh7th/cmp-vsnip'                                 --- snippets
         use 'hrsh7th/vim-vsnip'                                 --- snippets
 
@@ -75,20 +79,18 @@ function declare_deps()
         use 'airblade/vim-gitgutter'                            --- Shows git changes on side bar
         use 'tommcdo/vim-fugitive-blame-ext'                    --- shows commit in blame window
         use 'rhysd/conflict-marker.vim'                         --- hop between git conflicts with [x and ]x
-        use {'pwntester/octo.nvim', config=function()
-          require"octo".setup()
-        end}
-    end)
+    end
+  )
 end
 
 declare_deps()
+require'telescope'.load_extension('project')
+require('dap-go').setup();
+
 require('plugins.lsp.init')
 require('plugins.cmp')
 require('plugins.vimtest')
 require('plugins.telescope')
+require('plugins.dap')
+require('plugins.treesitter')
 
-require'telescope'.load_extension('project')
-require('dap-go').setup();
-
---- new packages after this file is written to
--- vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
