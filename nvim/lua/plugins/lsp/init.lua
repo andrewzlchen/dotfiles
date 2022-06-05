@@ -30,10 +30,13 @@ local on_attach_lsp = function(client, bufnr)
   buf_set_keymap('n', '<leader>D',   '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
   buf_set_keymap('n', '<leader>rn',  '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
   buf_set_keymap('n', 'gr',         '<cmd>Telescope lsp_references<CR>', keymap_opts)
+  -- buf_set_keymap('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
   buf_set_keymap('n', '<space>e',   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', keymap_opts)
-  buf_set_keymap('n', '[d',         '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
-  buf_set_keymap('n', ']d',         '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
-  buf_set_keymap('n', '<space>q',   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', keymap_opts)
+  buf_set_keymap('n', '[d',         '<cmd>lua vim.diagnostic.goto_prev()<CR>', keymap_opts)
+  buf_set_keymap('n', ']d',         '<cmd>lua vim.diagnostic.goto_next()<CR>', keymap_opts)
+  buf_set_keymap('n', '<space>q',   '<cmd>lua vim.diagnostic.set_loclist()<CR>', keymap_opts)
+
+  buf_set_keymap('n', '<space>ca',   '<cmd>Telescope lsp_code_actions<CR>', keymap_opts)
 end
 
 -- Use a loop to conveniently both setup defined servers

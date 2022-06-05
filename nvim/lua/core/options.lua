@@ -3,24 +3,25 @@ local global_vars = vim.g
 local window = vim.wo
 local buffer = vim.bo
 
-vim.cmd [[ colo gruvbox ]]
+vim.cmd [[ highlight WinSeparator guibg=None ]]
 
 function set_options()
-    local opts = {
-	-- defaults
-	hidden = true,
-	encoding = 'utf-8',
-	pumheight = 10,
-	ruler = true,
-  ignorecase = true,
-  smartcase = true,
+  local opts = {
+    -- defaults
+    hidden = true,
+    encoding = 'utf-8',
+    pumheight = 10,
+    ruler = true,
+    ignorecase = true,
+    smartcase = true,
+    laststatus = 3,
 
-	-- appearance
-        termguicolors = true,
+    -- appearance
+    termguicolors = true,
 
-	-- completion
-        completeopt = "menuone,noinsert,noselect",
-    }
+    -- completion
+    completeopt = "menuone,noinsert,noselect",
+  }
 
     for k, v in pairs(opts) do options[k] = v end
 end
@@ -55,7 +56,7 @@ function set_global_vars()
         completion_enable_auto_popup = 1,
         completion_matching_strategy_list = {"exact", "substring", "fuzzy"},
         lightline = {
-            colorscheme = "gruvbox",
+            colorscheme = "onedark",
             active = {
                 left = {
                     {"mode", "paste"},
@@ -79,11 +80,4 @@ end
 set_options()
 set_window_options()
 set_global_vars()
-
---- helper funcs
-vim.cmd([[
-    function! FilenameForLightline()
-        return expand('%')
-    endfunction
-]])
 

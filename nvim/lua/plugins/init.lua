@@ -41,6 +41,10 @@ function declare_deps()
             requires = 'kyazdani42/nvim-web-devicons',
             config = function() require'nvim-tree'.setup {
               update_cwd = true,
+              view = {
+                width = '33%',
+                side = 'left',
+              },
             } end
         }
         use 'simrat39/symbols-outline.nvim'                     --- Methods outline
@@ -48,13 +52,15 @@ function declare_deps()
         --- Programming
         use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
         use 'vim-test/vim-test'                                 --- Test framework plugin
-        use 'mfussenegger/nvim-dap'                             --- Debugging
-        use { 
+
+        --- Debugging
+        use 'mfussenegger/nvim-dap'                             --- DAP Client
+        use {                                                   --- Pretty layout for debuggging things
           "rcarriga/nvim-dap-ui",
           requires = {"mfussenegger/nvim-dap"},
         }
         use 'leoluz/nvim-dap-go'                                 --- dap golang features
-        use 'theHamsta/nvim-dap-virtual-text'
+        use 'theHamsta/nvim-dap-virtual-text'                    --- display things inline
 
         use {
             'nvim-treesitter/nvim-treesitter',
@@ -75,6 +81,9 @@ function declare_deps()
 
         --- Version Control
         use 'tpope/vim-fugitive'                                --- Vim git client
+        use 'ThePrimeagen/git-worktree.nvim'                    --- git worktree operations in vi
+        
+        use 'kdheepak/lazygit.nvim'                             --- Open lazygit
         use 'tpope/vim-rhubarb'                                 --- Open Github for open files in vim
         use 'airblade/vim-gitgutter'                            --- Shows git changes on side bar
         use 'tommcdo/vim-fugitive-blame-ext'                    --- shows commit in blame window
@@ -85,12 +94,13 @@ end
 
 declare_deps()
 require'telescope'.load_extension('project')
-require('dap-go').setup();
 
+require('plugins.ui')
 require('plugins.lsp.init')
 require('plugins.cmp')
 require('plugins.vimtest')
 require('plugins.telescope')
+require('plugins.projectionist')
 require('plugins.dap')
 require('plugins.treesitter')
-
+require('plugins.git')
