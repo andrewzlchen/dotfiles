@@ -28,3 +28,10 @@ require("nvim-dap-virtual-text").setup {
                                         -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 }
 
+
+
+local dap = require"dap"
+
+dap.adapters.go = {
+  type = 'server',
+}

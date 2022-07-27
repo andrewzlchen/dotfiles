@@ -22,8 +22,6 @@ function declare_deps()
         use 'kyazdani42/nvim-web-devicons'                      --- Dev Icons
         use 'itchyny/lightline.vim'                             --- Bottom status bar
         use 'rafi/awesome-vim-colorschemes'                     --- Color themes
-        use 'Yggdroot/indentLine'                               --- Lines for showing tabs
-        use 'gko/vim-coloresque'                                --- Colors in Vim #f00 #0f0 #00f
         use 'tpope/vim-unimpaired'                              --- pair keymaps
 
         --- Quality of Life Improvements
@@ -66,9 +64,9 @@ function declare_deps()
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate'
         }
+        use 'nvim-treesitter/playground'
         use "ray-x/lsp_signature.nvim"
         use 'mattn/emmet-vim'                                   --- emmet integration
-        --- use 'Olical/conjure'                                    --- lisp-like langs
         use 'onsails/lspkind-nvim'                              --- pretty completion window
 
         use 'hrsh7th/nvim-cmp'                                  --- completion
@@ -81,8 +79,6 @@ function declare_deps()
 
         --- Version Control
         use 'tpope/vim-fugitive'                                --- Vim git client
-        use 'ThePrimeagen/git-worktree.nvim'                    --- git worktree operations in vi
-        
         use 'kdheepak/lazygit.nvim'                             --- Open lazygit
         use 'tpope/vim-rhubarb'                                 --- Open Github for open files in vim
         use 'airblade/vim-gitgutter'                            --- Shows git changes on side bar
