@@ -50,6 +50,37 @@ function declare_deps()
         --- Programming
         use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
         use 'vim-test/vim-test'                                 --- Test framework plugin
+        use({
+          "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+          config = function()
+            require("lsp_lines").setup()
+            vim.diagnostic.config({
+              virtual_text = false,
+            })
+          end,
+        })
+        use "ray-x/lsp_signature.nvim"
+        use 'onsails/lspkind-nvim'                              --- pretty completion window
+        use 'mattn/emmet-vim'                                   --- emmet integration
+        use 'hrsh7th/nvim-cmp'                                  --- completion
+        use 'hrsh7th/cmp-buffer'                                --- completion
+        use 'hrsh7th/cmp-path'                                  --- completion
+        use 'hrsh7th/cmp-nvim-lua'                              --- completion
+        use 'hrsh7th/cmp-nvim-lsp'                              --- completion
+        use 'hrsh7th/cmp-vsnip'                                 --- snippets
+        use 'hrsh7th/vim-vsnip'                                 --- snippets
+        use {
+          'edolphin-ydf/goimpl.nvim',
+          requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-lua/popup.nvim'},
+            {'nvim-telescope/telescope.nvim'},
+            {'nvim-treesitter/nvim-treesitter'},
+          },
+          config = function()
+            require'telescope'.load_extension'goimpl'
+          end,
+        }
 
         --- Debugging
         use 'mfussenegger/nvim-dap'                             --- DAP Client
@@ -65,17 +96,6 @@ function declare_deps()
             run = ':TSUpdate'
         }
         use 'nvim-treesitter/playground'
-        use "ray-x/lsp_signature.nvim"
-        use 'mattn/emmet-vim'                                   --- emmet integration
-        use 'onsails/lspkind-nvim'                              --- pretty completion window
-
-        use 'hrsh7th/nvim-cmp'                                  --- completion
-        use 'hrsh7th/cmp-buffer'                                --- completion
-        use 'hrsh7th/cmp-path'                                  --- completion
-        use 'hrsh7th/cmp-nvim-lua'                              --- completion
-        use 'hrsh7th/cmp-nvim-lsp'                              --- completion
-        use 'hrsh7th/cmp-vsnip'                                 --- snippets
-        use 'hrsh7th/vim-vsnip'                                 --- snippets
 
         --- Version Control
         use 'tpope/vim-fugitive'                                --- Vim git client

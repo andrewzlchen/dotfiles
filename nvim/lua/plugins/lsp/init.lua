@@ -3,7 +3,8 @@ local keymap_opts = { noremap=true, silent=true }
 local nvim_lsp = require('lspconfig')
 
 local on_attach_formatting = function(client)
-  if client.resolved_capabilities.document_formatting then
+  -- if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.cmd [[augroup Format]]
     vim.cmd [[autocmd! * <buffer>]]
     vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
@@ -30,7 +31,7 @@ local on_attach_lsp = function(client, bufnr)
   buf_set_keymap('n', '<leader>D',   '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
   buf_set_keymap('n', '<leader>rn',  '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
   buf_set_keymap('n', 'gr',         '<cmd>Telescope lsp_references<CR>', keymap_opts)
-  -- buf_set_keymap('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
+  buf_set_keymap('n', 'gR',         '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
   buf_set_keymap('n', '<space>e',   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', keymap_opts)
   buf_set_keymap('n', '[d',         '<cmd>lua vim.diagnostic.goto_prev()<CR>', keymap_opts)
   buf_set_keymap('n', ']d',         '<cmd>lua vim.diagnostic.goto_next()<CR>', keymap_opts)

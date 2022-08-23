@@ -1,23 +1,23 @@
 local keymap_opts = { noremap=true, silent=true }
 local map = vim.api.nvim_set_keymap
+-- project searchability
 map('n', '<leader>fq', '<cmd>lua require("telescope.actions").open_qflist()<cr>', keymap_opts)
 map('n', '<leader><Space>', '<cmd>lua require("plugins.telescope").project_files()<CR>', keymap_opts)
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', keymap_opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', keymap_opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', keymap_opts)
 map('n', '<leader>fp', '<cmd>lua require"telescope".extensions.project.project{}<CR>', keymap_opts)
+
 map('n', '<leader>gf', '<cmd>Telescope git_status<CR>', keymap_opts)
 
-
+-- lsp maps
+map('n', '<leader>pp', '<cmd>Telescope project<cr>', keymap_opts)
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', keymap_opts)
 map('n', '<leader>lwd', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>', keymap_opts)
 map('n', '<leader>lwde', '<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics({severity = ":error:"})<cr>', keymap_opts)
 map('n', '<leader>ldd', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', keymap_opts)
 map('n', '<leader>la', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', keymap_opts)
-map('n', '<leader>gwtl', "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", keymap_opts)
-map('n', '<leader>gwta', "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", keymap_opts)
-
-require("telescope").load_extension("git_worktree")
+map('n', '<leader>im', [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]], {noremap=true, silent=true})
 
 -- allow esc in insert mode to quit telescope
 local actions = require('telescope.actions')
