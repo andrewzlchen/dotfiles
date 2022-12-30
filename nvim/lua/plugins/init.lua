@@ -16,6 +16,7 @@ function declare_deps()
         -- Packer can manage itself
         use 'wbthomason/packer.nvim'
 
+        use 'ray-x/guihua.lua'                                  --- recommanded if need floating window support
         use 'tpope/vim-dispatch'
 
         --- Appearance
@@ -23,6 +24,7 @@ function declare_deps()
         use 'itchyny/lightline.vim'                             --- Bottom status bar
         use 'rafi/awesome-vim-colorschemes'                     --- Color themes
         use 'tpope/vim-unimpaired'                              --- pair keymaps
+        use 'wfxr/minimap.vim'
 
         --- Quality of Life Improvements
         use 'tpope/vim-commentary'                              --- Comments
@@ -48,6 +50,18 @@ function declare_deps()
         use 'simrat39/symbols-outline.nvim'                     --- Methods outline
 
         --- Programming
+        use {
+          "folke/trouble.nvim",
+          requires = "kyazdani42/nvim-web-devicons",
+          config = function()
+            require("trouble").setup {
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+            }
+          end
+        }
+
         use 'neovim/nvim-lspconfig'                             --- Builtin LSP Config
         use 'vim-test/vim-test'                                 --- Test framework plugin
         use({
@@ -81,15 +95,6 @@ function declare_deps()
             require'telescope'.load_extension'goimpl'
           end,
         }
-
-        --- Debugging
-        use 'mfussenegger/nvim-dap'                             --- DAP Client
-        use {                                                   --- Pretty layout for debuggging things
-          "rcarriga/nvim-dap-ui",
-          requires = {"mfussenegger/nvim-dap"},
-        }
-        use 'leoluz/nvim-dap-go'                                 --- dap golang features
-        use 'theHamsta/nvim-dap-virtual-text'                    --- display things inline
 
         use {
             'nvim-treesitter/nvim-treesitter',

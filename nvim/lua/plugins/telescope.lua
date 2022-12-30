@@ -26,11 +26,11 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-
       },
     },
+    file_ignore_patterns = { "node_modules", "vendor" },
+    layout_strategy = "vertical",
   }
 }
 

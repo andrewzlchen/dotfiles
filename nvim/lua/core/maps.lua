@@ -28,5 +28,8 @@ map('n', '<leader>wl', '<C-w>l', keymap_opts)
 map('n', '<leader>ws', '<cmd>sp<CR>', keymap_opts)
 map('n', '<leader>wv', '<cmd>vsp<CR>', keymap_opts)
 
+-- Telescope
+map('n', '<leader>lm', '<cmd>Telescope marks<CR>', keymap_opts) -- list marks
+
 -- navigate to config
 map('n', '<localleader>co', '<cmd>e /users/andrew.chen/code/tools/dotfiles/nvim/lua/plugins/init.lua<cr>', keymap_opts)
