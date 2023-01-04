@@ -1,3 +1,7 @@
+-- To get telescope-file-browser loaded and working with telescope,
+-- you need to call load_extension, somewhere after setup function:
+require("telescope").load_extension("file_browser")
+local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
 -- overall discoverability
@@ -5,15 +9,11 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>ft", ":Telescope file_browser<CR>", {})
+vim.keymap.set("n", "<leader>f.", ":Telescope file_browser path=%:p:h<CR>", {})
 
 -- project discoverability
 vim.keymap.set("n", "<leader><leader>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", {})
-
--- To get telescope-file-browser loaded and working with telescope,
--- you need to call load_extension, somewhere after setup function:
-require("telescope").load_extension("file_browser")
-local actions = require("telescope.actions")
+vim.keymap.set("n", "<leader>gg", ":Telescope git_status<CR>", {})
 
 require("telescope").setup({
 	defaults = {
@@ -43,3 +43,5 @@ require("telescope").setup({
 		},
 	},
 })
+
+vim.keymap.set("n", "<C-p>", ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>", {})

@@ -8,6 +8,12 @@ lsp.ensure_installed({
 	"gopls",
 })
 
+-- run gopls as a daemon
+lsp.setup_servers({
+	"gopls",
+	opts = { cmd = { "gopls", "-remote=auto", "-logfile=auto", "-debug=:0", "-remote.debug=:0", "-rpc.trace" } },
+})
+
 -- Fix Undefined global 'vim'
 lsp.configure("sumneko_lua", {
 	settings = {
@@ -18,5 +24,8 @@ lsp.configure("sumneko_lua", {
 		},
 	},
 })
+
+vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
 
 lsp.setup()

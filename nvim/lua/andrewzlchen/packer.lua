@@ -15,6 +15,7 @@ return require("packer").startup(function(use)
 	})
 	use("theprimeagen/harpoon")
 	use("nvim-telescope/telescope-file-browser.nvim")
+	-- use("nvim-telescope/telescope-project.nvim")
 
 	-- ui
 	use({
@@ -38,6 +39,7 @@ return require("packer").startup(function(use)
 			require("lualine").setup()
 		end,
 	})
+	use("simrat39/symbols-outline.nvim")
 
 	-- git
 	use("tpope/vim-fugitive")
@@ -50,6 +52,7 @@ return require("packer").startup(function(use)
 	})
 
 	-- programming
+	-- use("airblade/vim-rooter") --- set cwd to project root
 	use("tpope/vim-unimpaired")
 	use("mhartington/formatter.nvim")
 	use({
@@ -61,10 +64,40 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-neotest/neotest",
 		requires = {
+			-- deps
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"antoinemadec/FixCursorHold.nvim",
+			-- test-runners
+			"haydenmeade/neotest-jest",
+			"nvim-neotest/neotest-go",
 		},
+		config = function()
+			local neotest_ns = vim.api.nvim_create_namespace("neotest")
+			vim.diagnostic.config({
+				virtual_text = {
+					format = function(diagnostic)
+						local message =
+							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+						return message
+					end,
+				},
+			}, neotest_ns)
+
+			require("neotest").setup({
+				adapters = {
+					require("neotest-go"),
+					require("neotest-jest")({
+						jestCommand = "npm test --",
+						jestConfigFile = "custom.jest.config.ts",
+						env = { CI = true },
+						cwd = function(path)
+							return vim.fn.getcwd()
+						end,
+					}),
+				},
+			})
+		end,
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- adds context to commenting plugin
 	use("mbbill/undotree")
