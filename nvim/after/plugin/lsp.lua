@@ -25,7 +25,15 @@ lsp.configure("sumneko_lua", {
 	},
 })
 
-vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>")
-vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
+vim.opt.signcolumn = "yes"
+
+lsp.set_preferences({
+	set_lsp_keymaps = { omit = { "gr", "gi", "gD" } },
+})
 
 lsp.setup()
+
+vim.keymap.set("n", "gD", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
+
+vim.keymap.set("n", "gr", ":lua vim.lsp.buf.rename()<CR>")

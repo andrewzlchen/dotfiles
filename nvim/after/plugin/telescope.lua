@@ -11,9 +11,14 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>ft", ":Telescope file_browser<CR>", {})
 vim.keymap.set("n", "<leader>f.", ":Telescope file_browser path=%:p:h<CR>", {})
 
+-- navigation
+vim.keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", {})
+
 -- project discoverability
 vim.keymap.set("n", "<leader><leader>", builtin.git_files, {})
 vim.keymap.set("n", "<leader>gg", ":Telescope git_status<CR>", {})
+vim.keymap.set("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>", {})
+vim.keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", {})
 
 require("telescope").setup({
 	defaults = {
@@ -43,5 +48,3 @@ require("telescope").setup({
 		},
 	},
 })
-
-vim.keymap.set("n", "<C-p>", ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>", {})

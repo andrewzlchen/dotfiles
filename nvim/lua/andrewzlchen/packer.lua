@@ -13,11 +13,17 @@ return require("packer").startup(function(use)
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-	use("theprimeagen/harpoon")
+	-- use("theprimeagen/harpoon")
 	use("nvim-telescope/telescope-file-browser.nvim")
 	-- use("nvim-telescope/telescope-project.nvim")
 
 	-- ui
+	use({
+		"glacambre/firenvim",
+		run = function()
+			vim.fn["firenvim#install"](0)
+		end,
+	})
 	use({
 		"navarasu/onedark.nvim",
 		config = function()
@@ -52,7 +58,96 @@ return require("packer").startup(function(use)
 	})
 
 	-- programming
-	-- use("airblade/vim-rooter") --- set cwd to project root
+	use("airblade/vim-rooter") --- set cwd to project root
+	use({
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({
+				library = { plugins = { "neotest" }, types = true },
+			})
+		end,
+	})
+	use({
+		"rgroli/other.nvim",
+		config = function()
+			require("other-nvim").setup({
+				mappings = {
+					-- react.js typescript mappings
+					{
+						pattern = "(.+)[*.tsx]$",
+						target = "%1/%2.test.tsx",
+						context = "component",
+					},
+					{
+						pattern = "(.+)[*.tsx]$",
+						target = "%1/%2.test.ts",
+						context = "component",
+					},
+					{
+						pattern = "/src/(.*)/.*.test.tsx$",
+						target = "/src/%1/%1.tsx",
+						context = "test",
+					},
+					{
+						pattern = "/src/(.*)/.*.test.ts$",
+						target = "/src/%1/%1.tsx",
+						context = "test",
+					},
+					-- react.js javascript mappings
+					{
+						pattern = "/src/(.*)/.*.jsx$",
+						target = "/src/%1/%1.test.jsx",
+						context = "component",
+					},
+					{
+						pattern = "/src/(.*)/.*.jsx$",
+						target = "/src/%1/%1.test.js",
+						context = "component",
+					},
+					{
+						pattern = "/src/(.*)/.*.test.jsx$",
+						target = "/src/%1/%1.jsx",
+						context = "test",
+					},
+					{
+						pattern = "/src/(.*)/.*.test.js$",
+						target = "/src/%1/%1.jsx",
+						context = "test",
+					},
+				},
+				transformers = {
+					-- defining a custom transformer
+					lowercase = function(inputString)
+						return inputString:lower()
+					end,
+				},
+				style = {
+					-- How the plugin paints its window borders
+					-- Allowed values are none, single, double, rounded, solid and shadow
+					border = "solid",
+
+					-- Column seperator for the window
+					seperator = "|",
+
+					-- width of the window in percent. e.g. 0.5 is 50%, 1.0 is 100%
+					width = 0.7,
+
+					-- min height in rows.
+					-- when more columns are needed this value is extended automatically
+					minHeight = 2,
+				},
+			})
+		end,
+	})
+	use({
+		"mfussenegger/nvim-dap",
+		requires = {
+			"leoluz/nvim-dap-go",
+		},
+		config = function()
+			require("dap-go").setup()
+		end,
+	})
 	use("tpope/vim-unimpaired")
 	use("mhartington/formatter.nvim")
 	use({
@@ -96,6 +191,7 @@ return require("packer").startup(function(use)
 						end,
 					}),
 				},
+				log_level = 0,
 			})
 		end,
 	})

@@ -9,6 +9,9 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.wrap = false
 
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -26,3 +29,4 @@ vim.o.updatetime = 50
 vim.o.colorcolumn = "80"
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
