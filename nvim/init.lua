@@ -1,1 +1,2 @@
-require("andrewzlchen")
+require("andrewzlchen.core")
+require("andrewzlchen.lazy")
