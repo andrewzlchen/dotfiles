@@ -6,6 +6,7 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
+    "otavioschwanck/telescope-alternate",
   },
   config = function()
     local telescope = require("telescope")
@@ -13,6 +14,7 @@ return {
     local transform_mod = require("telescope.actions.mt").transform_mod
     local trouble = require("trouble")
     local trouble_telescope = require("trouble.sources.telescope")
+    local alternate_telescope = require("telescope-alternate")
 
     -- or create your custom action
     local custom_actions = transform_mod({
@@ -35,8 +37,51 @@ return {
       },
     })
 
+    alternate_telescope.setup({
+      mappings = {
+        -- Streams-specific C++ code
+        {
+          "(.*)/src/streams/exec/(.*).h",
+          {
+            { "[1]/src/streams/exec/tests/[2]_test.cpp", "Unit Test" },
+            { "[1]/src/streams/exec/[2].cpp", "Source" },
+          },
+        },
+        {
+          "(.*)/src/streams/exec/(.*).cpp",
+          {
+            { "[1]/src/streams/exec/tests/[2]_test.cpp", "Unit Test" },
+            { "[1]/src/streams/exec/[2].h", "Header" },
+          },
+        },
+        {
+          "(.*)/src/streams/exec/tests/(.*)_test.cpp",
+          {
+            { "[1]/src/streams/exec/[1].cpp", "Source" },
+            { "[1]/src/streams/exec/[1].h", "Header" },
+          },
+        },
+      },
+
+      -- General C++ (doesn't know where tests are)
+      {
+        "(.*).h",
+        {
+          { "[1].cpp", "Source" },
+        },
+      },
+      {
+        "(.*).cpp",
+        {
+          { "[1].h", "Header" },
+        },
+      },
+      -- presets = { "go" },
+    })
+
     telescope.load_extension("fzf")
     telescope.load_extension("projects")
+    telescope.load_extension("telescope-alternate")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
@@ -47,6 +92,13 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-    keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Find projects" })
+    keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Find project" })
+    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffer" })
+    keymap.set(
+      "n",
+      "<leader>fa",
+      "<cmd>Telescope telescope-alternate alternate_file<cr>",
+      { desc = "Find alternate file" }
+    )
   end,
 }
