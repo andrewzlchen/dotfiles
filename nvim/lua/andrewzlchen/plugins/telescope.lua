@@ -30,7 +30,7 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
-            ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+            ["<C-q>"] = actions.send_to_qflist + custom_actions.open_trouble_qflist,
             ["<C-t>"] = trouble_telescope.open,
           },
         },
@@ -57,8 +57,8 @@ return {
         {
           "(.*)/src/streams/exec/tests/(.*)_test.cpp",
           {
-            { "[1]/src/streams/exec/[1].cpp", "Source" },
-            { "[1]/src/streams/exec/[1].h", "Header" },
+            { "[1]/src/streams/exec/[2].cpp", "Source" },
+            { "[1]/src/streams/exec/[2].h", "Header" },
           },
         },
       },
@@ -99,6 +99,20 @@ return {
       "<leader>fa",
       "<cmd>Telescope telescope-alternate alternate_file<cr>",
       { desc = "Find alternate file" }
+    )
+
+    -- for navigating trouble qflist
+    keymap.set(
+      "n",
+      "[f",
+      "<cmd>lua require'trouble'.prev()<cr>",
+      { desc = "Go to previous entry in trouble quickfix list" }
+    )
+    keymap.set(
+      "n",
+      "]f",
+      "<cmd>lua require'trouble'.next()<cr>",
+      { desc = "Go to next entry in trouble quickfix list" }
     )
   end,
 }
