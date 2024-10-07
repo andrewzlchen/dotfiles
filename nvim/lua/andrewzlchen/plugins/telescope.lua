@@ -65,15 +65,24 @@ return {
 
       -- General C++ (doesn't know where tests are)
       {
-        "(.*).h",
+        "(.*)/(.*).hpp",
         {
-          { "[1].cpp", "Source" },
+          { "[1]/[2].cpp", "Source" },
         },
       },
       {
-        "(.*).cpp",
+        "(.*)/(.*).h",
         {
-          { "[1].h", "Header" },
+          { "[1]/[2].cpp", "Source" },
+        },
+      },
+      {
+        "(.*)/(.*).cpp",
+        {
+          { "[1]/[2].hpp", "Header" },
+        },
+        {
+          { "[1]/[2].h", "Header" },
         },
       },
       -- presets = { "go" },
