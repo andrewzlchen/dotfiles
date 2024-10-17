@@ -9,6 +9,8 @@ return {
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
+    vim.treesitter.language.register("idl", { "yaml" })
+
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
       highlight = {
