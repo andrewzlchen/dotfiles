@@ -129,6 +129,10 @@ return {
       "<cmd>lua require('telescope.builtin').buffers({layout_strategy='vertical',layout_config={width=0.9}})<CR>",
       { desc = "Find buffer" }
     )
+    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffer" })
+    keymap.set("n", "<leader>fm", function()
+      require("telescope.builtin").lsp_document_symbols({ symbols = { "method", "function" } })
+    end, { desc = "Find methods" })
     keymap.set(
       "n",
       "<leader>fa",
