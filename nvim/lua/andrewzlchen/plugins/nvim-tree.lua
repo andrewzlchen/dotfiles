@@ -48,6 +48,15 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
+    local function print_node_path()
+      local api = require("nvim-tree.api")
+      local node = api.tree.get_node_under_cursor()
+      print(node.absolute_path)
+      vim.fn.setreg("+", node.absolute_path)
+    end
+
+    -- on_attach
+    keymap.set("n", "<C-P>", print_node_path, { desc = "Print Path" })
     keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
     keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
     keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
