@@ -5,6 +5,12 @@ return {
     local conform = require("conform")
 
     conform.setup({
+      formatters = {
+        ["clang-format"] = {
+          command = "/home/ubuntu/mongo/buildscripts/clang_format.py",
+          args = { "format-one", "$FILENAME" },
+        },
+      },
       formatters_by_ft = {
         javascript = { "prettier" },
         json = { "prettier" },
