@@ -28,7 +28,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- git
 keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open neogit" })
-keymap.set("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "Open git blame" })
+keymap.set("n", "<leader>gm", "<cmd>BlameToggle<CR>", { desc = "Open git blame" })
 keymap.set("n", "]m", "<cmd>GitConflictNextConflict<CR>", { desc = "Next conflict" })
 keymap.set("n", "[m", "<cmd>GitConflictPrevConflict<CR>", { desc = "Previous conflict" })
 keymap.set("n", "<leader>mq", "<cmd>GitConflictListQf<CR>", { desc = "Send conflicts to QF list" })
