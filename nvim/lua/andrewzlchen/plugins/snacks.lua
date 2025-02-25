@@ -248,25 +248,36 @@ return {
       desc = "Goto T[y]pe Definition",
     },
     {
-      "<leader>ss",
+      "<leader>ls",
       function()
         Snacks.picker.lsp_symbols()
       end,
       desc = "LSP Symbols",
     },
     {
-      "<leader>sS",
+      "<leader>lS",
       function()
         Snacks.picker.lsp_workspace_symbols()
       end,
       desc = "LSP Workspace Symbols",
     },
-
+    {
+      "<leader>ld",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "Diagnostics",
+    },
     {
       "<leader>gy",
       function()
-        -- Snacks.gitbrowse.get_url(repo, fields, opts)
-        Snacks.gitbrowse.get_url()
+        Snacks.gitbrowse.open({
+          open = function(url)
+            vim.notify(url)
+            vim.fn.setreg("+", url)
+            vim.notify("Yanked url to clipboard")
+          end,
+        })
       end,
       desc = "Get GitHub url",
     },
@@ -278,4 +289,7 @@ return {
       desc = "Open in GitHub",
     },
   },
+  config = function()
+    local keymap = vim.api
+  end,
 }
