@@ -35,3 +35,4 @@ keymap.set("n", "<leader>mq", "<cmd>GitConflictListQf<CR>", { desc = "Send confl
 
 -- lsp
 keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code actions" })
+keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP rename" })

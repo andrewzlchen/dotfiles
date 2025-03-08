@@ -13,7 +13,6 @@ return {
       "<leader>ft",
       function()
         vim.cmd("Other test")
-        Snacks.picker.smart()
       end,
       desc = "Alternate file - Test",
     },
@@ -21,7 +20,6 @@ return {
       "<leader>fs",
       function()
         vim.cmd("Other source")
-        Snacks.picker.smart()
       end,
       desc = "Alternate file - Source",
     },
@@ -29,7 +27,6 @@ return {
       "<leader>fh",
       function()
         vim.cmd("Other header")
-        Snacks.picker.smart()
       end,
       desc = "Alternate file - Header",
     },
