@@ -268,26 +268,6 @@ return {
       end,
       desc = "Diagnostics",
     },
-    {
-      "<leader>gy",
-      function()
-        Snacks.gitbrowse.open({
-          open = function(url)
-            vim.notify(url)
-            vim.fn.setreg("+", url)
-            vim.notify("Yanked url to clipboard")
-          end,
-        })
-      end,
-      desc = "Get GitHub url",
-    },
-    {
-      "<leader>gO",
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = "Open in GitHub",
-    },
   },
   config = function()
     local keymap = vim.api

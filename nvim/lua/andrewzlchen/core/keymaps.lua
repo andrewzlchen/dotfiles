@@ -32,6 +32,18 @@ keymap.set("n", "<leader>gm", "<cmd>BlameToggle<CR>", { desc = "Open git blame" 
 keymap.set("n", "]m", "<cmd>GitConflictNextConflict<CR>", { desc = "Next conflict" })
 keymap.set("n", "[m", "<cmd>GitConflictPrevConflict<CR>", { desc = "Previous conflict" })
 keymap.set("n", "<leader>mq", "<cmd>GitConflictListQf<CR>", { desc = "Send conflicts to QF list" })
+keymap.set({ "n", "v" }, "<leader>gy", function()
+  Snacks.gitbrowse.open({
+    open = function(url)
+      vim.notify(url)
+      vim.fn.setreg("+", url)
+      vim.notify("Yanked url to clipboard")
+    end,
+  })
+end, { desc = "Get GitHub url" })
+keymap.set({ "n", "v" }, "<leader>gO", function()
+  Snacks.gitbrowse()
+end, { desc = "Open in GitHub" })
 
 -- lsp
 keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code actions" })
