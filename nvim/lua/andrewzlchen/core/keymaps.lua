@@ -26,6 +26,10 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+-- quickfix list
+keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next Quickfix entry" })
+keymap.set("n", "[q", "<cmd>cprevious<CR>", { desc = "Previous Quickfix entry" })
+
 -- git
 keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open neogit" })
 keymap.set("n", "<leader>gm", "<cmd>BlameToggle<CR>", { desc = "Open git blame" })
