@@ -1,8 +1,9 @@
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
-    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-      vim.api.nvim_exec2("normal! g'\"", {})
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local line_count = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= line_count then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
 })
