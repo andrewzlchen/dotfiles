@@ -8,9 +8,9 @@ return {
   },
   config = function()
     local mason_lspconfig = require("mason-lspconfig")
-    -- Automatically install lsp servers
+    -- Automatically install lsp servers (include gopls so Go "go to definition" works)
     mason_lspconfig.setup({
-      ensure_installed = { "lua_ls" },
+      ensure_installed = { "gopls", "lua_ls", "pyright" },
     })
     -- Automatically enable installed lsp servers
     mason_lspconfig.setup()
@@ -30,6 +30,18 @@ return {
         Lua = {
           diagnostics = {
             globals = { "vim" },
+          },
+        },
+      },
+    })
+
+    -- gopls: ensure workspace is used for definitions (e.g. same-module and deps in GOMODCACHE)
+    vim.lsp.config("gopls", {
+      settings = {
+        gopls = {
+          build = {
+            -- If you use build tags, add them here so gopls sees the same files as `go build`.
+            -- buildFlags = { "-tags=integration" },
           },
         },
       },

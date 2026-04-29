@@ -1,9 +1,21 @@
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local line_count = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= line_count then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
+-- Skip restoring cursor on the next BufEnter when the window was just created
+-- (e.g. after :split), so the new window keeps the same view instead of jumping to '".
+-- vim.api.nvim_create_autocmd("WinNew", {
+--   callback = function()
+--     vim.g._skip_buf_enter_restore = true
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   callback = function()
+--     if vim.g._skip_buf_enter_restore then
+--       vim.g._skip_buf_enter_restore = false
+--       return
+--     end
+--     local mark = vim.api.nvim_buf_get_mark(0, '"')
+--     local line_count = vim.api.nvim_buf_line_count(0)
+--     if mark[1] > 0 and mark[1] <= line_count then
+--       pcall(vim.api.nvim_win_set_cursor, 0, mark)
+--     end
+--   end,
+-- })

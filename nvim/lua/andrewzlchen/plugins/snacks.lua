@@ -210,13 +210,20 @@ return {
       end,
       desc = "Colorschemes",
     },
-    -- LSP
+    -- LSP (gd uses built-in so Go defs in GOPATH/pkg/mod aren't filtered out by picker)
     {
       "gd",
       function()
-        Snacks.picker.lsp_definitions()
+        vim.lsp.buf.definition()
       end,
       desc = "Goto Definition",
+    },
+    {
+      "<leader>ld",
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = "LSP Definitions (picker)",
     },
     {
       "gD",
